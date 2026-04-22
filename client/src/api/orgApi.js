@@ -1,0 +1,15 @@
+import api from './axios.js';
+export const getOrgSettings = () => api.get('/org/settings').then(r => r.data);
+export const updateOrgSettings = (data) => api.patch('/org/settings', data).then(r => r.data);
+export const addVisaCategory = (category) => api.post('/org/settings/visa-categories', { category }).then(r => r.data);
+export const addReviewer = (name) => api.post('/org/settings/reviewers', { name }).then(r => r.data);
+export const getLeaderboard = (params) => api.get('/leaderboard/sales', { params }).then(r => r.data);
+export const getTopPerformers = () => api.get('/leaderboard/ceo-top-performers').then(r => r.data);
+export const getHeatmap = (userId, params) => api.get(`/analytics/heatmap/${userId}`, { params }).then(r => r.data);
+export const getWebhookLogs = (params) => api.get('/webhooks/logs', { params }).then(r => r.data);
+export const retryWebhook = (logId) => api.post(`/webhooks/retry/${logId}`).then(r => r.data);
+export const getIntegrationStatus = () => api.get('/webhooks/integrations/status').then(r => r.data);
+export const getAuditLogs = (params) => api.get('/audit', { params }).then(r => r.data);
+export const exportAuditLog = (params) => api.get('/audit/export', { params, responseType: 'blob' }).then(r => r.data);
+export const generateEod = (userId, date) => api.post(`/eod/generate/${userId}`, { date }).then(r => r.data);
+export const getEodReports = (userId, params) => api.get(`/eod/${userId}`, { params }).then(r => r.data);

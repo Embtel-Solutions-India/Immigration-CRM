@@ -1,0 +1,2 @@
+SYSTEM_MEMORY.md
+client\index.html

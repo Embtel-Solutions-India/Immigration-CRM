@@ -1,0 +1,653 @@
+{
+  "communities": {
+    "0": [
+      "auditlog_auditlog",
+      "auditlog_formatts",
+      "caseboard_caseboard",
+      "casedetail_casedetail",
+      "client_src_components_common_filterbar_jsx",
+      "client_src_components_layout_sidebar_jsx",
+      "client_src_components_layout_topbar_jsx",
+      "client_src_hooks_useauth_js",
+      "client_src_pages_audit_auditlog_jsx",
+      "client_src_pages_cases_caseboard_jsx",
+      "client_src_pages_cases_casedetail_jsx",
+      "client_src_pages_kpi_kpipage_jsx",
+      "client_src_pages_leave_leavepage_jsx",
+      "client_src_pages_reports_reports_jsx",
+      "client_src_pages_settings_orgsettings_jsx",
+      "client_src_pages_team_teamview_jsx",
+      "client_src_pages_webhooks_webhooklogs_jsx",
+      "client_src_pages_workunits_workunitdetail_jsx",
+      "client_src_pages_workunits_workunitlist_jsx",
+      "filterbar_filterbar",
+      "kpipage_kpipage",
+      "leavepage_formatdate",
+      "leavepage_leavepage",
+      "orgsettings_orgsettings",
+      "reports_reports",
+      "sidebar_sidebar",
+      "teamview_scorepill",
+      "teamview_teamview",
+      "topbar_topbar",
+      "useauth_useauth",
+      "webhooklogs_formatts",
+      "webhooklogs_statusbadge",
+      "webhooklogs_webhooklogs",
+      "workunitdetail_workunitdetail",
+      "workunitlist_workunitlist"
+    ],
+    "1": [
+      "client_src_api_orgapi_js",
+      "orgapi_addreviewer",
+      "orgapi_addvisacategory",
+      "orgapi_exportauditlog",
+      "orgapi_generateeod",
+      "orgapi_getauditlogs",
+      "orgapi_geteodreports",
+      "orgapi_getheatmap",
+      "orgapi_getintegrationstatus",
+      "orgapi_getleaderboard",
+      "orgapi_getorgsettings",
+      "orgapi_getteameod",
+      "orgapi_gettopperformers",
+      "orgapi_getwebhooklogs",
+      "orgapi_retrywebhook",
+      "orgapi_updateorgsettings"
+    ],
+    "2": [
+      "app_immigration_crm",
+      "client_layer",
+      "db_layer",
+      "external_ghl",
+      "server_layer",
+      "stack_express",
+      "stack_mongodb",
+      "stack_mongoose",
+      "stack_node",
+      "stack_react",
+      "stack_redux",
+      "stack_tailwind",
+      "stack_vite"
+    ],
+    "3": [
+      "auth_jwt",
+      "ctrl_auth",
+      "ctrl_user",
+      "entity_activitylog",
+      "entity_auditlog",
+      "entity_user",
+      "middleware_auth",
+      "middleware_role",
+      "role_admin",
+      "role_superadmin",
+      "role_user"
+    ],
+    "4": [
+      "client_src_api_workunitapi_js",
+      "workunitapi_addcomment",
+      "workunitapi_createworkunit",
+      "workunitapi_deleteworkunit",
+      "workunitapi_getworkunit",
+      "workunitapi_getworkunits",
+      "workunitapi_timerstart",
+      "workunitapi_timerstop",
+      "workunitapi_updateworkunit"
+    ],
+    "5": [
+      "chartsapi_getmarketingorgchart",
+      "chartsapi_getmarketingteamchart",
+      "chartsapi_getmarketinguserchart",
+      "chartsapi_getsalesorgchart",
+      "chartsapi_getsalesteamchart",
+      "chartsapi_getsalesuserchart",
+      "client_src_api_chartsapi_js"
+    ],
+    "6": [
+      "client_src_api_userapi_js",
+      "userapi_getme",
+      "userapi_getuser",
+      "userapi_getusers",
+      "userapi_registeruser",
+      "userapi_updateme",
+      "userapi_updateuser"
+    ],
+    "7": [
+      "seed_daysago",
+      "seed_daystart",
+      "seed_pick",
+      "seed_pw",
+      "seed_rand",
+      "seed_seed",
+      "server_scripts_seed_js"
+    ],
+    "8": [
+      "caseapi_addstatusupdate",
+      "caseapi_createcase",
+      "caseapi_getcase",
+      "caseapi_getcases",
+      "caseapi_updatecase",
+      "client_src_api_caseapi_js"
+    ],
+    "9": [
+      "client_src_api_leaveapi_js",
+      "leaveapi_getpendingleaves",
+      "leaveapi_getteamcalendar",
+      "leaveapi_getuserleaves",
+      "leaveapi_reviewleave",
+      "leaveapi_submitleave"
+    ],
+    "10": [
+      "client_src_api_reportapi_js",
+      "reportapi_getactivity",
+      "reportapi_getorgreport",
+      "reportapi_getpipeline",
+      "reportapi_getteamreport",
+      "reportapi_getuserreport"
+    ],
+    "11": [
+      "client_src_api_kpiapi_js",
+      "kpiapi_getceokpisummary",
+      "kpiapi_getteamkpis",
+      "kpiapi_getuserkpis",
+      "kpiapi_setkpitarget"
+    ],
+    "12": [
+      "ctrl_workunit",
+      "entity_workunit",
+      "team_marketing",
+      "team_production",
+      "team_sales"
+    ],
+    "13": [
+      "app_app",
+      "app_dashboardrouter",
+      "app_protectedroute",
+      "client_src_app_jsx"
+    ],
+    "14": [
+      "client_src_api_forecastapi_js",
+      "forecastapi_getconfidence",
+      "forecastapi_getforecast",
+      "forecastapi_getforecasthistory"
+    ],
+    "15": [
+      "client_src_api_notificationapi_js",
+      "notificationapi_getnotifications",
+      "notificationapi_markallread",
+      "notificationapi_markread"
+    ],
+    "16": [
+      "client_src_components_common_worktimer_jsx",
+      "client_src_hooks_usetimer_js",
+      "usetimer_usetimer",
+      "worktimer_worktimer"
+    ],
+    "17": [
+      "client_src_pages_eod_eodreport_jsx",
+      "eodreport_eodreport",
+      "eodreport_formatdate",
+      "eodreport_isodate"
+    ],
+    "18": [
+      "authcontroller_setcookie",
+      "authcontroller_signaccess",
+      "authcontroller_signrefresh",
+      "server_controllers_authcontroller_js"
+    ],
+    "19": [
+      "chartscontroller_builddailydata",
+      "chartscontroller_buildweektargetdots",
+      "chartscontroller_getdaykey",
+      "server_controllers_chartscontroller_js"
+    ],
+    "20": [
+      "emailservice_gettransporter",
+      "emailservice_sendeodemail",
+      "emailservice_sendnotificationemail",
+      "server_utils_emailservice_js"
+    ],
+    "21": [
+      "client_src_components_charts_heatmapchart_jsx",
+      "heatmapchart_heatmapchart",
+      "heatmapchart_intensity"
+    ],
+    "22": [
+      "client_src_components_common_kpiprogressring_jsx",
+      "kpiprogressring_getcolor",
+      "kpiprogressring_kpiprogressring"
+    ],
+    "23": [
+      "admindashboard_admindashboard",
+      "admindashboard_scorepill",
+      "client_src_pages_dashboard_admindashboard_jsx"
+    ],
+    "24": [
+      "client_src_pages_dashboard_userdashboard_jsx",
+      "userdashboard_getgreeting",
+      "userdashboard_userdashboard"
+    ],
+    "25": [
+      "forecastcontroller_computeforecast",
+      "forecastcontroller_gethistoricalwinrate",
+      "server_controllers_forecastcontroller_js"
+    ],
+    "26": [
+      "server_controllers_webhookcontroller_js",
+      "webhookcontroller_processevent",
+      "webhookcontroller_verifysignature"
+    ],
+    "27": [
+      "roleguard_requirerole",
+      "roleguard_teamscope",
+      "server_middleware_roleguard_js"
+    ],
+    "28": [
+      "ctrl_kpi",
+      "entity_kpi",
+      "util_scorer"
+    ],
+    "29": [
+      "ctrl_eod",
+      "entity_eodreport",
+      "util_cronjob"
+    ],
+    "30": [
+      "entity_notification",
+      "external_nodemailer",
+      "service_email"
+    ],
+    "31": [
+      "client_src_components_charts_forecastcard_jsx",
+      "forecastcard_forecastcard"
+    ],
+    "32": [
+      "client_src_components_charts_multiseriesmarketingchart_jsx",
+      "multiseriesmarketingchart_multiseriesmarketingchart"
+    ],
+    "33": [
+      "client_src_components_charts_multiseriessaleschart_jsx",
+      "multiseriessaleschart_multiseriessaleschart"
+    ],
+    "34": [
+      "client_src_components_charts_pipelinebar_jsx",
+      "pipelinebar_pipelinebar"
+    ],
+    "35": [
+      "client_src_components_charts_stagedonut_jsx",
+      "stagedonut_stagedonut"
+    ],
+    "36": [
+      "client_src_components_charts_teamcomparebar_jsx",
+      "teamcomparebar_teamcomparebar"
+    ],
+    "37": [
+      "client_src_components_charts_weeklylinechart_jsx",
+      "weeklylinechart_weeklylinechart"
+    ],
+    "38": [
+      "client_src_components_common_kpicard_jsx",
+      "kpicard_kpicard"
+    ],
+    "39": [
+      "client_src_components_common_modal_jsx",
+      "modal_modal"
+    ],
+    "40": [
+      "client_src_components_common_notificationpanel_jsx",
+      "notificationpanel_notificationpanel"
+    ],
+    "41": [
+      "client_src_components_common_spinner_jsx",
+      "spinner_spinner"
+    ],
+    "42": [
+      "client_src_components_common_statusbadge_jsx",
+      "statusbadge_statusbadge"
+    ],
+    "43": [
+      "client_src_components_common_toast_jsx",
+      "toast_toast"
+    ],
+    "44": [
+      "client_src_components_layout_layout_jsx",
+      "layout_layout"
+    ],
+    "45": [
+      "client_src_pages_admin_usermanagement_jsx",
+      "usermanagement_usermanagement"
+    ],
+    "46": [
+      "client_src_pages_auth_login_jsx",
+      "login_login"
+    ],
+    "47": [
+      "ceodashboard_ceodashboard",
+      "client_src_pages_dashboard_ceodashboard_jsx"
+    ],
+    "48": [
+      "client_src_pages_leaderboard_leaderboard_jsx",
+      "leaderboard_leaderboard"
+    ],
+    "49": [
+      "client_src_pages_workunits_workunitform_jsx",
+      "workunitform_workunitform"
+    ],
+    "50": [
+      "db_connectdb",
+      "server_config_db_js"
+    ],
+    "51": [
+      "eodcontroller_buildeodreport",
+      "server_controllers_eodcontroller_js"
+    ],
+    "52": [
+      "kpicontroller_computemetrics",
+      "server_controllers_kpicontroller_js"
+    ],
+    "53": [
+      "orgcontroller_getorcreate",
+      "server_controllers_orgcontroller_js"
+    ],
+    "54": [
+      "reportcontroller_datefilter",
+      "server_controllers_reportcontroller_js"
+    ],
+    "55": [
+      "activitylogger_logactivity",
+      "server_utils_activitylogger_js"
+    ],
+    "56": [
+      "auditlogger_logaudit",
+      "server_utils_auditlogger_js"
+    ],
+    "57": [
+      "cronjobs_startcronjobs",
+      "server_utils_cronjobs_js"
+    ],
+    "58": [
+      "scorecalculator_calcproductivityscore",
+      "server_utils_scorecalculator_js"
+    ],
+    "59": [
+      "ctrl_webhook",
+      "entity_webhooklog"
+    ],
+    "60": [
+      "ctrl_case",
+      "entity_case"
+    ],
+    "61": [
+      "client_postcss_config_js"
+    ],
+    "62": [
+      "client_tailwind_config_js"
+    ],
+    "63": [
+      "client_vite_config_js"
+    ],
+    "64": [
+      "client_src_main_jsx"
+    ],
+    "65": [
+      "client_src_api_axios_js"
+    ],
+    "66": [
+      "client_src_store_authslice_js"
+    ],
+    "67": [
+      "client_src_store_index_js"
+    ],
+    "68": [
+      "client_src_store_uislice_js"
+    ],
+    "69": [
+      "server_app_js"
+    ],
+    "70": [
+      "server_server_js"
+    ],
+    "71": [
+      "server_config_constants_js"
+    ],
+    "72": [
+      "server_controllers_analyticscontroller_js"
+    ],
+    "73": [
+      "server_controllers_auditcontroller_js"
+    ],
+    "74": [
+      "server_controllers_casecontroller_js"
+    ],
+    "75": [
+      "server_controllers_leaderboardcontroller_js"
+    ],
+    "76": [
+      "server_controllers_leavecontroller_js"
+    ],
+    "77": [
+      "server_controllers_notificationcontroller_js"
+    ],
+    "78": [
+      "server_controllers_usercontroller_js"
+    ],
+    "79": [
+      "server_controllers_workunitcontroller_js"
+    ],
+    "80": [
+      "server_middleware_auth_js"
+    ],
+    "81": [
+      "server_middleware_errorhandler_js"
+    ],
+    "82": [
+      "server_models_activitylog_js"
+    ],
+    "83": [
+      "server_models_auditlog_js"
+    ],
+    "84": [
+      "server_models_case_js"
+    ],
+    "85": [
+      "server_models_eodreport_js"
+    ],
+    "86": [
+      "server_models_kpitarget_js"
+    ],
+    "87": [
+      "server_models_leaverequest_js"
+    ],
+    "88": [
+      "server_models_notification_js"
+    ],
+    "89": [
+      "server_models_orgsettings_js"
+    ],
+    "90": [
+      "server_models_user_js"
+    ],
+    "91": [
+      "server_models_webhooklog_js"
+    ],
+    "92": [
+      "server_models_workunit_js"
+    ],
+    "93": [
+      "server_routes_analytics_js"
+    ],
+    "94": [
+      "server_routes_audit_js"
+    ],
+    "95": [
+      "server_routes_auth_js"
+    ],
+    "96": [
+      "server_routes_cases_js"
+    ],
+    "97": [
+      "server_routes_charts_js"
+    ],
+    "98": [
+      "server_routes_eod_js"
+    ],
+    "99": [
+      "server_routes_forecast_js"
+    ],
+    "100": [
+      "server_routes_kpi_js"
+    ],
+    "101": [
+      "server_routes_leaderboard_js"
+    ],
+    "102": [
+      "server_routes_leave_js"
+    ],
+    "103": [
+      "server_routes_notifications_js"
+    ],
+    "104": [
+      "server_routes_org_js"
+    ],
+    "105": [
+      "server_routes_reports_js"
+    ],
+    "106": [
+      "server_routes_users_js"
+    ],
+    "107": [
+      "server_routes_webhooks_js"
+    ],
+    "108": [
+      "server_routes_workunits_js"
+    ],
+    "109": [
+      "entity_leavereq"
+    ],
+    "110": [
+      "entity_orgsettings"
+    ],
+    "111": [
+      "middleware_teamscope"
+    ],
+    "112": [
+      "workunit_sales"
+    ],
+    "113": [
+      "workunit_marketing"
+    ],
+    "114": [
+      "workunit_production"
+    ]
+  },
+  "cohesion": {},
+  "god_nodes": [
+    {
+      "id": "useauth_useauth",
+      "label": "useAuth()",
+      "degree": 16
+    },
+    {
+      "id": "seed_seed",
+      "label": "seed()",
+      "degree": 6
+    },
+    {
+      "id": "eodreport_eodreport",
+      "label": "EodReport()",
+      "degree": 4
+    },
+    {
+      "id": "seed_daysago",
+      "label": "daysAgo()",
+      "degree": 3
+    },
+    {
+      "id": "seed_daystart",
+      "label": "dayStart()",
+      "degree": 3
+    },
+    {
+      "id": "emailservice_gettransporter",
+      "label": "getTransporter()",
+      "degree": 3
+    },
+    {
+      "id": "filterbar_filterbar",
+      "label": "FilterBar()",
+      "degree": 2
+    },
+    {
+      "id": "kpiprogressring_getcolor",
+      "label": "getColor()",
+      "degree": 2
+    },
+    {
+      "id": "kpiprogressring_kpiprogressring",
+      "label": "KpiProgressRing()",
+      "degree": 2
+    },
+    {
+      "id": "worktimer_worktimer",
+      "label": "WorkTimer()",
+      "degree": 2
+    }
+  ],
+  "surprises": [
+    {
+      "source": "FilterBar()",
+      "target": "useAuth()",
+      "source_files": [
+        "client\\src\\components\\common\\FilterBar.jsx",
+        "client\\src\\hooks\\useAuth.js"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; peripheral node `FilterBar()` unexpectedly reaches hub `useAuth()`"
+    },
+    {
+      "source": "Sidebar()",
+      "target": "useAuth()",
+      "source_files": [
+        "client\\src\\components\\layout\\Sidebar.jsx",
+        "client\\src\\hooks\\useAuth.js"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; peripheral node `Sidebar()` unexpectedly reaches hub `useAuth()`"
+    },
+    {
+      "source": "Topbar()",
+      "target": "useAuth()",
+      "source_files": [
+        "client\\src\\components\\layout\\Topbar.jsx",
+        "client\\src\\hooks\\useAuth.js"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; peripheral node `Topbar()` unexpectedly reaches hub `useAuth()`"
+    },
+    {
+      "source": "AuditLog()",
+      "target": "useAuth()",
+      "source_files": [
+        "client\\src\\pages\\Audit\\AuditLog.jsx",
+        "client\\src\\hooks\\useAuth.js"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; peripheral node `AuditLog()` unexpectedly reaches hub `useAuth()`"
+    },
+    {
+      "source": "CaseBoard()",
+      "target": "useAuth()",
+      "source_files": [
+        "client\\src\\pages\\Cases\\CaseBoard.jsx",
+        "client\\src\\hooks\\useAuth.js"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; peripheral node `CaseBoard()` unexpectedly reaches hub `useAuth()`"
+    }
+  ]
+}

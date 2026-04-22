@@ -1,0 +1,4278 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "postcss.config.js",
+      "file_type": "code",
+      "source_file": "client\\postcss.config.js",
+      "source_location": "L1",
+      "id": "client_postcss_config_js"
+    },
+    {
+      "label": "tailwind.config.js",
+      "file_type": "code",
+      "source_file": "client\\tailwind.config.js",
+      "source_location": "L1",
+      "id": "client_tailwind_config_js"
+    },
+    {
+      "label": "vite.config.js",
+      "file_type": "code",
+      "source_file": "client\\vite.config.js",
+      "source_location": "L1",
+      "id": "client_vite_config_js"
+    },
+    {
+      "label": "App.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\App.jsx",
+      "source_location": "L1",
+      "id": "client_src_app_jsx"
+    },
+    {
+      "label": "ProtectedRoute()",
+      "file_type": "code",
+      "source_file": "client\\src\\App.jsx",
+      "source_location": "L26",
+      "id": "app_protectedroute"
+    },
+    {
+      "label": "DashboardRouter()",
+      "file_type": "code",
+      "source_file": "client\\src\\App.jsx",
+      "source_location": "L34",
+      "id": "app_dashboardrouter"
+    },
+    {
+      "label": "App()",
+      "file_type": "code",
+      "source_file": "client\\src\\App.jsx",
+      "source_location": "L42",
+      "id": "app_app"
+    },
+    {
+      "label": "main.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\main.jsx",
+      "source_location": "L1",
+      "id": "client_src_main_jsx"
+    },
+    {
+      "label": "axios.js",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\axios.js",
+      "source_location": "L1",
+      "id": "client_src_api_axios_js"
+    },
+    {
+      "label": "caseApi.js",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\caseApi.js",
+      "source_location": "L1",
+      "id": "client_src_api_caseapi_js"
+    },
+    {
+      "label": "getCases()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\caseApi.js",
+      "source_location": "L3",
+      "id": "caseapi_getcases"
+    },
+    {
+      "label": "getCase()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\caseApi.js",
+      "source_location": "L4",
+      "id": "caseapi_getcase"
+    },
+    {
+      "label": "createCase()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\caseApi.js",
+      "source_location": "L5",
+      "id": "caseapi_createcase"
+    },
+    {
+      "label": "updateCase()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\caseApi.js",
+      "source_location": "L6",
+      "id": "caseapi_updatecase"
+    },
+    {
+      "label": "addStatusUpdate()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\caseApi.js",
+      "source_location": "L7",
+      "id": "caseapi_addstatusupdate"
+    },
+    {
+      "label": "chartsApi.js",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\chartsApi.js",
+      "source_location": "L1",
+      "id": "client_src_api_chartsapi_js"
+    },
+    {
+      "label": "getSalesOrgChart()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\chartsApi.js",
+      "source_location": "L2",
+      "id": "chartsapi_getsalesorgchart"
+    },
+    {
+      "label": "getSalesTeamChart()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\chartsApi.js",
+      "source_location": "L3",
+      "id": "chartsapi_getsalesteamchart"
+    },
+    {
+      "label": "getSalesUserChart()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\chartsApi.js",
+      "source_location": "L4",
+      "id": "chartsapi_getsalesuserchart"
+    },
+    {
+      "label": "getMarketingOrgChart()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\chartsApi.js",
+      "source_location": "L5",
+      "id": "chartsapi_getmarketingorgchart"
+    },
+    {
+      "label": "getMarketingTeamChart()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\chartsApi.js",
+      "source_location": "L6",
+      "id": "chartsapi_getmarketingteamchart"
+    },
+    {
+      "label": "getMarketingUserChart()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\chartsApi.js",
+      "source_location": "L7",
+      "id": "chartsapi_getmarketinguserchart"
+    },
+    {
+      "label": "forecastApi.js",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\forecastApi.js",
+      "source_location": "L1",
+      "id": "client_src_api_forecastapi_js"
+    },
+    {
+      "label": "getForecast()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\forecastApi.js",
+      "source_location": "L2",
+      "id": "forecastapi_getforecast"
+    },
+    {
+      "label": "getConfidence()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\forecastApi.js",
+      "source_location": "L3",
+      "id": "forecastapi_getconfidence"
+    },
+    {
+      "label": "getForecastHistory()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\forecastApi.js",
+      "source_location": "L4",
+      "id": "forecastapi_getforecasthistory"
+    },
+    {
+      "label": "kpiApi.js",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\kpiApi.js",
+      "source_location": "L1",
+      "id": "client_src_api_kpiapi_js"
+    },
+    {
+      "label": "setKpiTarget()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\kpiApi.js",
+      "source_location": "L2",
+      "id": "kpiapi_setkpitarget"
+    },
+    {
+      "label": "getUserKpis()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\kpiApi.js",
+      "source_location": "L3",
+      "id": "kpiapi_getuserkpis"
+    },
+    {
+      "label": "getTeamKpis()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\kpiApi.js",
+      "source_location": "L4",
+      "id": "kpiapi_getteamkpis"
+    },
+    {
+      "label": "getCeoKpiSummary()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\kpiApi.js",
+      "source_location": "L5",
+      "id": "kpiapi_getceokpisummary"
+    },
+    {
+      "label": "leaveApi.js",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\leaveApi.js",
+      "source_location": "L1",
+      "id": "client_src_api_leaveapi_js"
+    },
+    {
+      "label": "submitLeave()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\leaveApi.js",
+      "source_location": "L2",
+      "id": "leaveapi_submitleave"
+    },
+    {
+      "label": "reviewLeave()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\leaveApi.js",
+      "source_location": "L3",
+      "id": "leaveapi_reviewleave"
+    },
+    {
+      "label": "getPendingLeaves()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\leaveApi.js",
+      "source_location": "L4",
+      "id": "leaveapi_getpendingleaves"
+    },
+    {
+      "label": "getTeamCalendar()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\leaveApi.js",
+      "source_location": "L5",
+      "id": "leaveapi_getteamcalendar"
+    },
+    {
+      "label": "getUserLeaves()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\leaveApi.js",
+      "source_location": "L6",
+      "id": "leaveapi_getuserleaves"
+    },
+    {
+      "label": "notificationApi.js",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\notificationApi.js",
+      "source_location": "L1",
+      "id": "client_src_api_notificationapi_js"
+    },
+    {
+      "label": "getNotifications()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\notificationApi.js",
+      "source_location": "L2",
+      "id": "notificationapi_getnotifications"
+    },
+    {
+      "label": "markRead()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\notificationApi.js",
+      "source_location": "L3",
+      "id": "notificationapi_markread"
+    },
+    {
+      "label": "markAllRead()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\notificationApi.js",
+      "source_location": "L4",
+      "id": "notificationapi_markallread"
+    },
+    {
+      "label": "orgApi.js",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\orgApi.js",
+      "source_location": "L1",
+      "id": "client_src_api_orgapi_js"
+    },
+    {
+      "label": "getOrgSettings()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\orgApi.js",
+      "source_location": "L2",
+      "id": "orgapi_getorgsettings"
+    },
+    {
+      "label": "updateOrgSettings()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\orgApi.js",
+      "source_location": "L3",
+      "id": "orgapi_updateorgsettings"
+    },
+    {
+      "label": "addVisaCategory()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\orgApi.js",
+      "source_location": "L4",
+      "id": "orgapi_addvisacategory"
+    },
+    {
+      "label": "addReviewer()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\orgApi.js",
+      "source_location": "L5",
+      "id": "orgapi_addreviewer"
+    },
+    {
+      "label": "getLeaderboard()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\orgApi.js",
+      "source_location": "L6",
+      "id": "orgapi_getleaderboard"
+    },
+    {
+      "label": "getTopPerformers()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\orgApi.js",
+      "source_location": "L7",
+      "id": "orgapi_gettopperformers"
+    },
+    {
+      "label": "getHeatmap()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\orgApi.js",
+      "source_location": "L8",
+      "id": "orgapi_getheatmap"
+    },
+    {
+      "label": "getWebhookLogs()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\orgApi.js",
+      "source_location": "L9",
+      "id": "orgapi_getwebhooklogs"
+    },
+    {
+      "label": "retryWebhook()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\orgApi.js",
+      "source_location": "L10",
+      "id": "orgapi_retrywebhook"
+    },
+    {
+      "label": "getIntegrationStatus()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\orgApi.js",
+      "source_location": "L11",
+      "id": "orgapi_getintegrationstatus"
+    },
+    {
+      "label": "getAuditLogs()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\orgApi.js",
+      "source_location": "L12",
+      "id": "orgapi_getauditlogs"
+    },
+    {
+      "label": "exportAuditLog()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\orgApi.js",
+      "source_location": "L13",
+      "id": "orgapi_exportauditlog"
+    },
+    {
+      "label": "generateEod()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\orgApi.js",
+      "source_location": "L14",
+      "id": "orgapi_generateeod"
+    },
+    {
+      "label": "getEodReports()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\orgApi.js",
+      "source_location": "L15",
+      "id": "orgapi_geteodreports"
+    },
+    {
+      "label": "getTeamEod()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\orgApi.js",
+      "source_location": "L16",
+      "id": "orgapi_getteameod"
+    },
+    {
+      "label": "reportApi.js",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\reportApi.js",
+      "source_location": "L1",
+      "id": "client_src_api_reportapi_js"
+    },
+    {
+      "label": "getUserReport()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\reportApi.js",
+      "source_location": "L3",
+      "id": "reportapi_getuserreport"
+    },
+    {
+      "label": "getTeamReport()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\reportApi.js",
+      "source_location": "L4",
+      "id": "reportapi_getteamreport"
+    },
+    {
+      "label": "getOrgReport()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\reportApi.js",
+      "source_location": "L5",
+      "id": "reportapi_getorgreport"
+    },
+    {
+      "label": "getPipeline()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\reportApi.js",
+      "source_location": "L6",
+      "id": "reportapi_getpipeline"
+    },
+    {
+      "label": "getActivity()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\reportApi.js",
+      "source_location": "L7",
+      "id": "reportapi_getactivity"
+    },
+    {
+      "label": "userApi.js",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\userApi.js",
+      "source_location": "L1",
+      "id": "client_src_api_userapi_js"
+    },
+    {
+      "label": "getMe()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\userApi.js",
+      "source_location": "L3",
+      "id": "userapi_getme"
+    },
+    {
+      "label": "updateMe()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\userApi.js",
+      "source_location": "L4",
+      "id": "userapi_updateme"
+    },
+    {
+      "label": "getUsers()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\userApi.js",
+      "source_location": "L5",
+      "id": "userapi_getusers"
+    },
+    {
+      "label": "getUser()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\userApi.js",
+      "source_location": "L6",
+      "id": "userapi_getuser"
+    },
+    {
+      "label": "updateUser()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\userApi.js",
+      "source_location": "L7",
+      "id": "userapi_updateuser"
+    },
+    {
+      "label": "registerUser()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\userApi.js",
+      "source_location": "L8",
+      "id": "userapi_registeruser"
+    },
+    {
+      "label": "workUnitApi.js",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\workUnitApi.js",
+      "source_location": "L1",
+      "id": "client_src_api_workunitapi_js"
+    },
+    {
+      "label": "getWorkUnits()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\workUnitApi.js",
+      "source_location": "L3",
+      "id": "workunitapi_getworkunits"
+    },
+    {
+      "label": "getWorkUnit()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\workUnitApi.js",
+      "source_location": "L4",
+      "id": "workunitapi_getworkunit"
+    },
+    {
+      "label": "createWorkUnit()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\workUnitApi.js",
+      "source_location": "L5",
+      "id": "workunitapi_createworkunit"
+    },
+    {
+      "label": "updateWorkUnit()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\workUnitApi.js",
+      "source_location": "L6",
+      "id": "workunitapi_updateworkunit"
+    },
+    {
+      "label": "deleteWorkUnit()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\workUnitApi.js",
+      "source_location": "L7",
+      "id": "workunitapi_deleteworkunit"
+    },
+    {
+      "label": "addComment()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\workUnitApi.js",
+      "source_location": "L8",
+      "id": "workunitapi_addcomment"
+    },
+    {
+      "label": "timerStart()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\workUnitApi.js",
+      "source_location": "L9",
+      "id": "workunitapi_timerstart"
+    },
+    {
+      "label": "timerStop()",
+      "file_type": "code",
+      "source_file": "client\\src\\api\\workUnitApi.js",
+      "source_location": "L10",
+      "id": "workunitapi_timerstop"
+    },
+    {
+      "label": "ForecastCard.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\charts\\ForecastCard.jsx",
+      "source_location": "L1",
+      "id": "client_src_components_charts_forecastcard_jsx"
+    },
+    {
+      "label": "ForecastCard()",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\charts\\ForecastCard.jsx",
+      "source_location": "L11",
+      "id": "forecastcard_forecastcard"
+    },
+    {
+      "label": "HeatmapChart.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\charts\\HeatmapChart.jsx",
+      "source_location": "L1",
+      "id": "client_src_components_charts_heatmapchart_jsx"
+    },
+    {
+      "label": "intensity()",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\charts\\HeatmapChart.jsx",
+      "source_location": "L6",
+      "id": "heatmapchart_intensity"
+    },
+    {
+      "label": "HeatmapChart()",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\charts\\HeatmapChart.jsx",
+      "source_location": "L15",
+      "id": "heatmapchart_heatmapchart"
+    },
+    {
+      "label": "MultiSeriesMarketingChart.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\charts\\MultiSeriesMarketingChart.jsx",
+      "source_location": "L1",
+      "id": "client_src_components_charts_multiseriesmarketingchart_jsx"
+    },
+    {
+      "label": "MultiSeriesMarketingChart()",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\charts\\MultiSeriesMarketingChart.jsx",
+      "source_location": "L9",
+      "id": "multiseriesmarketingchart_multiseriesmarketingchart"
+    },
+    {
+      "label": "MultiSeriesSalesChart.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\charts\\MultiSeriesSalesChart.jsx",
+      "source_location": "L1",
+      "id": "client_src_components_charts_multiseriessaleschart_jsx"
+    },
+    {
+      "label": "MultiSeriesSalesChart()",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\charts\\MultiSeriesSalesChart.jsx",
+      "source_location": "L11",
+      "id": "multiseriessaleschart_multiseriessaleschart"
+    },
+    {
+      "label": "PipelineBar.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\charts\\PipelineBar.jsx",
+      "source_location": "L1",
+      "id": "client_src_components_charts_pipelinebar_jsx"
+    },
+    {
+      "label": "PipelineBar()",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\charts\\PipelineBar.jsx",
+      "source_location": "L6",
+      "id": "pipelinebar_pipelinebar"
+    },
+    {
+      "label": "StageDonut.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\charts\\StageDonut.jsx",
+      "source_location": "L1",
+      "id": "client_src_components_charts_stagedonut_jsx"
+    },
+    {
+      "label": "StageDonut()",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\charts\\StageDonut.jsx",
+      "source_location": "L6",
+      "id": "stagedonut_stagedonut"
+    },
+    {
+      "label": "TeamCompareBar.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\charts\\TeamCompareBar.jsx",
+      "source_location": "L1",
+      "id": "client_src_components_charts_teamcomparebar_jsx"
+    },
+    {
+      "label": "TeamCompareBar()",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\charts\\TeamCompareBar.jsx",
+      "source_location": "L6",
+      "id": "teamcomparebar_teamcomparebar"
+    },
+    {
+      "label": "WeeklyLineChart.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\charts\\WeeklyLineChart.jsx",
+      "source_location": "L1",
+      "id": "client_src_components_charts_weeklylinechart_jsx"
+    },
+    {
+      "label": "WeeklyLineChart()",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\charts\\WeeklyLineChart.jsx",
+      "source_location": "L4",
+      "id": "weeklylinechart_weeklylinechart"
+    },
+    {
+      "label": "FilterBar.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\common\\FilterBar.jsx",
+      "source_location": "L1",
+      "id": "client_src_components_common_filterbar_jsx"
+    },
+    {
+      "label": "FilterBar()",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\common\\FilterBar.jsx",
+      "source_location": "L4",
+      "id": "filterbar_filterbar"
+    },
+    {
+      "label": "KpiCard.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\common\\KpiCard.jsx",
+      "source_location": "L1",
+      "id": "client_src_components_common_kpicard_jsx"
+    },
+    {
+      "label": "KpiCard()",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\common\\KpiCard.jsx",
+      "source_location": "L3",
+      "id": "kpicard_kpicard"
+    },
+    {
+      "label": "KpiProgressRing.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\common\\KpiProgressRing.jsx",
+      "source_location": "L1",
+      "id": "client_src_components_common_kpiprogressring_jsx"
+    },
+    {
+      "label": "getColor()",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\common\\KpiProgressRing.jsx",
+      "source_location": "L3",
+      "id": "kpiprogressring_getcolor"
+    },
+    {
+      "label": "KpiProgressRing()",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\common\\KpiProgressRing.jsx",
+      "source_location": "L10",
+      "id": "kpiprogressring_kpiprogressring"
+    },
+    {
+      "label": "Modal.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\common\\Modal.jsx",
+      "source_location": "L1",
+      "id": "client_src_components_common_modal_jsx"
+    },
+    {
+      "label": "Modal()",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\common\\Modal.jsx",
+      "source_location": "L3",
+      "id": "modal_modal"
+    },
+    {
+      "label": "NotificationPanel.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\common\\NotificationPanel.jsx",
+      "source_location": "L1",
+      "id": "client_src_components_common_notificationpanel_jsx"
+    },
+    {
+      "label": "NotificationPanel()",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\common\\NotificationPanel.jsx",
+      "source_location": "L18",
+      "id": "notificationpanel_notificationpanel"
+    },
+    {
+      "label": "Spinner.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\common\\Spinner.jsx",
+      "source_location": "L1",
+      "id": "client_src_components_common_spinner_jsx"
+    },
+    {
+      "label": "Spinner()",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\common\\Spinner.jsx",
+      "source_location": "L3",
+      "id": "spinner_spinner"
+    },
+    {
+      "label": "StatusBadge.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\common\\StatusBadge.jsx",
+      "source_location": "L1",
+      "id": "client_src_components_common_statusbadge_jsx"
+    },
+    {
+      "label": "StatusBadge()",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\common\\StatusBadge.jsx",
+      "source_location": "L19",
+      "id": "statusbadge_statusbadge"
+    },
+    {
+      "label": "Toast.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\common\\Toast.jsx",
+      "source_location": "L1",
+      "id": "client_src_components_common_toast_jsx"
+    },
+    {
+      "label": "Toast()",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\common\\Toast.jsx",
+      "source_location": "L5",
+      "id": "toast_toast"
+    },
+    {
+      "label": "WorkTimer.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\common\\WorkTimer.jsx",
+      "source_location": "L1",
+      "id": "client_src_components_common_worktimer_jsx"
+    },
+    {
+      "label": "WorkTimer()",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\common\\WorkTimer.jsx",
+      "source_location": "L5",
+      "id": "worktimer_worktimer"
+    },
+    {
+      "label": "Layout.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\layout\\Layout.jsx",
+      "source_location": "L1",
+      "id": "client_src_components_layout_layout_jsx"
+    },
+    {
+      "label": "Layout()",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\layout\\Layout.jsx",
+      "source_location": "L8",
+      "id": "layout_layout"
+    },
+    {
+      "label": "Sidebar.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\layout\\Sidebar.jsx",
+      "source_location": "L1",
+      "id": "client_src_components_layout_sidebar_jsx"
+    },
+    {
+      "label": "Sidebar()",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\layout\\Sidebar.jsx",
+      "source_location": "L27",
+      "id": "sidebar_sidebar"
+    },
+    {
+      "label": "Topbar.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\layout\\Topbar.jsx",
+      "source_location": "L1",
+      "id": "client_src_components_layout_topbar_jsx"
+    },
+    {
+      "label": "Topbar()",
+      "file_type": "code",
+      "source_file": "client\\src\\components\\layout\\Topbar.jsx",
+      "source_location": "L13",
+      "id": "topbar_topbar"
+    },
+    {
+      "label": "useAuth.js",
+      "file_type": "code",
+      "source_file": "client\\src\\hooks\\useAuth.js",
+      "source_location": "L1",
+      "id": "client_src_hooks_useauth_js"
+    },
+    {
+      "label": "useAuth()",
+      "file_type": "code",
+      "source_file": "client\\src\\hooks\\useAuth.js",
+      "source_location": "L3",
+      "id": "useauth_useauth"
+    },
+    {
+      "label": "useTimer.js",
+      "file_type": "code",
+      "source_file": "client\\src\\hooks\\useTimer.js",
+      "source_location": "L1",
+      "id": "client_src_hooks_usetimer_js"
+    },
+    {
+      "label": "useTimer()",
+      "file_type": "code",
+      "source_file": "client\\src\\hooks\\useTimer.js",
+      "source_location": "L3",
+      "id": "usetimer_usetimer"
+    },
+    {
+      "label": "UserManagement.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Admin\\UserManagement.jsx",
+      "source_location": "L1",
+      "id": "client_src_pages_admin_usermanagement_jsx"
+    },
+    {
+      "label": "UserManagement()",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Admin\\UserManagement.jsx",
+      "source_location": "L8",
+      "id": "usermanagement_usermanagement"
+    },
+    {
+      "label": "AuditLog.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Audit\\AuditLog.jsx",
+      "source_location": "L1",
+      "id": "client_src_pages_audit_auditlog_jsx"
+    },
+    {
+      "label": "formatTs()",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Audit\\AuditLog.jsx",
+      "source_location": "L12",
+      "id": "auditlog_formatts"
+    },
+    {
+      "label": "AuditLog()",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Audit\\AuditLog.jsx",
+      "source_location": "L19",
+      "id": "auditlog_auditlog"
+    },
+    {
+      "label": "Login.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Auth\\Login.jsx",
+      "source_location": "L1",
+      "id": "client_src_pages_auth_login_jsx"
+    },
+    {
+      "label": "Login()",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Auth\\Login.jsx",
+      "source_location": "L6",
+      "id": "login_login"
+    },
+    {
+      "label": "CaseBoard.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Cases\\CaseBoard.jsx",
+      "source_location": "L1",
+      "id": "client_src_pages_cases_caseboard_jsx"
+    },
+    {
+      "label": "CaseBoard()",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Cases\\CaseBoard.jsx",
+      "source_location": "L33",
+      "id": "caseboard_caseboard"
+    },
+    {
+      "label": "CaseDetail.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Cases\\CaseDetail.jsx",
+      "source_location": "L1",
+      "id": "client_src_pages_cases_casedetail_jsx"
+    },
+    {
+      "label": "CaseDetail()",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Cases\\CaseDetail.jsx",
+      "source_location": "L13",
+      "id": "casedetail_casedetail"
+    },
+    {
+      "label": "AdminDashboard.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Dashboard\\AdminDashboard.jsx",
+      "source_location": "L1",
+      "id": "client_src_pages_dashboard_admindashboard_jsx"
+    },
+    {
+      "label": "ScorePill()",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Dashboard\\AdminDashboard.jsx",
+      "source_location": "L21",
+      "id": "admindashboard_scorepill"
+    },
+    {
+      "label": "AdminDashboard()",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Dashboard\\AdminDashboard.jsx",
+      "source_location": "L28",
+      "id": "admindashboard_admindashboard"
+    },
+    {
+      "label": "CeoDashboard.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Dashboard\\CeoDashboard.jsx",
+      "source_location": "L1",
+      "id": "client_src_pages_dashboard_ceodashboard_jsx"
+    },
+    {
+      "label": "CeoDashboard()",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Dashboard\\CeoDashboard.jsx",
+      "source_location": "L16",
+      "id": "ceodashboard_ceodashboard"
+    },
+    {
+      "label": "UserDashboard.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Dashboard\\UserDashboard.jsx",
+      "source_location": "L1",
+      "id": "client_src_pages_dashboard_userdashboard_jsx"
+    },
+    {
+      "label": "getGreeting()",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Dashboard\\UserDashboard.jsx",
+      "source_location": "L21",
+      "id": "userdashboard_getgreeting"
+    },
+    {
+      "label": "UserDashboard()",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Dashboard\\UserDashboard.jsx",
+      "source_location": "L28",
+      "id": "userdashboard_userdashboard"
+    },
+    {
+      "label": "EodReport.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Eod\\EodReport.jsx",
+      "source_location": "L1",
+      "id": "client_src_pages_eod_eodreport_jsx"
+    },
+    {
+      "label": "formatDate()",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Eod\\EodReport.jsx",
+      "source_location": "L18",
+      "id": "eodreport_formatdate"
+    },
+    {
+      "label": "isoDate()",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Eod\\EodReport.jsx",
+      "source_location": "L22",
+      "id": "eodreport_isodate"
+    },
+    {
+      "label": "EodReport()",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Eod\\EodReport.jsx",
+      "source_location": "L26",
+      "id": "eodreport_eodreport"
+    },
+    {
+      "label": "KpiPage.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Kpi\\KpiPage.jsx",
+      "source_location": "L1",
+      "id": "client_src_pages_kpi_kpipage_jsx"
+    },
+    {
+      "label": "KpiPage()",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Kpi\\KpiPage.jsx",
+      "source_location": "L26",
+      "id": "kpipage_kpipage"
+    },
+    {
+      "label": "Leaderboard.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Leaderboard\\Leaderboard.jsx",
+      "source_location": "L1",
+      "id": "client_src_pages_leaderboard_leaderboard_jsx"
+    },
+    {
+      "label": "Leaderboard()",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Leaderboard\\Leaderboard.jsx",
+      "source_location": "L19",
+      "id": "leaderboard_leaderboard"
+    },
+    {
+      "label": "LeavePage.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Leave\\LeavePage.jsx",
+      "source_location": "L1",
+      "id": "client_src_pages_leave_leavepage_jsx"
+    },
+    {
+      "label": "formatDate()",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Leave\\LeavePage.jsx",
+      "source_location": "L18",
+      "id": "leavepage_formatdate"
+    },
+    {
+      "label": "LeavePage()",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Leave\\LeavePage.jsx",
+      "source_location": "L22",
+      "id": "leavepage_leavepage"
+    },
+    {
+      "label": "Reports.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Reports\\Reports.jsx",
+      "source_location": "L1",
+      "id": "client_src_pages_reports_reports_jsx"
+    },
+    {
+      "label": "Reports()",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Reports\\Reports.jsx",
+      "source_location": "L12",
+      "id": "reports_reports"
+    },
+    {
+      "label": "OrgSettings.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Settings\\OrgSettings.jsx",
+      "source_location": "L1",
+      "id": "client_src_pages_settings_orgsettings_jsx"
+    },
+    {
+      "label": "OrgSettings()",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Settings\\OrgSettings.jsx",
+      "source_location": "L9",
+      "id": "orgsettings_orgsettings"
+    },
+    {
+      "label": "TeamView.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Team\\TeamView.jsx",
+      "source_location": "L1",
+      "id": "client_src_pages_team_teamview_jsx"
+    },
+    {
+      "label": "TeamView()",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Team\\TeamView.jsx",
+      "source_location": "L9",
+      "id": "teamview_teamview"
+    },
+    {
+      "label": "ScorePill()",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Team\\TeamView.jsx",
+      "source_location": "L116",
+      "id": "teamview_scorepill"
+    },
+    {
+      "label": "WebhookLogs.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Webhooks\\WebhookLogs.jsx",
+      "source_location": "L1",
+      "id": "client_src_pages_webhooks_webhooklogs_jsx"
+    },
+    {
+      "label": "formatTs()",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Webhooks\\WebhookLogs.jsx",
+      "source_location": "L16",
+      "id": "webhooklogs_formatts"
+    },
+    {
+      "label": "StatusBadge()",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Webhooks\\WebhookLogs.jsx",
+      "source_location": "L23",
+      "id": "webhooklogs_statusbadge"
+    },
+    {
+      "label": "WebhookLogs()",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\Webhooks\\WebhookLogs.jsx",
+      "source_location": "L34",
+      "id": "webhooklogs_webhooklogs"
+    },
+    {
+      "label": "WorkUnitDetail.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\WorkUnits\\WorkUnitDetail.jsx",
+      "source_location": "L1",
+      "id": "client_src_pages_workunits_workunitdetail_jsx"
+    },
+    {
+      "label": "WorkUnitDetail()",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\WorkUnits\\WorkUnitDetail.jsx",
+      "source_location": "L14",
+      "id": "workunitdetail_workunitdetail"
+    },
+    {
+      "label": "WorkUnitForm.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\WorkUnits\\WorkUnitForm.jsx",
+      "source_location": "L1",
+      "id": "client_src_pages_workunits_workunitform_jsx"
+    },
+    {
+      "label": "WorkUnitForm()",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\WorkUnits\\WorkUnitForm.jsx",
+      "source_location": "L10",
+      "id": "workunitform_workunitform"
+    },
+    {
+      "label": "WorkUnitList.jsx",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\WorkUnits\\WorkUnitList.jsx",
+      "source_location": "L1",
+      "id": "client_src_pages_workunits_workunitlist_jsx"
+    },
+    {
+      "label": "WorkUnitList()",
+      "file_type": "code",
+      "source_file": "client\\src\\pages\\WorkUnits\\WorkUnitList.jsx",
+      "source_location": "L12",
+      "id": "workunitlist_workunitlist"
+    },
+    {
+      "label": "authSlice.js",
+      "file_type": "code",
+      "source_file": "client\\src\\store\\authSlice.js",
+      "source_location": "L1",
+      "id": "client_src_store_authslice_js"
+    },
+    {
+      "label": "index.js",
+      "file_type": "code",
+      "source_file": "client\\src\\store\\index.js",
+      "source_location": "L1",
+      "id": "client_src_store_index_js"
+    },
+    {
+      "label": "uiSlice.js",
+      "file_type": "code",
+      "source_file": "client\\src\\store\\uiSlice.js",
+      "source_location": "L1",
+      "id": "client_src_store_uislice_js"
+    },
+    {
+      "label": "app.js",
+      "file_type": "code",
+      "source_file": "server\\app.js",
+      "source_location": "L1",
+      "id": "server_app_js"
+    },
+    {
+      "label": "server.js",
+      "file_type": "code",
+      "source_file": "server\\server.js",
+      "source_location": "L1",
+      "id": "server_server_js"
+    },
+    {
+      "label": "constants.js",
+      "file_type": "code",
+      "source_file": "server\\config\\constants.js",
+      "source_location": "L1",
+      "id": "server_config_constants_js"
+    },
+    {
+      "label": "db.js",
+      "file_type": "code",
+      "source_file": "server\\config\\db.js",
+      "source_location": "L1",
+      "id": "server_config_db_js"
+    },
+    {
+      "label": "connectDB()",
+      "file_type": "code",
+      "source_file": "server\\config\\db.js",
+      "source_location": "L3",
+      "id": "db_connectdb"
+    },
+    {
+      "label": "analyticsController.js",
+      "file_type": "code",
+      "source_file": "server\\controllers\\analyticsController.js",
+      "source_location": "L1",
+      "id": "server_controllers_analyticscontroller_js"
+    },
+    {
+      "label": "auditController.js",
+      "file_type": "code",
+      "source_file": "server\\controllers\\auditController.js",
+      "source_location": "L1",
+      "id": "server_controllers_auditcontroller_js"
+    },
+    {
+      "label": "authController.js",
+      "file_type": "code",
+      "source_file": "server\\controllers\\authController.js",
+      "source_location": "L1",
+      "id": "server_controllers_authcontroller_js"
+    },
+    {
+      "label": "signAccess()",
+      "file_type": "code",
+      "source_file": "server\\controllers\\authController.js",
+      "source_location": "L6",
+      "id": "authcontroller_signaccess"
+    },
+    {
+      "label": "signRefresh()",
+      "file_type": "code",
+      "source_file": "server\\controllers\\authController.js",
+      "source_location": "L9",
+      "id": "authcontroller_signrefresh"
+    },
+    {
+      "label": "setCookie()",
+      "file_type": "code",
+      "source_file": "server\\controllers\\authController.js",
+      "source_location": "L12",
+      "id": "authcontroller_setcookie"
+    },
+    {
+      "label": "caseController.js",
+      "file_type": "code",
+      "source_file": "server\\controllers\\caseController.js",
+      "source_location": "L1",
+      "id": "server_controllers_casecontroller_js"
+    },
+    {
+      "label": "chartsController.js",
+      "file_type": "code",
+      "source_file": "server\\controllers\\chartsController.js",
+      "source_location": "L1",
+      "id": "server_controllers_chartscontroller_js"
+    },
+    {
+      "label": "getDayKey()",
+      "file_type": "code",
+      "source_file": "server\\controllers\\chartsController.js",
+      "source_location": "L6",
+      "id": "chartscontroller_getdaykey"
+    },
+    {
+      "label": "buildDailyData()",
+      "file_type": "code",
+      "source_file": "server\\controllers\\chartsController.js",
+      "source_location": "L10",
+      "id": "chartscontroller_builddailydata"
+    },
+    {
+      "label": "buildWeekTargetDots()",
+      "file_type": "code",
+      "source_file": "server\\controllers\\chartsController.js",
+      "source_location": "L156",
+      "id": "chartscontroller_buildweektargetdots"
+    },
+    {
+      "label": "eodController.js",
+      "file_type": "code",
+      "source_file": "server\\controllers\\eodController.js",
+      "source_location": "L1",
+      "id": "server_controllers_eodcontroller_js"
+    },
+    {
+      "label": "buildEodReport()",
+      "file_type": "code",
+      "source_file": "server\\controllers\\eodController.js",
+      "source_location": "L6",
+      "id": "eodcontroller_buildeodreport"
+    },
+    {
+      "label": "forecastController.js",
+      "file_type": "code",
+      "source_file": "server\\controllers\\forecastController.js",
+      "source_location": "L1",
+      "id": "server_controllers_forecastcontroller_js"
+    },
+    {
+      "label": "getHistoricalWinRate()",
+      "file_type": "code",
+      "source_file": "server\\controllers\\forecastController.js",
+      "source_location": "L4",
+      "id": "forecastcontroller_gethistoricalwinrate"
+    },
+    {
+      "label": "computeForecast()",
+      "file_type": "code",
+      "source_file": "server\\controllers\\forecastController.js",
+      "source_location": "L11",
+      "id": "forecastcontroller_computeforecast"
+    },
+    {
+      "label": "kpiController.js",
+      "file_type": "code",
+      "source_file": "server\\controllers\\kpiController.js",
+      "source_location": "L1",
+      "id": "server_controllers_kpicontroller_js"
+    },
+    {
+      "label": "computeMetrics()",
+      "file_type": "code",
+      "source_file": "server\\controllers\\kpiController.js",
+      "source_location": "L122",
+      "id": "kpicontroller_computemetrics"
+    },
+    {
+      "label": "leaderboardController.js",
+      "file_type": "code",
+      "source_file": "server\\controllers\\leaderboardController.js",
+      "source_location": "L1",
+      "id": "server_controllers_leaderboardcontroller_js"
+    },
+    {
+      "label": "leaveController.js",
+      "file_type": "code",
+      "source_file": "server\\controllers\\leaveController.js",
+      "source_location": "L1",
+      "id": "server_controllers_leavecontroller_js"
+    },
+    {
+      "label": "notificationController.js",
+      "file_type": "code",
+      "source_file": "server\\controllers\\notificationController.js",
+      "source_location": "L1",
+      "id": "server_controllers_notificationcontroller_js"
+    },
+    {
+      "label": "orgController.js",
+      "file_type": "code",
+      "source_file": "server\\controllers\\orgController.js",
+      "source_location": "L1",
+      "id": "server_controllers_orgcontroller_js"
+    },
+    {
+      "label": "getOrCreate()",
+      "file_type": "code",
+      "source_file": "server\\controllers\\orgController.js",
+      "source_location": "L4",
+      "id": "orgcontroller_getorcreate"
+    },
+    {
+      "label": "reportController.js",
+      "file_type": "code",
+      "source_file": "server\\controllers\\reportController.js",
+      "source_location": "L1",
+      "id": "server_controllers_reportcontroller_js"
+    },
+    {
+      "label": "dateFilter()",
+      "file_type": "code",
+      "source_file": "server\\controllers\\reportController.js",
+      "source_location": "L6",
+      "id": "reportcontroller_datefilter"
+    },
+    {
+      "label": "userController.js",
+      "file_type": "code",
+      "source_file": "server\\controllers\\userController.js",
+      "source_location": "L1",
+      "id": "server_controllers_usercontroller_js"
+    },
+    {
+      "label": "webhookController.js",
+      "file_type": "code",
+      "source_file": "server\\controllers\\webhookController.js",
+      "source_location": "L1",
+      "id": "server_controllers_webhookcontroller_js"
+    },
+    {
+      "label": "verifySignature()",
+      "file_type": "code",
+      "source_file": "server\\controllers\\webhookController.js",
+      "source_location": "L6",
+      "id": "webhookcontroller_verifysignature"
+    },
+    {
+      "label": "processEvent()",
+      "file_type": "code",
+      "source_file": "server\\controllers\\webhookController.js",
+      "source_location": "L12",
+      "id": "webhookcontroller_processevent"
+    },
+    {
+      "label": "workUnitController.js",
+      "file_type": "code",
+      "source_file": "server\\controllers\\workUnitController.js",
+      "source_location": "L1",
+      "id": "server_controllers_workunitcontroller_js"
+    },
+    {
+      "label": "auth.js",
+      "file_type": "code",
+      "source_file": "server\\middleware\\auth.js",
+      "source_location": "L1",
+      "id": "server_middleware_auth_js"
+    },
+    {
+      "label": "errorHandler.js",
+      "file_type": "code",
+      "source_file": "server\\middleware\\errorHandler.js",
+      "source_location": "L1",
+      "id": "server_middleware_errorhandler_js"
+    },
+    {
+      "label": "roleGuard.js",
+      "file_type": "code",
+      "source_file": "server\\middleware\\roleGuard.js",
+      "source_location": "L1",
+      "id": "server_middleware_roleguard_js"
+    },
+    {
+      "label": "requireRole()",
+      "file_type": "code",
+      "source_file": "server\\middleware\\roleGuard.js",
+      "source_location": "L1",
+      "id": "roleguard_requirerole"
+    },
+    {
+      "label": "teamScope()",
+      "file_type": "code",
+      "source_file": "server\\middleware\\roleGuard.js",
+      "source_location": "L8",
+      "id": "roleguard_teamscope"
+    },
+    {
+      "label": "ActivityLog.js",
+      "file_type": "code",
+      "source_file": "server\\models\\ActivityLog.js",
+      "source_location": "L1",
+      "id": "server_models_activitylog_js"
+    },
+    {
+      "label": "AuditLog.js",
+      "file_type": "code",
+      "source_file": "server\\models\\AuditLog.js",
+      "source_location": "L1",
+      "id": "server_models_auditlog_js"
+    },
+    {
+      "label": "Case.js",
+      "file_type": "code",
+      "source_file": "server\\models\\Case.js",
+      "source_location": "L1",
+      "id": "server_models_case_js"
+    },
+    {
+      "label": "EodReport.js",
+      "file_type": "code",
+      "source_file": "server\\models\\EodReport.js",
+      "source_location": "L1",
+      "id": "server_models_eodreport_js"
+    },
+    {
+      "label": "KpiTarget.js",
+      "file_type": "code",
+      "source_file": "server\\models\\KpiTarget.js",
+      "source_location": "L1",
+      "id": "server_models_kpitarget_js"
+    },
+    {
+      "label": "LeaveRequest.js",
+      "file_type": "code",
+      "source_file": "server\\models\\LeaveRequest.js",
+      "source_location": "L1",
+      "id": "server_models_leaverequest_js"
+    },
+    {
+      "label": "Notification.js",
+      "file_type": "code",
+      "source_file": "server\\models\\Notification.js",
+      "source_location": "L1",
+      "id": "server_models_notification_js"
+    },
+    {
+      "label": "OrgSettings.js",
+      "file_type": "code",
+      "source_file": "server\\models\\OrgSettings.js",
+      "source_location": "L1",
+      "id": "server_models_orgsettings_js"
+    },
+    {
+      "label": "User.js",
+      "file_type": "code",
+      "source_file": "server\\models\\User.js",
+      "source_location": "L1",
+      "id": "server_models_user_js"
+    },
+    {
+      "label": "WebhookLog.js",
+      "file_type": "code",
+      "source_file": "server\\models\\WebhookLog.js",
+      "source_location": "L1",
+      "id": "server_models_webhooklog_js"
+    },
+    {
+      "label": "WorkUnit.js",
+      "file_type": "code",
+      "source_file": "server\\models\\WorkUnit.js",
+      "source_location": "L1",
+      "id": "server_models_workunit_js"
+    },
+    {
+      "label": "analytics.js",
+      "file_type": "code",
+      "source_file": "server\\routes\\analytics.js",
+      "source_location": "L1",
+      "id": "server_routes_analytics_js"
+    },
+    {
+      "label": "audit.js",
+      "file_type": "code",
+      "source_file": "server\\routes\\audit.js",
+      "source_location": "L1",
+      "id": "server_routes_audit_js"
+    },
+    {
+      "label": "auth.js",
+      "file_type": "code",
+      "source_file": "server\\routes\\auth.js",
+      "source_location": "L1",
+      "id": "server_routes_auth_js"
+    },
+    {
+      "label": "cases.js",
+      "file_type": "code",
+      "source_file": "server\\routes\\cases.js",
+      "source_location": "L1",
+      "id": "server_routes_cases_js"
+    },
+    {
+      "label": "charts.js",
+      "file_type": "code",
+      "source_file": "server\\routes\\charts.js",
+      "source_location": "L1",
+      "id": "server_routes_charts_js"
+    },
+    {
+      "label": "eod.js",
+      "file_type": "code",
+      "source_file": "server\\routes\\eod.js",
+      "source_location": "L1",
+      "id": "server_routes_eod_js"
+    },
+    {
+      "label": "forecast.js",
+      "file_type": "code",
+      "source_file": "server\\routes\\forecast.js",
+      "source_location": "L1",
+      "id": "server_routes_forecast_js"
+    },
+    {
+      "label": "kpi.js",
+      "file_type": "code",
+      "source_file": "server\\routes\\kpi.js",
+      "source_location": "L1",
+      "id": "server_routes_kpi_js"
+    },
+    {
+      "label": "leaderboard.js",
+      "file_type": "code",
+      "source_file": "server\\routes\\leaderboard.js",
+      "source_location": "L1",
+      "id": "server_routes_leaderboard_js"
+    },
+    {
+      "label": "leave.js",
+      "file_type": "code",
+      "source_file": "server\\routes\\leave.js",
+      "source_location": "L1",
+      "id": "server_routes_leave_js"
+    },
+    {
+      "label": "notifications.js",
+      "file_type": "code",
+      "source_file": "server\\routes\\notifications.js",
+      "source_location": "L1",
+      "id": "server_routes_notifications_js"
+    },
+    {
+      "label": "org.js",
+      "file_type": "code",
+      "source_file": "server\\routes\\org.js",
+      "source_location": "L1",
+      "id": "server_routes_org_js"
+    },
+    {
+      "label": "reports.js",
+      "file_type": "code",
+      "source_file": "server\\routes\\reports.js",
+      "source_location": "L1",
+      "id": "server_routes_reports_js"
+    },
+    {
+      "label": "users.js",
+      "file_type": "code",
+      "source_file": "server\\routes\\users.js",
+      "source_location": "L1",
+      "id": "server_routes_users_js"
+    },
+    {
+      "label": "webhooks.js",
+      "file_type": "code",
+      "source_file": "server\\routes\\webhooks.js",
+      "source_location": "L1",
+      "id": "server_routes_webhooks_js"
+    },
+    {
+      "label": "workUnits.js",
+      "file_type": "code",
+      "source_file": "server\\routes\\workUnits.js",
+      "source_location": "L1",
+      "id": "server_routes_workunits_js"
+    },
+    {
+      "label": "seed.js",
+      "file_type": "code",
+      "source_file": "server\\scripts\\seed.js",
+      "source_location": "L1",
+      "id": "server_scripts_seed_js"
+    },
+    {
+      "label": "pw()",
+      "file_type": "code",
+      "source_file": "server\\scripts\\seed.js",
+      "source_location": "L28",
+      "id": "seed_pw"
+    },
+    {
+      "label": "daysAgo()",
+      "file_type": "code",
+      "source_file": "server\\scripts\\seed.js",
+      "source_location": "L30",
+      "id": "seed_daysago"
+    },
+    {
+      "label": "dayStart()",
+      "file_type": "code",
+      "source_file": "server\\scripts\\seed.js",
+      "source_location": "L31",
+      "id": "seed_daystart"
+    },
+    {
+      "label": "pick()",
+      "file_type": "code",
+      "source_file": "server\\scripts\\seed.js",
+      "source_location": "L32",
+      "id": "seed_pick"
+    },
+    {
+      "label": "rand()",
+      "file_type": "code",
+      "source_file": "server\\scripts\\seed.js",
+      "source_location": "L33",
+      "id": "seed_rand"
+    },
+    {
+      "label": "seed()",
+      "file_type": "code",
+      "source_file": "server\\scripts\\seed.js",
+      "source_location": "L36",
+      "id": "seed_seed"
+    },
+    {
+      "label": "activityLogger.js",
+      "file_type": "code",
+      "source_file": "server\\utils\\activityLogger.js",
+      "source_location": "L1",
+      "id": "server_utils_activitylogger_js"
+    },
+    {
+      "label": "logActivity()",
+      "file_type": "code",
+      "source_file": "server\\utils\\activityLogger.js",
+      "source_location": "L3",
+      "id": "activitylogger_logactivity"
+    },
+    {
+      "label": "auditLogger.js",
+      "file_type": "code",
+      "source_file": "server\\utils\\auditLogger.js",
+      "source_location": "L1",
+      "id": "server_utils_auditlogger_js"
+    },
+    {
+      "label": "logAudit()",
+      "file_type": "code",
+      "source_file": "server\\utils\\auditLogger.js",
+      "source_location": "L3",
+      "id": "auditlogger_logaudit"
+    },
+    {
+      "label": "cronJobs.js",
+      "file_type": "code",
+      "source_file": "server\\utils\\cronJobs.js",
+      "source_location": "L1",
+      "id": "server_utils_cronjobs_js"
+    },
+    {
+      "label": "startCronJobs()",
+      "file_type": "code",
+      "source_file": "server\\utils\\cronJobs.js",
+      "source_location": "L10",
+      "id": "cronjobs_startcronjobs"
+    },
+    {
+      "label": "emailService.js",
+      "file_type": "code",
+      "source_file": "server\\utils\\emailService.js",
+      "source_location": "L1",
+      "id": "server_utils_emailservice_js"
+    },
+    {
+      "label": "getTransporter()",
+      "file_type": "code",
+      "source_file": "server\\utils\\emailService.js",
+      "source_location": "L4",
+      "id": "emailservice_gettransporter"
+    },
+    {
+      "label": "sendEodEmail()",
+      "file_type": "code",
+      "source_file": "server\\utils\\emailService.js",
+      "source_location": "L15",
+      "id": "emailservice_sendeodemail"
+    },
+    {
+      "label": "sendNotificationEmail()",
+      "file_type": "code",
+      "source_file": "server\\utils\\emailService.js",
+      "source_location": "L42",
+      "id": "emailservice_sendnotificationemail"
+    },
+    {
+      "label": "scoreCalculator.js",
+      "file_type": "code",
+      "source_file": "server\\utils\\scoreCalculator.js",
+      "source_location": "L1",
+      "id": "server_utils_scorecalculator_js"
+    },
+    {
+      "label": "calcProductivityScore()",
+      "file_type": "code",
+      "source_file": "server\\utils\\scoreCalculator.js",
+      "source_location": "L1",
+      "id": "scorecalculator_calcproductivityscore"
+    },
+    {
+      "label": "ImmigrationCRM Portal",
+      "file_type": "document",
+      "id": "app_immigration_crm"
+    },
+    {
+      "label": "React 18",
+      "file_type": "code",
+      "id": "stack_react"
+    },
+    {
+      "label": "Express 4",
+      "file_type": "code",
+      "id": "stack_express"
+    },
+    {
+      "label": "MongoDB 8",
+      "file_type": "code",
+      "id": "stack_mongodb"
+    },
+    {
+      "label": "Node.js 24",
+      "file_type": "code",
+      "id": "stack_node"
+    },
+    {
+      "label": "Vite",
+      "file_type": "code",
+      "id": "stack_vite"
+    },
+    {
+      "label": "Redux Toolkit",
+      "file_type": "code",
+      "id": "stack_redux"
+    },
+    {
+      "label": "Mongoose ODM",
+      "file_type": "code",
+      "id": "stack_mongoose"
+    },
+    {
+      "label": "Tailwind CSS",
+      "file_type": "code",
+      "id": "stack_tailwind"
+    },
+    {
+      "label": "GoHighLevel CRM",
+      "file_type": "document",
+      "id": "external_ghl"
+    },
+    {
+      "label": "Nodemailer SMTP",
+      "file_type": "code",
+      "id": "external_nodemailer"
+    },
+    {
+      "label": "User Entity",
+      "file_type": "code",
+      "id": "entity_user"
+    },
+    {
+      "label": "WorkUnit Entity",
+      "file_type": "code",
+      "id": "entity_workunit"
+    },
+    {
+      "label": "Case Entity",
+      "file_type": "code",
+      "id": "entity_case"
+    },
+    {
+      "label": "KPI Target Entity",
+      "file_type": "code",
+      "id": "entity_kpi"
+    },
+    {
+      "label": "Notification Entity",
+      "file_type": "code",
+      "id": "entity_notification"
+    },
+    {
+      "label": "Leave Request Entity",
+      "file_type": "code",
+      "id": "entity_leavereq"
+    },
+    {
+      "label": "Activity Log Entity",
+      "file_type": "code",
+      "id": "entity_activitylog"
+    },
+    {
+      "label": "EOD Report Entity",
+      "file_type": "code",
+      "id": "entity_eodreport"
+    },
+    {
+      "label": "Webhook Log Entity",
+      "file_type": "code",
+      "id": "entity_webhooklog"
+    },
+    {
+      "label": "Organization Settings Entity",
+      "file_type": "code",
+      "id": "entity_orgsettings"
+    },
+    {
+      "label": "Audit Log Entity",
+      "file_type": "code",
+      "id": "entity_auditlog"
+    },
+    {
+      "label": "Authentication Middleware",
+      "file_type": "code",
+      "id": "middleware_auth"
+    },
+    {
+      "label": "Role Guard Middleware",
+      "file_type": "code",
+      "id": "middleware_role"
+    },
+    {
+      "label": "Team Scope Middleware",
+      "file_type": "code",
+      "id": "middleware_teamscope"
+    },
+    {
+      "label": "JWT Token",
+      "file_type": "code",
+      "id": "auth_jwt"
+    },
+    {
+      "label": "Auth Controller",
+      "file_type": "code",
+      "id": "ctrl_auth"
+    },
+    {
+      "label": "User Controller",
+      "file_type": "code",
+      "id": "ctrl_user"
+    },
+    {
+      "label": "WorkUnit Controller",
+      "file_type": "code",
+      "id": "ctrl_workunit"
+    },
+    {
+      "label": "Case Controller",
+      "file_type": "code",
+      "id": "ctrl_case"
+    },
+    {
+      "label": "KPI Controller",
+      "file_type": "code",
+      "id": "ctrl_kpi"
+    },
+    {
+      "label": "EOD Report Controller",
+      "file_type": "code",
+      "id": "ctrl_eod"
+    },
+    {
+      "label": "Webhook Controller",
+      "file_type": "code",
+      "id": "ctrl_webhook"
+    },
+    {
+      "label": "User Role",
+      "file_type": "document",
+      "id": "role_user"
+    },
+    {
+      "label": "Admin Role",
+      "file_type": "document",
+      "id": "role_admin"
+    },
+    {
+      "label": "Superadmin Role",
+      "file_type": "document",
+      "id": "role_superadmin"
+    },
+    {
+      "label": "Sales Team",
+      "file_type": "document",
+      "id": "team_sales"
+    },
+    {
+      "label": "Marketing Team",
+      "file_type": "document",
+      "id": "team_marketing"
+    },
+    {
+      "label": "Production Team",
+      "file_type": "document",
+      "id": "team_production"
+    },
+    {
+      "label": "Sales Unit Type",
+      "file_type": "code",
+      "id": "workunit_sales"
+    },
+    {
+      "label": "Marketing Unit Type",
+      "file_type": "code",
+      "id": "workunit_marketing"
+    },
+    {
+      "label": "Production Unit Type",
+      "file_type": "code",
+      "id": "workunit_production"
+    },
+    {
+      "label": "Email Service",
+      "file_type": "code",
+      "id": "service_email"
+    },
+    {
+      "label": "Cron Job Scheduler",
+      "file_type": "code",
+      "id": "util_cronjob"
+    },
+    {
+      "label": "Score Calculator",
+      "file_type": "code",
+      "id": "util_scorer"
+    },
+    {
+      "label": "Client Layer",
+      "file_type": "code",
+      "id": "client_layer"
+    },
+    {
+      "label": "Server Layer",
+      "file_type": "code",
+      "id": "server_layer"
+    },
+    {
+      "label": "Database Layer",
+      "file_type": "code",
+      "id": "db_layer"
+    }
+  ],
+  "edges": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\App.jsx",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_src": "client_src_app_jsx",
+      "_tgt": "app_protectedroute",
+      "source": "client_src_app_jsx",
+      "target": "app_protectedroute"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\App.jsx",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_src": "client_src_app_jsx",
+      "_tgt": "app_dashboardrouter",
+      "source": "client_src_app_jsx",
+      "target": "app_dashboardrouter"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\App.jsx",
+      "source_location": "L42",
+      "weight": 1.0,
+      "_src": "client_src_app_jsx",
+      "_tgt": "app_app",
+      "source": "client_src_app_jsx",
+      "target": "app_app"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\caseApi.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_src": "client_src_api_caseapi_js",
+      "_tgt": "caseapi_getcases",
+      "source": "client_src_api_caseapi_js",
+      "target": "caseapi_getcases"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\caseApi.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_src": "client_src_api_caseapi_js",
+      "_tgt": "caseapi_getcase",
+      "source": "client_src_api_caseapi_js",
+      "target": "caseapi_getcase"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\caseApi.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_src": "client_src_api_caseapi_js",
+      "_tgt": "caseapi_createcase",
+      "source": "client_src_api_caseapi_js",
+      "target": "caseapi_createcase"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\caseApi.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "client_src_api_caseapi_js",
+      "_tgt": "caseapi_updatecase",
+      "source": "client_src_api_caseapi_js",
+      "target": "caseapi_updatecase"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\caseApi.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_src": "client_src_api_caseapi_js",
+      "_tgt": "caseapi_addstatusupdate",
+      "source": "client_src_api_caseapi_js",
+      "target": "caseapi_addstatusupdate"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\chartsApi.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_src": "client_src_api_chartsapi_js",
+      "_tgt": "chartsapi_getsalesorgchart",
+      "source": "client_src_api_chartsapi_js",
+      "target": "chartsapi_getsalesorgchart"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\chartsApi.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_src": "client_src_api_chartsapi_js",
+      "_tgt": "chartsapi_getsalesteamchart",
+      "source": "client_src_api_chartsapi_js",
+      "target": "chartsapi_getsalesteamchart"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\chartsApi.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_src": "client_src_api_chartsapi_js",
+      "_tgt": "chartsapi_getsalesuserchart",
+      "source": "client_src_api_chartsapi_js",
+      "target": "chartsapi_getsalesuserchart"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\chartsApi.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_src": "client_src_api_chartsapi_js",
+      "_tgt": "chartsapi_getmarketingorgchart",
+      "source": "client_src_api_chartsapi_js",
+      "target": "chartsapi_getmarketingorgchart"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\chartsApi.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "client_src_api_chartsapi_js",
+      "_tgt": "chartsapi_getmarketingteamchart",
+      "source": "client_src_api_chartsapi_js",
+      "target": "chartsapi_getmarketingteamchart"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\chartsApi.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_src": "client_src_api_chartsapi_js",
+      "_tgt": "chartsapi_getmarketinguserchart",
+      "source": "client_src_api_chartsapi_js",
+      "target": "chartsapi_getmarketinguserchart"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\forecastApi.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_src": "client_src_api_forecastapi_js",
+      "_tgt": "forecastapi_getforecast",
+      "source": "client_src_api_forecastapi_js",
+      "target": "forecastapi_getforecast"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\forecastApi.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_src": "client_src_api_forecastapi_js",
+      "_tgt": "forecastapi_getconfidence",
+      "source": "client_src_api_forecastapi_js",
+      "target": "forecastapi_getconfidence"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\forecastApi.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_src": "client_src_api_forecastapi_js",
+      "_tgt": "forecastapi_getforecasthistory",
+      "source": "client_src_api_forecastapi_js",
+      "target": "forecastapi_getforecasthistory"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\kpiApi.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_src": "client_src_api_kpiapi_js",
+      "_tgt": "kpiapi_setkpitarget",
+      "source": "client_src_api_kpiapi_js",
+      "target": "kpiapi_setkpitarget"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\kpiApi.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_src": "client_src_api_kpiapi_js",
+      "_tgt": "kpiapi_getuserkpis",
+      "source": "client_src_api_kpiapi_js",
+      "target": "kpiapi_getuserkpis"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\kpiApi.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_src": "client_src_api_kpiapi_js",
+      "_tgt": "kpiapi_getteamkpis",
+      "source": "client_src_api_kpiapi_js",
+      "target": "kpiapi_getteamkpis"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\kpiApi.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_src": "client_src_api_kpiapi_js",
+      "_tgt": "kpiapi_getceokpisummary",
+      "source": "client_src_api_kpiapi_js",
+      "target": "kpiapi_getceokpisummary"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\leaveApi.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_src": "client_src_api_leaveapi_js",
+      "_tgt": "leaveapi_submitleave",
+      "source": "client_src_api_leaveapi_js",
+      "target": "leaveapi_submitleave"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\leaveApi.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_src": "client_src_api_leaveapi_js",
+      "_tgt": "leaveapi_reviewleave",
+      "source": "client_src_api_leaveapi_js",
+      "target": "leaveapi_reviewleave"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\leaveApi.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_src": "client_src_api_leaveapi_js",
+      "_tgt": "leaveapi_getpendingleaves",
+      "source": "client_src_api_leaveapi_js",
+      "target": "leaveapi_getpendingleaves"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\leaveApi.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_src": "client_src_api_leaveapi_js",
+      "_tgt": "leaveapi_getteamcalendar",
+      "source": "client_src_api_leaveapi_js",
+      "target": "leaveapi_getteamcalendar"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\leaveApi.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "client_src_api_leaveapi_js",
+      "_tgt": "leaveapi_getuserleaves",
+      "source": "client_src_api_leaveapi_js",
+      "target": "leaveapi_getuserleaves"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\notificationApi.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_src": "client_src_api_notificationapi_js",
+      "_tgt": "notificationapi_getnotifications",
+      "source": "client_src_api_notificationapi_js",
+      "target": "notificationapi_getnotifications"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\notificationApi.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_src": "client_src_api_notificationapi_js",
+      "_tgt": "notificationapi_markread",
+      "source": "client_src_api_notificationapi_js",
+      "target": "notificationapi_markread"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\notificationApi.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_src": "client_src_api_notificationapi_js",
+      "_tgt": "notificationapi_markallread",
+      "source": "client_src_api_notificationapi_js",
+      "target": "notificationapi_markallread"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\orgApi.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_src": "client_src_api_orgapi_js",
+      "_tgt": "orgapi_getorgsettings",
+      "source": "client_src_api_orgapi_js",
+      "target": "orgapi_getorgsettings"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\orgApi.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_src": "client_src_api_orgapi_js",
+      "_tgt": "orgapi_updateorgsettings",
+      "source": "client_src_api_orgapi_js",
+      "target": "orgapi_updateorgsettings"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\orgApi.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_src": "client_src_api_orgapi_js",
+      "_tgt": "orgapi_addvisacategory",
+      "source": "client_src_api_orgapi_js",
+      "target": "orgapi_addvisacategory"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\orgApi.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_src": "client_src_api_orgapi_js",
+      "_tgt": "orgapi_addreviewer",
+      "source": "client_src_api_orgapi_js",
+      "target": "orgapi_addreviewer"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\orgApi.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "client_src_api_orgapi_js",
+      "_tgt": "orgapi_getleaderboard",
+      "source": "client_src_api_orgapi_js",
+      "target": "orgapi_getleaderboard"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\orgApi.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_src": "client_src_api_orgapi_js",
+      "_tgt": "orgapi_gettopperformers",
+      "source": "client_src_api_orgapi_js",
+      "target": "orgapi_gettopperformers"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\orgApi.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_src": "client_src_api_orgapi_js",
+      "_tgt": "orgapi_getheatmap",
+      "source": "client_src_api_orgapi_js",
+      "target": "orgapi_getheatmap"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\orgApi.js",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_src": "client_src_api_orgapi_js",
+      "_tgt": "orgapi_getwebhooklogs",
+      "source": "client_src_api_orgapi_js",
+      "target": "orgapi_getwebhooklogs"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\orgApi.js",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_src": "client_src_api_orgapi_js",
+      "_tgt": "orgapi_retrywebhook",
+      "source": "client_src_api_orgapi_js",
+      "target": "orgapi_retrywebhook"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\orgApi.js",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_src": "client_src_api_orgapi_js",
+      "_tgt": "orgapi_getintegrationstatus",
+      "source": "client_src_api_orgapi_js",
+      "target": "orgapi_getintegrationstatus"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\orgApi.js",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_src": "client_src_api_orgapi_js",
+      "_tgt": "orgapi_getauditlogs",
+      "source": "client_src_api_orgapi_js",
+      "target": "orgapi_getauditlogs"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\orgApi.js",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_src": "client_src_api_orgapi_js",
+      "_tgt": "orgapi_exportauditlog",
+      "source": "client_src_api_orgapi_js",
+      "target": "orgapi_exportauditlog"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\orgApi.js",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_src": "client_src_api_orgapi_js",
+      "_tgt": "orgapi_generateeod",
+      "source": "client_src_api_orgapi_js",
+      "target": "orgapi_generateeod"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\orgApi.js",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_src": "client_src_api_orgapi_js",
+      "_tgt": "orgapi_geteodreports",
+      "source": "client_src_api_orgapi_js",
+      "target": "orgapi_geteodreports"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\orgApi.js",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_src": "client_src_api_orgapi_js",
+      "_tgt": "orgapi_getteameod",
+      "source": "client_src_api_orgapi_js",
+      "target": "orgapi_getteameod"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\reportApi.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_src": "client_src_api_reportapi_js",
+      "_tgt": "reportapi_getuserreport",
+      "source": "client_src_api_reportapi_js",
+      "target": "reportapi_getuserreport"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\reportApi.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_src": "client_src_api_reportapi_js",
+      "_tgt": "reportapi_getteamreport",
+      "source": "client_src_api_reportapi_js",
+      "target": "reportapi_getteamreport"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\reportApi.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_src": "client_src_api_reportapi_js",
+      "_tgt": "reportapi_getorgreport",
+      "source": "client_src_api_reportapi_js",
+      "target": "reportapi_getorgreport"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\reportApi.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "client_src_api_reportapi_js",
+      "_tgt": "reportapi_getpipeline",
+      "source": "client_src_api_reportapi_js",
+      "target": "reportapi_getpipeline"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\reportApi.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_src": "client_src_api_reportapi_js",
+      "_tgt": "reportapi_getactivity",
+      "source": "client_src_api_reportapi_js",
+      "target": "reportapi_getactivity"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\userApi.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_src": "client_src_api_userapi_js",
+      "_tgt": "userapi_getme",
+      "source": "client_src_api_userapi_js",
+      "target": "userapi_getme"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\userApi.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_src": "client_src_api_userapi_js",
+      "_tgt": "userapi_updateme",
+      "source": "client_src_api_userapi_js",
+      "target": "userapi_updateme"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\userApi.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_src": "client_src_api_userapi_js",
+      "_tgt": "userapi_getusers",
+      "source": "client_src_api_userapi_js",
+      "target": "userapi_getusers"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\userApi.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "client_src_api_userapi_js",
+      "_tgt": "userapi_getuser",
+      "source": "client_src_api_userapi_js",
+      "target": "userapi_getuser"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\userApi.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_src": "client_src_api_userapi_js",
+      "_tgt": "userapi_updateuser",
+      "source": "client_src_api_userapi_js",
+      "target": "userapi_updateuser"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\userApi.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_src": "client_src_api_userapi_js",
+      "_tgt": "userapi_registeruser",
+      "source": "client_src_api_userapi_js",
+      "target": "userapi_registeruser"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\workUnitApi.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_src": "client_src_api_workunitapi_js",
+      "_tgt": "workunitapi_getworkunits",
+      "source": "client_src_api_workunitapi_js",
+      "target": "workunitapi_getworkunits"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\workUnitApi.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_src": "client_src_api_workunitapi_js",
+      "_tgt": "workunitapi_getworkunit",
+      "source": "client_src_api_workunitapi_js",
+      "target": "workunitapi_getworkunit"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\workUnitApi.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_src": "client_src_api_workunitapi_js",
+      "_tgt": "workunitapi_createworkunit",
+      "source": "client_src_api_workunitapi_js",
+      "target": "workunitapi_createworkunit"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\workUnitApi.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "client_src_api_workunitapi_js",
+      "_tgt": "workunitapi_updateworkunit",
+      "source": "client_src_api_workunitapi_js",
+      "target": "workunitapi_updateworkunit"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\workUnitApi.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_src": "client_src_api_workunitapi_js",
+      "_tgt": "workunitapi_deleteworkunit",
+      "source": "client_src_api_workunitapi_js",
+      "target": "workunitapi_deleteworkunit"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\workUnitApi.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_src": "client_src_api_workunitapi_js",
+      "_tgt": "workunitapi_addcomment",
+      "source": "client_src_api_workunitapi_js",
+      "target": "workunitapi_addcomment"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\workUnitApi.js",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_src": "client_src_api_workunitapi_js",
+      "_tgt": "workunitapi_timerstart",
+      "source": "client_src_api_workunitapi_js",
+      "target": "workunitapi_timerstart"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\api\\workUnitApi.js",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_src": "client_src_api_workunitapi_js",
+      "_tgt": "workunitapi_timerstop",
+      "source": "client_src_api_workunitapi_js",
+      "target": "workunitapi_timerstop"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\components\\charts\\ForecastCard.jsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_src": "client_src_components_charts_forecastcard_jsx",
+      "_tgt": "forecastcard_forecastcard",
+      "source": "client_src_components_charts_forecastcard_jsx",
+      "target": "forecastcard_forecastcard"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\components\\charts\\HeatmapChart.jsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "client_src_components_charts_heatmapchart_jsx",
+      "_tgt": "heatmapchart_intensity",
+      "source": "client_src_components_charts_heatmapchart_jsx",
+      "target": "heatmapchart_intensity"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\components\\charts\\HeatmapChart.jsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_src": "client_src_components_charts_heatmapchart_jsx",
+      "_tgt": "heatmapchart_heatmapchart",
+      "source": "client_src_components_charts_heatmapchart_jsx",
+      "target": "heatmapchart_heatmapchart"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\components\\charts\\MultiSeriesMarketingChart.jsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_src": "client_src_components_charts_multiseriesmarketingchart_jsx",
+      "_tgt": "multiseriesmarketingchart_multiseriesmarketingchart",
+      "source": "client_src_components_charts_multiseriesmarketingchart_jsx",
+      "target": "multiseriesmarketingchart_multiseriesmarketingchart"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\components\\charts\\MultiSeriesSalesChart.jsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_src": "client_src_components_charts_multiseriessaleschart_jsx",
+      "_tgt": "multiseriessaleschart_multiseriessaleschart",
+      "source": "client_src_components_charts_multiseriessaleschart_jsx",
+      "target": "multiseriessaleschart_multiseriessaleschart"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\components\\charts\\PipelineBar.jsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "client_src_components_charts_pipelinebar_jsx",
+      "_tgt": "pipelinebar_pipelinebar",
+      "source": "client_src_components_charts_pipelinebar_jsx",
+      "target": "pipelinebar_pipelinebar"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\components\\charts\\StageDonut.jsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "client_src_components_charts_stagedonut_jsx",
+      "_tgt": "stagedonut_stagedonut",
+      "source": "client_src_components_charts_stagedonut_jsx",
+      "target": "stagedonut_stagedonut"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\components\\charts\\TeamCompareBar.jsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "client_src_components_charts_teamcomparebar_jsx",
+      "_tgt": "teamcomparebar_teamcomparebar",
+      "source": "client_src_components_charts_teamcomparebar_jsx",
+      "target": "teamcomparebar_teamcomparebar"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\components\\charts\\WeeklyLineChart.jsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_src": "client_src_components_charts_weeklylinechart_jsx",
+      "_tgt": "weeklylinechart_weeklylinechart",
+      "source": "client_src_components_charts_weeklylinechart_jsx",
+      "target": "weeklylinechart_weeklylinechart"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\components\\common\\FilterBar.jsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_src": "client_src_components_common_filterbar_jsx",
+      "_tgt": "filterbar_filterbar",
+      "source": "client_src_components_common_filterbar_jsx",
+      "target": "filterbar_filterbar"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "client\\src\\components\\common\\FilterBar.jsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_src": "filterbar_filterbar",
+      "_tgt": "useauth_useauth",
+      "source": "filterbar_filterbar",
+      "target": "useauth_useauth"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\components\\common\\KpiCard.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_src": "client_src_components_common_kpicard_jsx",
+      "_tgt": "kpicard_kpicard",
+      "source": "client_src_components_common_kpicard_jsx",
+      "target": "kpicard_kpicard"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\components\\common\\KpiProgressRing.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_src": "client_src_components_common_kpiprogressring_jsx",
+      "_tgt": "kpiprogressring_getcolor",
+      "source": "client_src_components_common_kpiprogressring_jsx",
+      "target": "kpiprogressring_getcolor"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\components\\common\\KpiProgressRing.jsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_src": "client_src_components_common_kpiprogressring_jsx",
+      "_tgt": "kpiprogressring_kpiprogressring",
+      "source": "client_src_components_common_kpiprogressring_jsx",
+      "target": "kpiprogressring_kpiprogressring"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\components\\common\\KpiProgressRing.jsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_src": "kpiprogressring_kpiprogressring",
+      "_tgt": "kpiprogressring_getcolor",
+      "source": "kpiprogressring_getcolor",
+      "target": "kpiprogressring_kpiprogressring"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\components\\common\\Modal.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_src": "client_src_components_common_modal_jsx",
+      "_tgt": "modal_modal",
+      "source": "client_src_components_common_modal_jsx",
+      "target": "modal_modal"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\components\\common\\NotificationPanel.jsx",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_src": "client_src_components_common_notificationpanel_jsx",
+      "_tgt": "notificationpanel_notificationpanel",
+      "source": "client_src_components_common_notificationpanel_jsx",
+      "target": "notificationpanel_notificationpanel"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\components\\common\\Spinner.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_src": "client_src_components_common_spinner_jsx",
+      "_tgt": "spinner_spinner",
+      "source": "client_src_components_common_spinner_jsx",
+      "target": "spinner_spinner"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\components\\common\\StatusBadge.jsx",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_src": "client_src_components_common_statusbadge_jsx",
+      "_tgt": "statusbadge_statusbadge",
+      "source": "client_src_components_common_statusbadge_jsx",
+      "target": "statusbadge_statusbadge"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\components\\common\\Toast.jsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_src": "client_src_components_common_toast_jsx",
+      "_tgt": "toast_toast",
+      "source": "client_src_components_common_toast_jsx",
+      "target": "toast_toast"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\components\\common\\WorkTimer.jsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_src": "client_src_components_common_worktimer_jsx",
+      "_tgt": "worktimer_worktimer",
+      "source": "client_src_components_common_worktimer_jsx",
+      "target": "worktimer_worktimer"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "client\\src\\components\\common\\WorkTimer.jsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_src": "worktimer_worktimer",
+      "_tgt": "usetimer_usetimer",
+      "source": "worktimer_worktimer",
+      "target": "usetimer_usetimer"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\components\\layout\\Layout.jsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_src": "client_src_components_layout_layout_jsx",
+      "_tgt": "layout_layout",
+      "source": "client_src_components_layout_layout_jsx",
+      "target": "layout_layout"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\components\\layout\\Sidebar.jsx",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_src": "client_src_components_layout_sidebar_jsx",
+      "_tgt": "sidebar_sidebar",
+      "source": "client_src_components_layout_sidebar_jsx",
+      "target": "sidebar_sidebar"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "client\\src\\components\\layout\\Sidebar.jsx",
+      "source_location": "L29",
+      "weight": 1.0,
+      "_src": "sidebar_sidebar",
+      "_tgt": "useauth_useauth",
+      "source": "sidebar_sidebar",
+      "target": "useauth_useauth"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\components\\layout\\Topbar.jsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_src": "client_src_components_layout_topbar_jsx",
+      "_tgt": "topbar_topbar",
+      "source": "client_src_components_layout_topbar_jsx",
+      "target": "topbar_topbar"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "client\\src\\components\\layout\\Topbar.jsx",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_src": "topbar_topbar",
+      "_tgt": "useauth_useauth",
+      "source": "topbar_topbar",
+      "target": "useauth_useauth"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\hooks\\useAuth.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_src": "client_src_hooks_useauth_js",
+      "_tgt": "useauth_useauth",
+      "source": "client_src_hooks_useauth_js",
+      "target": "useauth_useauth"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "client\\src\\pages\\Audit\\AuditLog.jsx",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_src": "auditlog_auditlog",
+      "_tgt": "useauth_useauth",
+      "source": "useauth_useauth",
+      "target": "auditlog_auditlog"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "client\\src\\pages\\Cases\\CaseBoard.jsx",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_src": "caseboard_caseboard",
+      "_tgt": "useauth_useauth",
+      "source": "useauth_useauth",
+      "target": "caseboard_caseboard"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "client\\src\\pages\\Cases\\CaseDetail.jsx",
+      "source_location": "L17",
+      "weight": 1.0,
+      "_src": "casedetail_casedetail",
+      "_tgt": "useauth_useauth",
+      "source": "useauth_useauth",
+      "target": "casedetail_casedetail"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "client\\src\\pages\\Eod\\EodReport.jsx",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_src": "eodreport_eodreport",
+      "_tgt": "useauth_useauth",
+      "source": "useauth_useauth",
+      "target": "eodreport_eodreport"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "client\\src\\pages\\Kpi\\KpiPage.jsx",
+      "source_location": "L28",
+      "weight": 1.0,
+      "_src": "kpipage_kpipage",
+      "_tgt": "useauth_useauth",
+      "source": "useauth_useauth",
+      "target": "kpipage_kpipage"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "client\\src\\pages\\Leave\\LeavePage.jsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_src": "leavepage_leavepage",
+      "_tgt": "useauth_useauth",
+      "source": "useauth_useauth",
+      "target": "leavepage_leavepage"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "client\\src\\pages\\Reports\\Reports.jsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_src": "reports_reports",
+      "_tgt": "useauth_useauth",
+      "source": "useauth_useauth",
+      "target": "reports_reports"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "client\\src\\pages\\Settings\\OrgSettings.jsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_src": "orgsettings_orgsettings",
+      "_tgt": "useauth_useauth",
+      "source": "useauth_useauth",
+      "target": "orgsettings_orgsettings"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "client\\src\\pages\\Team\\TeamView.jsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_src": "teamview_teamview",
+      "_tgt": "useauth_useauth",
+      "source": "useauth_useauth",
+      "target": "teamview_teamview"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "client\\src\\pages\\Webhooks\\WebhookLogs.jsx",
+      "source_location": "L35",
+      "weight": 1.0,
+      "_src": "webhooklogs_webhooklogs",
+      "_tgt": "useauth_useauth",
+      "source": "useauth_useauth",
+      "target": "webhooklogs_webhooklogs"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "client\\src\\pages\\WorkUnits\\WorkUnitDetail.jsx",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_src": "workunitdetail_workunitdetail",
+      "_tgt": "useauth_useauth",
+      "source": "useauth_useauth",
+      "target": "workunitdetail_workunitdetail"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "client\\src\\pages\\WorkUnits\\WorkUnitList.jsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_src": "workunitlist_workunitlist",
+      "_tgt": "useauth_useauth",
+      "source": "useauth_useauth",
+      "target": "workunitlist_workunitlist"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\hooks\\useTimer.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_src": "client_src_hooks_usetimer_js",
+      "_tgt": "usetimer_usetimer",
+      "source": "client_src_hooks_usetimer_js",
+      "target": "usetimer_usetimer"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\pages\\Admin\\UserManagement.jsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_src": "client_src_pages_admin_usermanagement_jsx",
+      "_tgt": "usermanagement_usermanagement",
+      "source": "client_src_pages_admin_usermanagement_jsx",
+      "target": "usermanagement_usermanagement"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\pages\\Audit\\AuditLog.jsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_src": "client_src_pages_audit_auditlog_jsx",
+      "_tgt": "auditlog_formatts",
+      "source": "client_src_pages_audit_auditlog_jsx",
+      "target": "auditlog_formatts"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\pages\\Audit\\AuditLog.jsx",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_src": "client_src_pages_audit_auditlog_jsx",
+      "_tgt": "auditlog_auditlog",
+      "source": "client_src_pages_audit_auditlog_jsx",
+      "target": "auditlog_auditlog"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\pages\\Auth\\Login.jsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "client_src_pages_auth_login_jsx",
+      "_tgt": "login_login",
+      "source": "client_src_pages_auth_login_jsx",
+      "target": "login_login"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\pages\\Cases\\CaseBoard.jsx",
+      "source_location": "L33",
+      "weight": 1.0,
+      "_src": "client_src_pages_cases_caseboard_jsx",
+      "_tgt": "caseboard_caseboard",
+      "source": "client_src_pages_cases_caseboard_jsx",
+      "target": "caseboard_caseboard"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\pages\\Cases\\CaseDetail.jsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_src": "client_src_pages_cases_casedetail_jsx",
+      "_tgt": "casedetail_casedetail",
+      "source": "client_src_pages_cases_casedetail_jsx",
+      "target": "casedetail_casedetail"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\pages\\Dashboard\\AdminDashboard.jsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_src": "client_src_pages_dashboard_admindashboard_jsx",
+      "_tgt": "admindashboard_scorepill",
+      "source": "client_src_pages_dashboard_admindashboard_jsx",
+      "target": "admindashboard_scorepill"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\pages\\Dashboard\\AdminDashboard.jsx",
+      "source_location": "L28",
+      "weight": 1.0,
+      "_src": "client_src_pages_dashboard_admindashboard_jsx",
+      "_tgt": "admindashboard_admindashboard",
+      "source": "client_src_pages_dashboard_admindashboard_jsx",
+      "target": "admindashboard_admindashboard"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\pages\\Dashboard\\CeoDashboard.jsx",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_src": "client_src_pages_dashboard_ceodashboard_jsx",
+      "_tgt": "ceodashboard_ceodashboard",
+      "source": "client_src_pages_dashboard_ceodashboard_jsx",
+      "target": "ceodashboard_ceodashboard"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\pages\\Dashboard\\UserDashboard.jsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_src": "client_src_pages_dashboard_userdashboard_jsx",
+      "_tgt": "userdashboard_getgreeting",
+      "source": "client_src_pages_dashboard_userdashboard_jsx",
+      "target": "userdashboard_getgreeting"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\pages\\Dashboard\\UserDashboard.jsx",
+      "source_location": "L28",
+      "weight": 1.0,
+      "_src": "client_src_pages_dashboard_userdashboard_jsx",
+      "_tgt": "userdashboard_userdashboard",
+      "source": "client_src_pages_dashboard_userdashboard_jsx",
+      "target": "userdashboard_userdashboard"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\pages\\Dashboard\\UserDashboard.jsx",
+      "source_location": "L66",
+      "weight": 1.0,
+      "_src": "userdashboard_userdashboard",
+      "_tgt": "userdashboard_getgreeting",
+      "source": "userdashboard_getgreeting",
+      "target": "userdashboard_userdashboard"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\pages\\Eod\\EodReport.jsx",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_src": "client_src_pages_eod_eodreport_jsx",
+      "_tgt": "eodreport_formatdate",
+      "source": "client_src_pages_eod_eodreport_jsx",
+      "target": "eodreport_formatdate"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\pages\\Eod\\EodReport.jsx",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_src": "client_src_pages_eod_eodreport_jsx",
+      "_tgt": "eodreport_isodate",
+      "source": "client_src_pages_eod_eodreport_jsx",
+      "target": "eodreport_isodate"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\pages\\Eod\\EodReport.jsx",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_src": "client_src_pages_eod_eodreport_jsx",
+      "_tgt": "eodreport_eodreport",
+      "source": "client_src_pages_eod_eodreport_jsx",
+      "target": "eodreport_eodreport"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\pages\\Eod\\EodReport.jsx",
+      "source_location": "L95",
+      "weight": 1.0,
+      "_src": "eodreport_eodreport",
+      "_tgt": "eodreport_formatdate",
+      "source": "eodreport_formatdate",
+      "target": "eodreport_eodreport"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\pages\\Eod\\EodReport.jsx",
+      "source_location": "L30",
+      "weight": 1.0,
+      "_src": "eodreport_eodreport",
+      "_tgt": "eodreport_isodate",
+      "source": "eodreport_isodate",
+      "target": "eodreport_eodreport"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\pages\\Kpi\\KpiPage.jsx",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_src": "client_src_pages_kpi_kpipage_jsx",
+      "_tgt": "kpipage_kpipage",
+      "source": "client_src_pages_kpi_kpipage_jsx",
+      "target": "kpipage_kpipage"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\pages\\Leaderboard\\Leaderboard.jsx",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_src": "client_src_pages_leaderboard_leaderboard_jsx",
+      "_tgt": "leaderboard_leaderboard",
+      "source": "client_src_pages_leaderboard_leaderboard_jsx",
+      "target": "leaderboard_leaderboard"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\pages\\Leave\\LeavePage.jsx",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_src": "client_src_pages_leave_leavepage_jsx",
+      "_tgt": "leavepage_formatdate",
+      "source": "client_src_pages_leave_leavepage_jsx",
+      "target": "leavepage_formatdate"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\pages\\Leave\\LeavePage.jsx",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_src": "client_src_pages_leave_leavepage_jsx",
+      "_tgt": "leavepage_leavepage",
+      "source": "client_src_pages_leave_leavepage_jsx",
+      "target": "leavepage_leavepage"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\pages\\Reports\\Reports.jsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_src": "client_src_pages_reports_reports_jsx",
+      "_tgt": "reports_reports",
+      "source": "client_src_pages_reports_reports_jsx",
+      "target": "reports_reports"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\pages\\Settings\\OrgSettings.jsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_src": "client_src_pages_settings_orgsettings_jsx",
+      "_tgt": "orgsettings_orgsettings",
+      "source": "client_src_pages_settings_orgsettings_jsx",
+      "target": "orgsettings_orgsettings"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\pages\\Team\\TeamView.jsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_src": "client_src_pages_team_teamview_jsx",
+      "_tgt": "teamview_teamview",
+      "source": "client_src_pages_team_teamview_jsx",
+      "target": "teamview_teamview"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\pages\\Team\\TeamView.jsx",
+      "source_location": "L116",
+      "weight": 1.0,
+      "_src": "client_src_pages_team_teamview_jsx",
+      "_tgt": "teamview_scorepill",
+      "source": "client_src_pages_team_teamview_jsx",
+      "target": "teamview_scorepill"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\pages\\Webhooks\\WebhookLogs.jsx",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_src": "client_src_pages_webhooks_webhooklogs_jsx",
+      "_tgt": "webhooklogs_formatts",
+      "source": "client_src_pages_webhooks_webhooklogs_jsx",
+      "target": "webhooklogs_formatts"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\pages\\Webhooks\\WebhookLogs.jsx",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_src": "client_src_pages_webhooks_webhooklogs_jsx",
+      "_tgt": "webhooklogs_statusbadge",
+      "source": "client_src_pages_webhooks_webhooklogs_jsx",
+      "target": "webhooklogs_statusbadge"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\pages\\Webhooks\\WebhookLogs.jsx",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_src": "client_src_pages_webhooks_webhooklogs_jsx",
+      "_tgt": "webhooklogs_webhooklogs",
+      "source": "client_src_pages_webhooks_webhooklogs_jsx",
+      "target": "webhooklogs_webhooklogs"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\pages\\WorkUnits\\WorkUnitDetail.jsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_src": "client_src_pages_workunits_workunitdetail_jsx",
+      "_tgt": "workunitdetail_workunitdetail",
+      "source": "client_src_pages_workunits_workunitdetail_jsx",
+      "target": "workunitdetail_workunitdetail"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\pages\\WorkUnits\\WorkUnitForm.jsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_src": "client_src_pages_workunits_workunitform_jsx",
+      "_tgt": "workunitform_workunitform",
+      "source": "client_src_pages_workunits_workunitform_jsx",
+      "target": "workunitform_workunitform"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client\\src\\pages\\WorkUnits\\WorkUnitList.jsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_src": "client_src_pages_workunits_workunitlist_jsx",
+      "_tgt": "workunitlist_workunitlist",
+      "source": "client_src_pages_workunits_workunitlist_jsx",
+      "target": "workunitlist_workunitlist"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\config\\db.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_src": "server_config_db_js",
+      "_tgt": "db_connectdb",
+      "source": "server_config_db_js",
+      "target": "db_connectdb"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\controllers\\authController.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "server_controllers_authcontroller_js",
+      "_tgt": "authcontroller_signaccess",
+      "source": "server_controllers_authcontroller_js",
+      "target": "authcontroller_signaccess"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\controllers\\authController.js",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_src": "server_controllers_authcontroller_js",
+      "_tgt": "authcontroller_signrefresh",
+      "source": "server_controllers_authcontroller_js",
+      "target": "authcontroller_signrefresh"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\controllers\\authController.js",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_src": "server_controllers_authcontroller_js",
+      "_tgt": "authcontroller_setcookie",
+      "source": "server_controllers_authcontroller_js",
+      "target": "authcontroller_setcookie"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\controllers\\chartsController.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "server_controllers_chartscontroller_js",
+      "_tgt": "chartscontroller_getdaykey",
+      "source": "server_controllers_chartscontroller_js",
+      "target": "chartscontroller_getdaykey"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\controllers\\chartsController.js",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_src": "server_controllers_chartscontroller_js",
+      "_tgt": "chartscontroller_builddailydata",
+      "source": "server_controllers_chartscontroller_js",
+      "target": "chartscontroller_builddailydata"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\controllers\\chartsController.js",
+      "source_location": "L156",
+      "weight": 1.0,
+      "_src": "server_controllers_chartscontroller_js",
+      "_tgt": "chartscontroller_buildweektargetdots",
+      "source": "server_controllers_chartscontroller_js",
+      "target": "chartscontroller_buildweektargetdots"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\controllers\\eodController.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "server_controllers_eodcontroller_js",
+      "_tgt": "eodcontroller_buildeodreport",
+      "source": "server_controllers_eodcontroller_js",
+      "target": "eodcontroller_buildeodreport"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\controllers\\forecastController.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_src": "server_controllers_forecastcontroller_js",
+      "_tgt": "forecastcontroller_gethistoricalwinrate",
+      "source": "server_controllers_forecastcontroller_js",
+      "target": "forecastcontroller_gethistoricalwinrate"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\controllers\\forecastController.js",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_src": "server_controllers_forecastcontroller_js",
+      "_tgt": "forecastcontroller_computeforecast",
+      "source": "server_controllers_forecastcontroller_js",
+      "target": "forecastcontroller_computeforecast"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\controllers\\forecastController.js",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_src": "forecastcontroller_computeforecast",
+      "_tgt": "forecastcontroller_gethistoricalwinrate",
+      "source": "forecastcontroller_gethistoricalwinrate",
+      "target": "forecastcontroller_computeforecast"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\controllers\\kpiController.js",
+      "source_location": "L122",
+      "weight": 1.0,
+      "_src": "server_controllers_kpicontroller_js",
+      "_tgt": "kpicontroller_computemetrics",
+      "source": "server_controllers_kpicontroller_js",
+      "target": "kpicontroller_computemetrics"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\controllers\\orgController.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_src": "server_controllers_orgcontroller_js",
+      "_tgt": "orgcontroller_getorcreate",
+      "source": "server_controllers_orgcontroller_js",
+      "target": "orgcontroller_getorcreate"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\controllers\\reportController.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "server_controllers_reportcontroller_js",
+      "_tgt": "reportcontroller_datefilter",
+      "source": "server_controllers_reportcontroller_js",
+      "target": "reportcontroller_datefilter"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\controllers\\webhookController.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "server_controllers_webhookcontroller_js",
+      "_tgt": "webhookcontroller_verifysignature",
+      "source": "server_controllers_webhookcontroller_js",
+      "target": "webhookcontroller_verifysignature"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\controllers\\webhookController.js",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_src": "server_controllers_webhookcontroller_js",
+      "_tgt": "webhookcontroller_processevent",
+      "source": "server_controllers_webhookcontroller_js",
+      "target": "webhookcontroller_processevent"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\middleware\\roleGuard.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "server_middleware_roleguard_js",
+      "_tgt": "roleguard_requirerole",
+      "source": "server_middleware_roleguard_js",
+      "target": "roleguard_requirerole"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\middleware\\roleGuard.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_src": "server_middleware_roleguard_js",
+      "_tgt": "roleguard_teamscope",
+      "source": "server_middleware_roleguard_js",
+      "target": "roleguard_teamscope"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\scripts\\seed.js",
+      "source_location": "L28",
+      "weight": 1.0,
+      "_src": "server_scripts_seed_js",
+      "_tgt": "seed_pw",
+      "source": "server_scripts_seed_js",
+      "target": "seed_pw"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\scripts\\seed.js",
+      "source_location": "L30",
+      "weight": 1.0,
+      "_src": "server_scripts_seed_js",
+      "_tgt": "seed_daysago",
+      "source": "server_scripts_seed_js",
+      "target": "seed_daysago"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\scripts\\seed.js",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_src": "server_scripts_seed_js",
+      "_tgt": "seed_daystart",
+      "source": "server_scripts_seed_js",
+      "target": "seed_daystart"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\scripts\\seed.js",
+      "source_location": "L32",
+      "weight": 1.0,
+      "_src": "server_scripts_seed_js",
+      "_tgt": "seed_pick",
+      "source": "server_scripts_seed_js",
+      "target": "seed_pick"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\scripts\\seed.js",
+      "source_location": "L33",
+      "weight": 1.0,
+      "_src": "server_scripts_seed_js",
+      "_tgt": "seed_rand",
+      "source": "server_scripts_seed_js",
+      "target": "seed_rand"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\scripts\\seed.js",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_src": "server_scripts_seed_js",
+      "_tgt": "seed_seed",
+      "source": "server_scripts_seed_js",
+      "target": "seed_seed"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\scripts\\seed.js",
+      "source_location": "L59",
+      "weight": 1.0,
+      "_src": "seed_seed",
+      "_tgt": "seed_pw",
+      "source": "seed_pw",
+      "target": "seed_seed"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\scripts\\seed.js",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_src": "seed_daystart",
+      "_tgt": "seed_daysago",
+      "source": "seed_daysago",
+      "target": "seed_daystart"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\scripts\\seed.js",
+      "source_location": "L130",
+      "weight": 1.0,
+      "_src": "seed_seed",
+      "_tgt": "seed_daysago",
+      "source": "seed_daysago",
+      "target": "seed_seed"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\scripts\\seed.js",
+      "source_location": "L164",
+      "weight": 1.0,
+      "_src": "seed_seed",
+      "_tgt": "seed_daystart",
+      "source": "seed_daystart",
+      "target": "seed_seed"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\scripts\\seed.js",
+      "source_location": "L128",
+      "weight": 1.0,
+      "_src": "seed_seed",
+      "_tgt": "seed_pick",
+      "source": "seed_pick",
+      "target": "seed_seed"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\scripts\\seed.js",
+      "source_location": "L131",
+      "weight": 1.0,
+      "_src": "seed_seed",
+      "_tgt": "seed_rand",
+      "source": "seed_rand",
+      "target": "seed_seed"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\utils\\activityLogger.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_src": "server_utils_activitylogger_js",
+      "_tgt": "activitylogger_logactivity",
+      "source": "server_utils_activitylogger_js",
+      "target": "activitylogger_logactivity"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\utils\\auditLogger.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_src": "server_utils_auditlogger_js",
+      "_tgt": "auditlogger_logaudit",
+      "source": "server_utils_auditlogger_js",
+      "target": "auditlogger_logaudit"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\utils\\cronJobs.js",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_src": "server_utils_cronjobs_js",
+      "_tgt": "cronjobs_startcronjobs",
+      "source": "server_utils_cronjobs_js",
+      "target": "cronjobs_startcronjobs"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\utils\\emailService.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_src": "server_utils_emailservice_js",
+      "_tgt": "emailservice_gettransporter",
+      "source": "server_utils_emailservice_js",
+      "target": "emailservice_gettransporter"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\utils\\emailService.js",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_src": "server_utils_emailservice_js",
+      "_tgt": "emailservice_sendeodemail",
+      "source": "server_utils_emailservice_js",
+      "target": "emailservice_sendeodemail"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\utils\\emailService.js",
+      "source_location": "L42",
+      "weight": 1.0,
+      "_src": "server_utils_emailservice_js",
+      "_tgt": "emailservice_sendnotificationemail",
+      "source": "server_utils_emailservice_js",
+      "target": "emailservice_sendnotificationemail"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\utils\\emailService.js",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_src": "emailservice_sendeodemail",
+      "_tgt": "emailservice_gettransporter",
+      "source": "emailservice_gettransporter",
+      "target": "emailservice_sendeodemail"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\utils\\emailService.js",
+      "source_location": "L43",
+      "weight": 1.0,
+      "_src": "emailservice_sendnotificationemail",
+      "_tgt": "emailservice_gettransporter",
+      "source": "emailservice_gettransporter",
+      "target": "emailservice_sendnotificationemail"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server\\utils\\scoreCalculator.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "server_utils_scorecalculator_js",
+      "_tgt": "scorecalculator_calcproductivityscore",
+      "source": "server_utils_scorecalculator_js",
+      "target": "scorecalculator_calcproductivityscore"
+    },
+    {
+      "relation": "has frontend component",
+      "confidence": "EXTRACTED",
+      "_src": "app_immigration_crm",
+      "_tgt": "client_layer",
+      "source": "app_immigration_crm",
+      "target": "client_layer"
+    },
+    {
+      "relation": "has backend component",
+      "confidence": "EXTRACTED",
+      "_src": "app_immigration_crm",
+      "_tgt": "server_layer",
+      "source": "app_immigration_crm",
+      "target": "server_layer"
+    },
+    {
+      "relation": "persists data in",
+      "confidence": "EXTRACTED",
+      "_src": "app_immigration_crm",
+      "_tgt": "db_layer",
+      "source": "app_immigration_crm",
+      "target": "db_layer"
+    },
+    {
+      "relation": "built with",
+      "confidence": "EXTRACTED",
+      "_src": "client_layer",
+      "_tgt": "stack_react",
+      "source": "stack_react",
+      "target": "client_layer"
+    },
+    {
+      "relation": "built with",
+      "confidence": "EXTRACTED",
+      "_src": "server_layer",
+      "_tgt": "stack_express",
+      "source": "stack_express",
+      "target": "server_layer"
+    },
+    {
+      "relation": "uses database",
+      "confidence": "EXTRACTED",
+      "_src": "db_layer",
+      "_tgt": "stack_mongodb",
+      "source": "stack_mongodb",
+      "target": "db_layer"
+    },
+    {
+      "relation": "runs on",
+      "confidence": "EXTRACTED",
+      "_src": "server_layer",
+      "_tgt": "stack_node",
+      "source": "stack_node",
+      "target": "server_layer"
+    },
+    {
+      "relation": "uses build tool",
+      "confidence": "EXTRACTED",
+      "_src": "client_layer",
+      "_tgt": "stack_vite",
+      "source": "stack_vite",
+      "target": "client_layer"
+    },
+    {
+      "relation": "uses state management",
+      "confidence": "EXTRACTED",
+      "_src": "client_layer",
+      "_tgt": "stack_redux",
+      "source": "stack_redux",
+      "target": "client_layer"
+    },
+    {
+      "relation": "uses ODM",
+      "confidence": "EXTRACTED",
+      "_src": "server_layer",
+      "_tgt": "stack_mongoose",
+      "source": "stack_mongoose",
+      "target": "server_layer"
+    },
+    {
+      "relation": "styled with",
+      "confidence": "EXTRACTED",
+      "_src": "client_layer",
+      "_tgt": "stack_tailwind",
+      "source": "stack_tailwind",
+      "target": "client_layer"
+    },
+    {
+      "relation": "integrated with",
+      "confidence": "INFERRED",
+      "_src": "external_ghl",
+      "_tgt": "client_layer",
+      "source": "external_ghl",
+      "target": "client_layer"
+    },
+    {
+      "relation": "uses",
+      "confidence": "EXTRACTED",
+      "_src": "service_email",
+      "_tgt": "external_nodemailer",
+      "source": "external_nodemailer",
+      "target": "service_email"
+    },
+    {
+      "relation": "managed by",
+      "confidence": "INFERRED",
+      "_src": "entity_user",
+      "_tgt": "middleware_auth",
+      "source": "entity_user",
+      "target": "middleware_auth"
+    },
+    {
+      "relation": "operates on",
+      "confidence": "EXTRACTED",
+      "_src": "ctrl_user",
+      "_tgt": "entity_user",
+      "source": "entity_user",
+      "target": "ctrl_user"
+    },
+    {
+      "relation": "can have",
+      "confidence": "INFERRED",
+      "_src": "entity_user",
+      "_tgt": "role_user",
+      "source": "entity_user",
+      "target": "role_user"
+    },
+    {
+      "relation": "can have",
+      "confidence": "INFERRED",
+      "_src": "entity_user",
+      "_tgt": "role_admin",
+      "source": "entity_user",
+      "target": "role_admin"
+    },
+    {
+      "relation": "can have",
+      "confidence": "INFERRED",
+      "_src": "entity_user",
+      "_tgt": "role_superadmin",
+      "source": "entity_user",
+      "target": "role_superadmin"
+    },
+    {
+      "relation": "operates on",
+      "confidence": "EXTRACTED",
+      "_src": "ctrl_workunit",
+      "_tgt": "entity_workunit",
+      "source": "entity_workunit",
+      "target": "ctrl_workunit"
+    },
+    {
+      "relation": "assigned to",
+      "confidence": "EXTRACTED",
+      "_src": "entity_workunit",
+      "_tgt": "team_sales",
+      "source": "entity_workunit",
+      "target": "team_sales"
+    },
+    {
+      "relation": "assigned to",
+      "confidence": "EXTRACTED",
+      "_src": "entity_workunit",
+      "_tgt": "team_marketing",
+      "source": "entity_workunit",
+      "target": "team_marketing"
+    },
+    {
+      "relation": "assigned to",
+      "confidence": "EXTRACTED",
+      "_src": "entity_workunit",
+      "_tgt": "team_production",
+      "source": "entity_workunit",
+      "target": "team_production"
+    },
+    {
+      "relation": "operates on",
+      "confidence": "EXTRACTED",
+      "_src": "ctrl_case",
+      "_tgt": "entity_case",
+      "source": "entity_case",
+      "target": "ctrl_case"
+    },
+    {
+      "relation": "operates on",
+      "confidence": "EXTRACTED",
+      "_src": "ctrl_kpi",
+      "_tgt": "entity_kpi",
+      "source": "entity_kpi",
+      "target": "ctrl_kpi"
+    },
+    {
+      "relation": "calculates",
+      "confidence": "EXTRACTED",
+      "_src": "util_scorer",
+      "_tgt": "entity_kpi",
+      "source": "entity_kpi",
+      "target": "util_scorer"
+    },
+    {
+      "relation": "delivered via",
+      "confidence": "INFERRED",
+      "_src": "entity_notification",
+      "_tgt": "service_email",
+      "source": "entity_notification",
+      "target": "service_email"
+    },
+    {
+      "relation": "tracks",
+      "confidence": "INFERRED",
+      "_src": "entity_activitylog",
+      "_tgt": "ctrl_user",
+      "source": "entity_activitylog",
+      "target": "ctrl_user"
+    },
+    {
+      "relation": "generates",
+      "confidence": "EXTRACTED",
+      "_src": "ctrl_eod",
+      "_tgt": "entity_eodreport",
+      "source": "entity_eodreport",
+      "target": "ctrl_eod"
+    },
+    {
+      "relation": "logs events",
+      "confidence": "EXTRACTED",
+      "_src": "ctrl_webhook",
+      "_tgt": "entity_webhooklog",
+      "source": "entity_webhooklog",
+      "target": "ctrl_webhook"
+    },
+    {
+      "relation": "records",
+      "confidence": "INFERRED",
+      "_src": "entity_auditlog",
+      "_tgt": "middleware_auth",
+      "source": "entity_auditlog",
+      "target": "middleware_auth"
+    },
+    {
+      "relation": "validated by",
+      "confidence": "EXTRACTED",
+      "_src": "auth_jwt",
+      "_tgt": "middleware_auth",
+      "source": "middleware_auth",
+      "target": "auth_jwt"
+    },
+    {
+      "relation": "precedes",
+      "confidence": "INFERRED",
+      "_src": "middleware_auth",
+      "_tgt": "middleware_role",
+      "source": "middleware_auth",
+      "target": "middleware_role"
+    },
+    {
+      "relation": "generates",
+      "confidence": "EXTRACTED",
+      "_src": "ctrl_auth",
+      "_tgt": "auth_jwt",
+      "source": "auth_jwt",
+      "target": "ctrl_auth"
+    },
+    {
+      "relation": "triggers",
+      "confidence": "EXTRACTED",
+      "_src": "util_cronjob",
+      "_tgt": "ctrl_eod",
+      "source": "ctrl_eod",
+      "target": "util_cronjob"
+    }
+  ]
+}
