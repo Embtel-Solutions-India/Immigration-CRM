@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { refreshAuth } from "./store/authSlice.js";
+import { clearAuth, refreshAuth } from "./store/authSlice.js";
 import Layout from "./components/layout/Layout.jsx";
 import Login from "./pages/Auth/Login.jsx";
 import UserDashboard from "./pages/Dashboard/UserDashboard.jsx";
@@ -48,6 +48,16 @@ export default function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(refreshAuth());
+  }, [dispatch]);
+
+  useEffect(() => {
+    const handleUnauthorized = () => {
+      dispatch(clearAuth());
+    };
+    window.addEventListener("auth:unauthorized", handleUnauthorized);
+    return () => {
+      window.removeEventListener("auth:unauthorized", handleUnauthorized);
+    };
   }, [dispatch]);
 
   return (

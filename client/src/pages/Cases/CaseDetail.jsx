@@ -60,7 +60,9 @@ export default function CaseDetail() {
     );
 
   const isOverdue =
-    c.deadline && new Date(c.deadline) < new Date() && c.stage !== "Delivered";
+    c.slaDeadline &&
+    new Date(c.slaDeadline) < new Date() &&
+    c.stage !== "Approved";
 
   return (
     <div className="max-w-3xl mx-auto space-y-5">
@@ -81,9 +83,9 @@ export default function CaseDetail() {
               </span>
             )}
           </div>
-          {c.caseNumber && (
+          {c.caseId && (
             <p className="text-sm text-gray-400">
-              {c.caseNumber} · {c.caseType}
+              {c.caseId} · {c.visaCategory || c.caseType}
             </p>
           )}
         </div>
@@ -101,12 +103,14 @@ export default function CaseDetail() {
           </div>
           <div>
             <p className="text-xs text-gray-500">Assigned To</p>
-            <p>{c.assignedTo?.name || "—"}</p>
+            <p>{c.assignedManager?.name || "—"}</p>
           </div>
           <div>
             <p className="text-xs text-gray-500">Deadline</p>
             <p className={isOverdue ? "text-red-600 font-semibold" : ""}>
-              {c.deadline ? format(new Date(c.deadline), "MMM d, yyyy") : "—"}
+              {c.slaDeadline
+                ? format(new Date(c.slaDeadline), "MMM d, yyyy")
+                : "—"}
             </p>
           </div>
           <div>

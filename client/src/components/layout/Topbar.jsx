@@ -22,7 +22,7 @@ export default function Topbar() {
 
   useEffect(() => {
     if (user?._id) {
-      getNotifications(user._id)
+      getNotifications()
         .then((data) => {
           const list = data.notifications || data || [];
           setNotifications(list);

@@ -27,6 +27,13 @@ const authSlice = createSlice({
   initialState: { user: null, accessToken: null, loading: true, error: null },
   reducers: {
     setToken: (state, { payload }) => { state.accessToken = payload; },
+    clearAuth: (state) => {
+      state.user = null;
+      state.accessToken = null;
+      state.loading = false;
+      state.error = null;
+      delete api.defaults.headers.common['Authorization'];
+    },
   },
   extraReducers: (b) => {
     b.addCase(refreshAuth.pending, (s) => { s.loading = true; });
@@ -38,5 +45,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { setToken } = authSlice.actions;
+export const { setToken, clearAuth } = authSlice.actions;
 export default authSlice.reducer;

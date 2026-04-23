@@ -4,6 +4,7 @@ const verifyToken = require('../middleware/auth');
 
 router.use(verifyToken);
 
+router.get('/me', ctrl.getMine);
 router.get('/:userId', ctrl.getForUser);
 router.patch('/mark-all-read', ctrl.markAllRead);
 router.patch('/:id/read', ctrl.markRead);

@@ -14,6 +14,17 @@ exports.getForUser = async (req, res, next) => {
   } catch (e) { next(e); }
 };
 
+exports.getMine = async (req, res, next) => {
+  try {
+    const userId = req.user._id;
+    const notifications = await Notification.find({ userId })
+      .sort({ createdAt: -1 })
+      .limit(50);
+    const unreadCount = await Notification.countDocuments({ userId, isRead: false });
+    res.json({ notifications, unreadCount });
+  } catch (e) { next(e); }
+};
+
 exports.markRead = async (req, res, next) => {
   try {
     await Notification.findOneAndUpdate(

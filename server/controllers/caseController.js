@@ -27,7 +27,18 @@ exports.list = async (req, res, next) => {
 
 exports.create = async (req, res, next) => {
   try {
-    const c = await Case.create(req.body);
+    const payload = { ...req.body };
+    if (!payload.clientName && payload.name) payload.clientName = payload.name;
+    if (!payload.clientEmail && payload.email) payload.clientEmail = payload.email;
+    if (!payload.clientPhone && payload.phone) payload.clientPhone = payload.phone;
+    if (!payload.visaCategory && payload.caseType) payload.visaCategory = payload.caseType;
+    if (!payload.slaDeadline && payload.deadline) payload.slaDeadline = payload.deadline;
+
+    if (!payload.visaCategory) {
+      return res.status(400).json({ error: 'Visa category is required' });
+    }
+
+    const c = await Case.create(payload);
     await logActivity(req.user._id, 'Production', 'created_case', 'Case', c._id, { caseId: c.caseId });
     res.status(201).json(c);
   } catch (e) { next(e); }
@@ -46,6 +57,12 @@ exports.getById = async (req, res, next) => {
 
 exports.update = async (req, res, next) => {
   try {
+    if (!req.body.clientName && req.body.name) req.body.clientName = req.body.name;
+    if (!req.body.clientEmail && req.body.email) req.body.clientEmail = req.body.email;
+    if (!req.body.clientPhone && req.body.phone) req.body.clientPhone = req.body.phone;
+    if (!req.body.visaCategory && req.body.caseType) req.body.visaCategory = req.body.caseType;
+    if (!req.body.slaDeadline && req.body.deadline) req.body.slaDeadline = req.body.deadline;
+
     const prev = await Case.findById(req.params.id).lean();
     if (!prev) return res.status(404).json({ error: 'Not found' });
 

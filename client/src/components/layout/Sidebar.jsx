@@ -114,7 +114,15 @@ export default function Sidebar() {
 
       <nav className="p-2 space-y-0.5 mt-2 flex-1 overflow-y-auto">
         {navItems
-          .filter((item) => item.roles.includes(user?.role))
+          .filter((item) => {
+            if (!item.roles.includes(user?.role)) return false;
+            if (item.to !== "/leaderboard") return true;
+            if (user?.role === "superadmin") return true;
+            return (
+              user?.role === "admin" &&
+              ["Sales", "Marketing"].includes(user?.team)
+            );
+          })
           .map(({ to, label, Icon }) => (
             <NavLink
               key={to}
@@ -140,7 +148,9 @@ export default function Sidebar() {
           <div className="text-sm font-medium text-white truncate">
             {user.name}
           </div>
-          <div className="text-xs text-gray-500 capitalize">{user.role}</div>
+          <div className="text-xs text-gray-500 capitalize">
+            {user.role === 'superadmin' ? 'CEO' : user.role}
+          </div>
         </div>
       )}
     </div>

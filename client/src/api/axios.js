@@ -26,6 +26,8 @@ api.interceptors.response.use(
         }
         return api(originalRequest);
       } catch {
+        delete api.defaults.headers.common['Authorization'];
+        window.dispatchEvent(new CustomEvent('auth:unauthorized'));
         return Promise.reject(error);
       }
     }

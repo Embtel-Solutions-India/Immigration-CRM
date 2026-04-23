@@ -6,6 +6,7 @@ const { requireRole } = require('../middleware/roleGuard');
 router.use(verifyToken);
 
 router.get('/sales', requireRole('admin', 'superadmin'), ctrl.salesLeaderboard);
-router.get('/ceo-top-performers', requireRole('admin', 'superadmin'), ctrl.ceoTopPerformers);
+router.get('/marketing', requireRole('admin', 'superadmin'), ctrl.marketingLeaderboard);
+router.get('/ceo-top-performers', requireRole('superadmin'), ctrl.ceoTopPerformers);
 
 module.exports = router;
