@@ -104,6 +104,63 @@ async function buildMarketingLeaderboard(period, metric) {
     .map((u, i) => ({ ...u, rank: i + 1 }));
 }
 
+async function buildProductionLeaderboard(period, metric) {
+  const { now, startDate } = resolveStartDate(period);
+  const units = await WorkUnit.find({
+    team: 'Production',
+    kind: 'ProductionUnit',
+    date: { $gte: startDate, $lte: now },
+  }).populate('userId', 'name team');
+
+  const byUser = {};
+  for (const u of units) {
+    if (!u.userId) continue;
+    const uid = u.userId._id.toString();
+    if (!byUser[uid]) {
+      byUser[uid] = {
+        userId: uid,
+        name: u.userId.name,
+        totalTasks: 0,
+        completedTasks: 0,
+        casesInProgress: 0,
+        avgCompletionTime: 0,
+        totalTimeMs: 0,
+        completedTimeMs: 0,
+        outputValue: 0,
+      };
+    }
+    byUser[uid].totalTasks++;
+    byUser[uid].outputValue += u.outputValue || 0;
+    
+    if (u.status === 'Completed') {
+      byUser[uid].completedTasks++;
+      
+      if (u.startTime && u.endTime) {
+        const completionTime = u.endTime - u.startTime;
+        byUser[uid].completedTimeMs += completionTime;
+        byUser[uid].totalTimeMs += completionTime;
+      }
+    } else if (u.status === 'In Progress') {
+      byUser[uid].casesInProgress++;
+    }
+  }
+
+  const normalized = Object.values(byUser).map((u) => ({
+    userId: u.userId,
+    name: u.name,
+    totalTasks: u.totalTasks,
+    completedTasks: u.completedTasks,
+    casesInProgress: u.casesInProgress,
+    avgCompletionTime: u.completedTasks > 0 ? u.completedTimeMs / u.completedTasks / (1000 * 60 * 60) : 0, // in hours
+    outputValue: u.outputValue,
+    completionRate: u.totalTasks > 0 ? (u.completedTasks / u.totalTasks) * 100 : 0,
+  }));
+
+  return normalized
+    .sort((a, b) => (b[metric] || 0) - (a[metric] || 0))
+    .map((u, i) => ({ ...u, rank: i + 1 }));
+}
+
 exports.salesLeaderboard = async (req, res, next) => {
   try {
     if (!ensureLeaderboardAccess(req, res, 'Sales')) return;
@@ -119,6 +176,15 @@ exports.marketingLeaderboard = async (req, res, next) => {
     const { period = 'weekly', metric = 'leadsGenerated' } = req.query;
     const ranked = await buildMarketingLeaderboard(period, metric);
     res.json({ team: 'Marketing', period, metric, leaderboard: ranked });
+  } catch (e) { next(e); }
+};
+
+exports.productionLeaderboard = async (req, res, next) => {
+  try {
+    if (!ensureLeaderboardAccess(req, res, 'Production')) return;
+    const { period = 'weekly', metric = 'totalTasks' } = req.query;
+    const ranked = await buildProductionLeaderboard(period, metric);
+    res.json({ team: 'Production', period, metric, leaderboard: ranked });
   } catch (e) { next(e); }
 };
 

@@ -144,12 +144,12 @@ export default function Sidebar() {
 
       {open && user && (
         <div className="p-4 border-t border-gray-700 flex-shrink-0">
-          <div className="text-xs text-gray-400">{user.team} Team</div>
+          <div className="text-xs text-gray-400">{user.role === "superadmin" ? "CEO" : `${user.team} Team`}</div>
           <div className="text-sm font-medium text-white truncate">
             {user.name}
           </div>
           <div className="text-xs text-gray-500 capitalize">
-            {user.role === "superadmin" ? "CEO" : user.role}
+            {user.role === "superadmin" ? "Super Admin" : user.role}
           </div>
         </div>
       )}

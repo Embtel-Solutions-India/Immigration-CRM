@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import {
   getMarketingLeaderboard,
   getSalesLeaderboard,
+  getProductionLeaderboard,
 } from "../../api/orgApi.js";
 import Spinner from "../../components/common/Spinner.jsx";
 import { useAuth } from "../../hooks/useAuth.js";
@@ -29,6 +30,13 @@ const MARKETING_METRICS = [
   { key: "clickRate", label: "Click Rate" },
 ];
 
+const PRODUCTION_METRICS = [
+  { key: "totalTasks", label: "Total Tasks" },
+  { key: "completedTasks", label: "Completed Tasks" },
+  { key: "completionRate", label: "Completion Rate" },
+  { key: "avgCompletionTime", label: "Avg Completion Time" },
+];
+
 export default function Leaderboard() {
   const navigate = useNavigate();
   const { user } = useAuth();
@@ -37,16 +45,18 @@ export default function Leaderboard() {
 
   const [salesData, setSalesData] = useState([]);
   const [marketingData, setMarketingData] = useState([]);
+  const [productionData, setProductionData] = useState([]);
   const [singleData, setSingleData] = useState([]);
 
   const [salesMetric, setSalesMetric] = useState("dealValue");
   const [marketingMetric, setMarketingMetric] = useState("leadsGenerated");
+  const [productionMetric, setProductionMetric] = useState("totalTasks");
 
   const [period, setPeriod] = useState("weekly");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const allowedAdminTeams = ["Sales", "Marketing"];
+    const allowedAdminTeams = ["Sales", "Marketing", "Production"];
     if (user?.role === "admin" && !allowedAdminTeams.includes(user.team)) {
       navigate("/", { replace: true });
     }
@@ -58,10 +68,12 @@ export default function Leaderboard() {
       Promise.all([
         getSalesLeaderboard({ metric: salesMetric, period }),
         getMarketingLeaderboard({ metric: marketingMetric, period }),
+        getProductionLeaderboard({ metric: productionMetric, period }),
       ])
-        .then(([salesRes, marketingRes]) => {
+        .then(([salesRes, marketingRes, productionRes]) => {
           setSalesData(salesRes.leaderboard || []);
           setMarketingData(marketingRes.leaderboard || []);
+          setProductionData(productionRes.leaderboard || []);
         })
         .finally(() => setLoading(false));
       return;
@@ -74,16 +86,25 @@ export default function Leaderboard() {
       return;
     }
 
+    if (team === "Production") {
+      getProductionLeaderboard({ metric: productionMetric, period })
+        .then((res) => setSingleData(res.leaderboard || []))
+        .finally(() => setLoading(false));
+      return;
+    }
+
     getSalesLeaderboard({ metric: salesMetric, period })
       .then((res) => setSingleData(res.leaderboard || []))
       .finally(() => setLoading(false));
-  }, [isCeo, marketingMetric, period, salesMetric, team]);
+  }, [isCeo, marketingMetric, period, salesMetric, productionMetric, team]);
 
   const formatValue = (metric, val) => {
     if (metric === "dealValue" || metric === "campaignCost")
       return `$${(val || 0).toLocaleString()}`;
-    if (metric === "openRate" || metric === "clickRate")
+    if (metric === "openRate" || metric === "clickRate" || metric === "completionRate")
       return `${Number(val || 0).toFixed(1)}%`;
+    if (metric === "avgCompletionTime")
+      return `${Number(val || 0).toFixed(1)}h`;
     return (val || 0).toString();
   };
 
@@ -170,7 +191,7 @@ export default function Leaderboard() {
           <Spinner size="lg" />
         </div>
       ) : isCeo ? (
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
           {renderBoard(
             "Sales Leaderboard",
             salesData,
@@ -185,6 +206,13 @@ export default function Leaderboard() {
             setMarketingMetric,
             MARKETING_METRICS,
           )}
+          {renderBoard(
+            "Production Leaderboard",
+            productionData,
+            productionMetric,
+            setProductionMetric,
+            PRODUCTION_METRICS,
+          )}
         </div>
       ) : (
         <div className="max-w-3xl mx-auto">
@@ -195,6 +223,14 @@ export default function Leaderboard() {
                 marketingMetric,
                 setMarketingMetric,
                 MARKETING_METRICS,
+              )
+            : team === "Production"
+            ? renderBoard(
+                "Production Leaderboard",
+                singleData,
+                productionMetric,
+                setProductionMetric,
+                PRODUCTION_METRICS,
               )
             : renderBoard(
                 "Sales Leaderboard",

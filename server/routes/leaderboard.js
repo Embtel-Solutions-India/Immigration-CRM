@@ -7,6 +7,7 @@ router.use(verifyToken);
 
 router.get('/sales', requireRole('admin', 'superadmin'), ctrl.salesLeaderboard);
 router.get('/marketing', requireRole('admin', 'superadmin'), ctrl.marketingLeaderboard);
+router.get('/production', requireRole('admin', 'superadmin'), ctrl.productionLeaderboard);
 router.get('/ceo-top-performers', requireRole('superadmin'), ctrl.ceoTopPerformers);
 
 module.exports = router;

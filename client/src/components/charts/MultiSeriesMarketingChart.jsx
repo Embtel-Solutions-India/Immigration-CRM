@@ -47,23 +47,27 @@ export default function MultiSeriesMarketingChart({ view = 'org', entityId }) {
 
   return (
     <div className="space-y-3">
-      <div className="flex items-center gap-2 flex-wrap">
-        {Object.entries(METRIC_LABELS).map(([k, label]) => (
-          <button
-            key={k}
-            onClick={() => setMetric(k)}
-            className={`text-xs px-3 py-1.5 rounded-lg font-medium transition-colors ${metric === k ? 'bg-purple-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
-          >
-            {label}
-          </button>
-        ))}
-        {series.map((s, i) => (
-          <button key={s} onClick={() => setHidden(h => ({ ...h, [s]: !h[s] }))}
-            className={`flex items-center gap-1.5 text-xs px-2 py-1 rounded-lg border ${hidden[s] ? 'opacity-40' : ''}`}
-            style={{ borderColor: COLORS[i % COLORS.length] }}>
-            <span className="w-2.5 h-2.5 rounded-full" style={{ background: COLORS[i % COLORS.length] }} />{s}
-          </button>
-        ))}
+      <div className="flex items-center justify-between flex-wrap gap-2">
+        <div className="flex gap-1">
+          {Object.entries(METRIC_LABELS).map(([k, label]) => (
+            <button
+              key={k}
+              onClick={() => setMetric(k)}
+              className={`text-xs px-3 py-1.5 rounded-lg font-medium transition-colors ${metric === k ? 'bg-purple-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+        <div className="flex gap-2 flex-wrap">
+          {series.map((s, i) => (
+            <button key={s} onClick={() => setHidden(h => ({ ...h, [s]: !h[s] }))}
+              className={`flex items-center gap-1.5 text-xs px-2 py-1 rounded-lg border transition-opacity ${hidden[s] ? 'opacity-40' : ''}`}
+              style={{ borderColor: COLORS[i % COLORS.length] }}>
+              <span className="w-2.5 h-2.5 rounded-full" style={{ background: COLORS[i % COLORS.length] }} />{s}
+            </button>
+          ))}
+        </div>
       </div>
       {loading ? <div className="flex justify-center py-10"><Spinner /></div> : (
         <ResponsiveContainer width="100%" height={240}>

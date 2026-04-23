@@ -5,6 +5,7 @@ export const addVisaCategory = (category) => api.post('/org/settings/visa-catego
 export const addReviewer = (name) => api.post('/org/settings/reviewers', { name }).then(r => r.data);
 export const getSalesLeaderboard = (params) => api.get('/leaderboard/sales', { params }).then(r => r.data);
 export const getMarketingLeaderboard = (params) => api.get('/leaderboard/marketing', { params }).then(r => r.data);
+export const getProductionLeaderboard = (params) => api.get('/leaderboard/production', { params }).then(r => r.data);
 export const getLeaderboard = (params) => getSalesLeaderboard(params);
 export const getTopPerformers = () => api.get('/leaderboard/ceo-top-performers').then(r => r.data);
 export const getHeatmap = (userId, params) => api.get(`/analytics/heatmap/${userId}`, { params }).then(r => r.data);
