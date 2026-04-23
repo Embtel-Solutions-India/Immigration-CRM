@@ -149,7 +149,7 @@ export default function Sidebar() {
             {user.name}
           </div>
           <div className="text-xs text-gray-500 capitalize">
-            {user.role === 'superadmin' ? 'CEO' : user.role}
+            {user.role === "superadmin" ? "CEO" : user.role}
           </div>
         </div>
       )}
