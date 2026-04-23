@@ -5,7 +5,7 @@ import { createWorkUnit, updateWorkUnit, getWorkUnit } from '../../api/workUnitA
 import { showToast } from '../../store/uiSlice.js';
 import Spinner from '../../components/common/Spinner.jsx';
 
-const KIND_MAP = { Sales: 'SalesUnit', Marketing: 'MarketingUnit', Production: 'ProductionUnit' };
+const KIND_MAP = { Sales: 'SalesUnit', Marketing: 'MarketingUnit', Production: 'ProductionUnit', HR: 'HRUnit' };
 
 export default function WorkUnitForm() {
   const { id } = useParams();
@@ -25,12 +25,19 @@ export default function WorkUnitForm() {
     campaignType: '', campaignName: '', openRate: '', clickRate: '', leadsGenerated: '', conversionsToSales: '', campaignCost: '',
     // Production
     clientName: '', caseType: '', stage: 'Received', deadline: '',
+    // HR
+    employeeName: '', requestType: '', hrStage: 'Received',
   });
 
   useEffect(() => {
     if (isEdit) {
       getWorkUnit(id).then(unit => {
-        setForm(f => ({ ...f, ...unit, tags: (unit.tags || []).join(', ') }));
+        setForm(f => ({
+          ...f,
+          ...unit,
+          tags: (unit.tags || []).join(', '),
+          hrStage: unit.team === 'HR' ? (unit.stage || 'Received') : f.hrStage,
+        }));
         setLoading(false);
       });
     }
@@ -55,6 +62,7 @@ export default function WorkUnitForm() {
         leadsGenerated: form.leadsGenerated ? +form.leadsGenerated : undefined,
         conversionsToSales: form.conversionsToSales ? +form.conversionsToSales : undefined,
         campaignCost: form.campaignCost ? +form.campaignCost : undefined,
+        stage: form.team === 'HR' ? form.hrStage : form.stage,
       };
       const result = isEdit ? await updateWorkUnit(id, payload) : await createWorkUnit(payload);
       dispatch(showToast({ message: isEdit ? 'Updated!' : 'Created!' }));
@@ -178,6 +186,26 @@ export default function WorkUnitForm() {
                 <label className="label">Stage</label>
                 <select className="input" value={form.stage} onChange={e => set('stage', e.target.value)}>
                   <option>Received</option><option>In Progress</option><option>Review</option><option>Submitted</option><option>Delivered</option>
+                </select>
+              </div>
+              <div><label className="label">Deadline (SLA)</label><input type="date" className="input" value={form.deadline ? form.deadline.slice(0,10) : ''} onChange={e => set('deadline', e.target.value)} /></div>
+            </div>
+          </div>
+        )}
+
+        {/* HR fields */}
+        {form.team === 'HR' && (
+          <div className="card p-5 space-y-4">
+            <h2 className="font-semibold text-gray-700 text-sm">HR Details</h2>
+            <div className="grid grid-cols-2 gap-4">
+              <div><label className="label">Employee Name</label><input className="input" value={form.employeeName} onChange={e => set('employeeName', e.target.value)} /></div>
+              <div><label className="label">Request Type</label><input className="input" value={form.requestType} onChange={e => set('requestType', e.target.value)} placeholder="Onboarding, leave compliance, payroll..." /></div>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="label">Stage</label>
+                <select className="input" value={form.hrStage} onChange={e => set('hrStage', e.target.value)}>
+                  <option>Received</option><option>Screening</option><option>Interview</option><option>Documentation</option><option>Completed</option>
                 </select>
               </div>
               <div><label className="label">Deadline (SLA)</label><input type="date" className="input" value={form.deadline ? form.deadline.slice(0,10) : ''} onChange={e => set('deadline', e.target.value)} /></div>

@@ -9,6 +9,7 @@ import { useAuth } from "../../hooks/useAuth.js";
 import { getNotifications, markAllRead } from "../../api/notificationApi.js";
 import { getOrgSettings } from "../../api/orgApi.js";
 import NotificationPanel from "../common/NotificationPanel.jsx";
+import { isHrAdminRole, normalizeRole } from "../../utils/roles.js";
 
 export default function Topbar() {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ export default function Topbar() {
   const [notifications, setNotifications] = useState([]);
   const [unreadCount, setUnreadCount] = useState(0);
   const [zoomLink, setZoomLink] = useState("");
+  const normalizedRole = normalizeRole(user?.role);
   const notifRef = useRef(null);
 
   useEffect(() => {
@@ -106,7 +108,7 @@ export default function Topbar() {
 
       <div className="flex items-center gap-2">
         {/* CEO Zoom Quick-Join */}
-        {zoomLink && (
+        {zoomLink && !isHrAdminRole(normalizedRole) && (
           <a
             href={zoomLink}
             target="_blank"
@@ -119,13 +121,15 @@ export default function Topbar() {
         )}
 
         {/* New Work Unit */}
-        <button
-          onClick={() => navigate("/work-units/new")}
-          className="flex items-center gap-1 btn-primary text-sm"
-        >
-          <Plus size={14} />
-          <span className="hidden sm:inline">New Work Unit</span>
-        </button>
+        {normalizedRole !== "hr_admin" && (
+          <button
+            onClick={() => navigate("/work-units/new")}
+            className="flex items-center gap-1 btn-primary text-sm"
+          >
+            <Plus size={14} />
+            <span className="hidden sm:inline">New Work Unit</span>
+          </button>
+        )}
 
         {/* Notification Bell */}
         <div className="relative" ref={notifRef}>

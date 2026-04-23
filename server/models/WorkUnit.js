@@ -9,7 +9,7 @@ const commentSchema = new Schema({
 
 const workUnitSchema = new Schema({
   userId:      { type: Schema.Types.ObjectId, ref: 'User', required: true },
-  team:        { type: String, enum: ['Sales', 'Marketing', 'Production'], required: true },
+  team:        { type: String, enum: ['Sales', 'Marketing', 'Production', 'HR'], required: true },
   workType:    { type: String, enum: ['task', 'call', 'email', 'case_update', 'campaign', 'lead_update'], required: true },
   title:       { type: String, required: true, trim: true },
   description: { type: String },
@@ -80,6 +80,18 @@ WorkUnit.discriminator('ProductionUnit', new Schema({
     updatedBy: { type: Schema.Types.ObjectId, ref: 'User' },
     updatedAt: { type: Date, default: Date.now },
   }],
+}));
+
+// HR
+WorkUnit.discriminator('HRUnit', new Schema({
+  employeeName: { type: String },
+  requestType: { type: String },
+  stage: {
+    type: String,
+    enum: ['Received', 'Screening', 'Interview', 'Documentation', 'Completed'],
+    default: 'Received',
+  },
+  deadline: { type: Date },
 }));
 
 module.exports = WorkUnit;

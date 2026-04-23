@@ -18,13 +18,17 @@ import UserManagement from "./pages/Admin/UserManagement.jsx";
 import KpiPage from "./pages/Kpi/KpiPage.jsx";
 import Leaderboard from "./pages/Leaderboard/Leaderboard.jsx";
 import LeavePage from "./pages/Leave/LeavePage.jsx";
+import HRPortal from "./pages/HR/HRPortal.jsx";
 import AuditLog from "./pages/Audit/AuditLog.jsx";
 import EodReport from "./pages/Eod/EodReport.jsx";
 import OrgSettings from "./pages/Settings/OrgSettings.jsx";
 import WebhookLogs from "./pages/Webhooks/WebhookLogs.jsx";
+import { isHrAdminRole, normalizeRole } from "./utils/roles.js";
 
-function ProtectedRoute({ children, roles }) {
+function ProtectedRoute({ children, roles, denyHrTeamUsers = false }) {
   const { user, loading } = useSelector((s) => s.auth);
+  const userRole = normalizeRole(user?.role);
+  const isHrTeamUser = userRole === "hr_user" || (userRole === "user" && user?.team === "HR");
   if (loading)
     return (
       <div className="flex h-screen items-center justify-center text-gray-400">
@@ -32,15 +36,18 @@ function ProtectedRoute({ children, roles }) {
       </div>
     );
   if (!user) return <Navigate to="/login" replace />;
-  if (roles && !roles.includes(user.role)) return <Navigate to="/" replace />;
+  if (roles && !roles.map((r) => normalizeRole(r)).includes(userRole)) return <Navigate to="/" replace />;
+  if (denyHrTeamUsers && isHrTeamUser) return <Navigate to="/" replace />;
   return children;
 }
 
 function DashboardRouter() {
   const { user } = useSelector((s) => s.auth);
   if (!user) return null;
-  if (user.role === "superadmin") return <CeoDashboard />;
-  if (user.role === "admin") return <AdminDashboard />;
+  const role = normalizeRole(user.role);
+  if (isHrAdminRole(role)) return <Navigate to="/hr" replace />;
+  if (role === "superadmin") return <CeoDashboard />;
+  if (role === "admin") return <AdminDashboard />;
   return <UserDashboard />;
 }
 
@@ -73,28 +80,98 @@ export default function App() {
           }
         >
           <Route index element={<DashboardRouter />} />
-          <Route path="work-units" element={<WorkUnitList />} />
-          <Route path="work-units/new" element={<WorkUnitForm />} />
-          <Route path="work-units/:id" element={<WorkUnitDetail />} />
-          <Route path="work-units/:id/edit" element={<WorkUnitForm />} />
-          <Route path="cases" element={<CaseBoard />} />
-          <Route path="cases/:id" element={<CaseDetail />} />
-          <Route path="kpi" element={<KpiPage />} />
+          <Route
+            path="work-units"
+            element={
+              <ProtectedRoute roles={["user", "admin", "hr_admin", "hr_user", "hr", "superadmin"]}>
+                <WorkUnitList />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="work-units/new"
+            element={
+              <ProtectedRoute roles={["user", "admin", "hr_admin", "hr_user", "superadmin"]}>
+                <WorkUnitForm />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="work-units/:id"
+            element={
+              <ProtectedRoute roles={["user", "admin", "hr_admin", "hr_user", "hr", "superadmin"]}>
+                <WorkUnitDetail />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="work-units/:id/edit"
+            element={
+              <ProtectedRoute roles={["user", "admin", "hr_admin", "hr_user", "superadmin"]}>
+                <WorkUnitForm />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="cases"
+            element={
+              <ProtectedRoute roles={["user", "admin", "superadmin"]} denyHrTeamUsers>
+                <CaseBoard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="cases/:id"
+            element={
+              <ProtectedRoute roles={["user", "admin", "superadmin"]} denyHrTeamUsers>
+                <CaseDetail />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="kpi"
+            element={
+              <ProtectedRoute roles={["user", "admin", "superadmin"]} denyHrTeamUsers>
+                <KpiPage />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="leaderboard"
             element={
-              <ProtectedRoute roles={["admin", "superadmin"]}>
+              <ProtectedRoute roles={["admin", "hr_admin", "hr_user", "hr", "superadmin"]}>
                 <Leaderboard />
               </ProtectedRoute>
             }
           />
-          <Route path="reports" element={<Reports />} />
-          <Route path="leave" element={<LeavePage />} />
-          <Route path="eod" element={<EodReport />} />
+          <Route
+            path="reports"
+            element={
+              <ProtectedRoute roles={["user", "admin", "hr_admin", "hr_user", "superadmin"]}>
+                <Reports />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="leave"
+            element={
+              <ProtectedRoute roles={["user", "admin", "hr_admin", "hr_user", "superadmin"]}>
+                <LeavePage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="eod"
+            element={
+              <ProtectedRoute roles={["user", "admin", "hr_admin", "hr_user", "superadmin"]}>
+                <EodReport />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="team"
             element={
-              <ProtectedRoute roles={["admin", "superadmin"]}>
+              <ProtectedRoute roles={["admin", "hr_admin", "superadmin"]}>
                 <TeamView />
               </ProtectedRoute>
             }
@@ -118,7 +195,7 @@ export default function App() {
           <Route
             path="audit"
             element={
-              <ProtectedRoute roles={["superadmin"]}>
+              <ProtectedRoute roles={["hr_admin", "superadmin"]}>
                 <AuditLog />
               </ProtectedRoute>
             }
@@ -128,6 +205,14 @@ export default function App() {
             element={
               <ProtectedRoute roles={["superadmin"]}>
                 <UserManagement />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="hr"
+            element={
+              <ProtectedRoute roles={["hr_admin", "hr"]}>
+                <HRPortal />
               </ProtectedRoute>
             }
           />

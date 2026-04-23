@@ -5,9 +5,12 @@ import { getTeamReport } from '../../api/reportApi.js';
 import { useAuth } from '../../hooks/useAuth.js';
 import KpiCard from '../../components/common/KpiCard.jsx';
 import Spinner from '../../components/common/Spinner.jsx';
+import { isHrAdminRole, normalizeRole } from '../../utils/roles.js';
 
 export default function TeamView() {
   const { user, isSuperAdmin } = useAuth();
+  const role = normalizeRole(user?.role);
+  const isHrAdmin = isHrAdminRole(role);
   const [selectedTeam, setSelectedTeam] = useState(user.team);
   const [report, setReport] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -23,9 +26,9 @@ export default function TeamView() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-bold text-gray-900">Team View — Last 7 Days</h1>
-        {isSuperAdmin && (
+        {(isSuperAdmin || isHrAdmin) && (
           <div className="flex gap-1">
-            {['Sales', 'Marketing', 'Production'].map(t => (
+            {['Sales', 'Marketing', 'Production', 'HR'].map(t => (
               <button
                 key={t}
                 onClick={() => setSelectedTeam(t)}

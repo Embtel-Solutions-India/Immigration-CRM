@@ -5,6 +5,7 @@ import { useAuth } from "../../hooks/useAuth.js";
 import { showToast } from "../../store/uiSlice.js";
 import Spinner from "../../components/common/Spinner.jsx";
 import api from "../../api/axios.js";
+import { isHrAdminRole, normalizeRole } from "../../utils/roles.js";
 
 const STAT_FIELDS = [
   { key: "tasksCompleted", label: "Tasks Done" },
@@ -32,8 +33,9 @@ function isoDate(d) {
 }
 
 export default function EodReport() {
-  const { user, isAdmin, isSuperAdmin } = useAuth();
-  const isAdminOnly = user?.role === "admin";
+  const { user, isSuperAdmin } = useAuth();
+  const role = normalizeRole(user?.role);
+  const isTeamViewer = role === "admin" || isHrAdminRole(role);
   const dispatch = useDispatch();
   const [reports, setReports] = useState([]);
   const [selectedDate, setSelectedDate] = useState(isoDate(new Date()));
@@ -49,7 +51,7 @@ export default function EodReport() {
     try {
       const mine = await api.get(`/eod/user/${user._id}`).then((r) => r.data);
       setReports(mine.reports || []);
-      if (isAdminOnly) {
+      if (isTeamViewer) {
         const team = await api
           .get("/eod/team", { params: { date: selectedDate } })
           .then((r) => r.data);
@@ -57,7 +59,7 @@ export default function EodReport() {
       } else {
         setTeamReports([]);
       }
-      if (isSuperAdmin) {
+      if (isSuperAdmin || isHrAdminRole(role)) {
         const summary = await api
           .get("/eod/teams/summary", { params: { date: selectedDate } })
           .then((r) => r.data);
@@ -215,9 +217,22 @@ export default function EodReport() {
                         <p className="text-xs font-medium text-gray-500 mb-1">
                           Summary
                         </p>
-                        <p className="text-sm text-gray-700 whitespace-pre-line">
-                          {report.rawSummary}
-                        </p>
+                        {Array.isArray(report.rawSummary) ? (
+                          <div className="text-sm text-gray-700 space-y-1">
+                            {report.rawSummary.map((item, idx) => (
+                              <div key={idx} className="flex items-center justify-between gap-2">
+                                <span className="truncate">{item?.title || "Untitled"}</span>
+                                <span className="text-xs text-gray-500">
+                                  {item?.workType || "-"} • {item?.status || "-"}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        ) : (
+                          <p className="text-sm text-gray-700 whitespace-pre-line">
+                            {String(report.rawSummary)}
+                          </p>
+                        )}
                       </div>
                     )}
                   </>
@@ -228,7 +243,7 @@ export default function EodReport() {
         </>
       )}
 
-      {!loading && isAdminOnly && (
+      {!loading && isTeamViewer && (
         <div className="card p-5">
           <h2 className="font-semibold text-gray-900 mb-4">
             Team EOD — {formatDate(selectedDate)}
@@ -292,7 +307,7 @@ export default function EodReport() {
         </div>
       )}
 
-      {!loading && isSuperAdmin && (
+      {!loading && (isSuperAdmin || isHrAdminRole(role)) && (
         <div className="card p-5">
           <h2 className="font-semibold text-gray-900 mb-4">
             Team Totals — {formatDate(selectedDate)}

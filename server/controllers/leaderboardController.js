@@ -2,6 +2,7 @@ const WorkUnit = require('../models/WorkUnit');
 const User = require('../models/User');
 const { startOfISOWeek, startOfMonth } = require('date-fns');
 const calcScore = require('../utils/scoreCalculator');
+const { normalizeRole, isHrRole } = require('../utils/roles');
 
 function resolveStartDate(period) {
   const now = new Date();
@@ -12,9 +13,10 @@ function resolveStartDate(period) {
 }
 
 function ensureLeaderboardAccess(req, res, team) {
-  const role = req.user?.role;
+  const role = normalizeRole(req.user?.role);
   const userTeam = req.user?.team;
   if (role === 'superadmin') return true;
+  if (isHrRole(role)) return true;
   if (role === 'admin' && userTeam === team) return true;
   res.status(403).json({ error: 'Insufficient permissions' });
   return false;
@@ -26,11 +28,14 @@ async function buildSalesLeaderboard(period, metric) {
     team: 'Sales',
     kind: 'SalesUnit',
     date: { $gte: startDate, $lte: now },
-  }).populate('userId', 'name team');
+  }).populate('userId', 'name team role');
 
   const byUser = {};
   for (const u of units) {
     if (!u.userId) continue;
+    if (u.userId.team !== 'Sales') continue;
+    if (isHrRole(u.userId.role)) continue;
+    if (normalizeRole(u.userId.role) === 'superadmin') continue;
     const uid = u.userId._id.toString();
     if (!byUser[uid]) {
       byUser[uid] = { userId: uid, name: u.userId.name, callsMade: 0, emailsSent: 0, leadsAdded: 0, dealValue: 0, dealsWon: 0, units: [] };
@@ -54,11 +59,14 @@ async function buildMarketingLeaderboard(period, metric) {
     team: 'Marketing',
     kind: 'MarketingUnit',
     date: { $gte: startDate, $lte: now },
-  }).populate('userId', 'name team');
+  }).populate('userId', 'name team role');
 
   const byUser = {};
   for (const u of units) {
     if (!u.userId) continue;
+    if (u.userId.team !== 'Marketing') continue;
+    if (isHrRole(u.userId.role)) continue;
+    if (normalizeRole(u.userId.role) === 'superadmin') continue;
     const uid = u.userId._id.toString();
     if (!byUser[uid]) {
       byUser[uid] = {
@@ -110,11 +118,14 @@ async function buildProductionLeaderboard(period, metric) {
     team: 'Production',
     kind: 'ProductionUnit',
     date: { $gte: startDate, $lte: now },
-  }).populate('userId', 'name team');
+  }).populate('userId', 'name team role');
 
   const byUser = {};
   for (const u of units) {
     if (!u.userId) continue;
+    if (u.userId.team !== 'Production') continue;
+    if (isHrRole(u.userId.role)) continue;
+    if (normalizeRole(u.userId.role) === 'superadmin') continue;
     const uid = u.userId._id.toString();
     if (!byUser[uid]) {
       byUser[uid] = {
@@ -195,7 +206,7 @@ exports.ceoTopPerformers = async (req, res, next) => {
     const result = {};
 
     for (const team of ['Sales', 'Marketing', 'Production']) {
-      const users = await User.find({ team, isActive: true });
+      const users = await User.find({ team, isActive: true, role: { $nin: ['superadmin', 'hr', 'hr_admin', 'hr_user'] } });
       let best = null;
       let bestScore = -1;
 

@@ -8,6 +8,7 @@ import {
 } from "../../api/orgApi.js";
 import Spinner from "../../components/common/Spinner.jsx";
 import { useAuth } from "../../hooks/useAuth.js";
+import { isHrRole, normalizeRole } from "../../utils/roles.js";
 
 const RANK_STYLES = [
   "bg-yellow-50 border-yellow-300 text-yellow-700",
@@ -40,8 +41,9 @@ const PRODUCTION_METRICS = [
 export default function Leaderboard() {
   const navigate = useNavigate();
   const { user } = useAuth();
-  const isCeo = user?.role === "superadmin";
-  const team = isCeo ? "CEO" : user?.team;
+  const role = normalizeRole(user?.role);
+  const isGlobalViewer = role === "superadmin" || isHrRole(role);
+  const team = role === "superadmin" ? "CEO" : isHrRole(role) ? "HR" : user?.team;
 
   const [salesData, setSalesData] = useState([]);
   const [marketingData, setMarketingData] = useState([]);
@@ -64,7 +66,7 @@ export default function Leaderboard() {
 
   useEffect(() => {
     setLoading(true);
-    if (isCeo) {
+    if (isGlobalViewer) {
       Promise.all([
         getSalesLeaderboard({ metric: salesMetric, period }),
         getMarketingLeaderboard({ metric: marketingMetric, period }),
@@ -96,7 +98,7 @@ export default function Leaderboard() {
     getSalesLeaderboard({ metric: salesMetric, period })
       .then((res) => setSingleData(res.leaderboard || []))
       .finally(() => setLoading(false));
-  }, [isCeo, marketingMetric, period, salesMetric, productionMetric, team]);
+  }, [isGlobalViewer, marketingMetric, period, salesMetric, productionMetric, team]);
 
   const formatValue = (metric, val) => {
     if (metric === "dealValue" || metric === "campaignCost")
@@ -170,7 +172,7 @@ export default function Leaderboard() {
         <div className="flex items-center gap-2">
           <Trophy size={20} className="text-brand-600" />
           <h1 className="text-xl font-bold text-gray-900">
-            {isCeo ? "CEO Leaderboards" : `${team} Leaderboard`}
+            {isGlobalViewer ? `${team} Leaderboards` : `${team} Leaderboard`}
           </h1>
         </div>
         <div className="flex gap-1">
@@ -190,7 +192,7 @@ export default function Leaderboard() {
         <div className="flex justify-center py-16">
           <Spinner size="lg" />
         </div>
-      ) : isCeo ? (
+      ) : isGlobalViewer ? (
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
           {renderBoard(
             "Sales Leaderboard",

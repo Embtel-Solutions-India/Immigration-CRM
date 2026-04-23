@@ -14,6 +14,7 @@ import { showToast } from "../../store/uiSlice.js";
 import { useAuth } from "../../hooks/useAuth.js";
 import Modal from "../../components/common/Modal.jsx";
 import Spinner from "../../components/common/Spinner.jsx";
+import { isHrAdminRole, normalizeRole } from "../../utils/roles.js";
 
 const STATUS_STYLES = {
   Pending: "bg-yellow-100 text-yellow-700",
@@ -53,8 +54,11 @@ function getReviewLabel(req) {
 
 export default function LeavePage() {
   const dispatch = useDispatch();
-  const { user, isAdmin, isSuperAdmin } = useAuth();
-  const isAdminOnly = user?.role === "admin";
+  const { user, isSuperAdmin } = useAuth();
+  const role = normalizeRole(user?.role);
+  const isTeamAdmin = role === "admin";
+  const canReviewLeaves = isHrAdminRole(role) || isSuperAdmin;
+  const canViewTeamLeaves = isTeamAdmin || canReviewLeaves || isSuperAdmin;
   const [myLeaves, setMyLeaves] = useState([]);
   const [pending, setPending] = useState([]);
   const [calendar, setCalendar] = useState([]);
@@ -77,15 +81,19 @@ export default function LeavePage() {
     try {
       const mine = await getUserLeaves(user._id);
       setMyLeaves(mine);
-      if (isAdminOnly) {
+      if (canViewTeamLeaves) {
         const [cal, p] = await Promise.all([
           getTeamCalendar(calParams),
-          getPendingLeaves(),
+          canReviewLeaves ? getPendingLeaves() : Promise.resolve([]),
         ]);
         setCalendar(cal);
         setPending(p);
         const allTeam = await getTeamLeaves();
         setTeamLeaves(allTeam);
+      } else {
+        setCalendar([]);
+        setPending([]);
+        setTeamLeaves([]);
       }
       if (isSuperAdmin) {
         const all = await getAllLeaves();
@@ -176,7 +184,7 @@ export default function LeavePage() {
       ) : (
         <>
           {/* Pending Approvals (admin) */}
-          {isAdminOnly && (
+          {canReviewLeaves && (
             <div className="card p-5">
               <h2 className="font-semibold text-gray-900 mb-4">
                 Pending Approvals ({pending.length})
@@ -249,7 +257,7 @@ export default function LeavePage() {
           )}
 
           {/* Team Calendar */}
-          {isAdminOnly && calendar.length > 0 && (
+          {canViewTeamLeaves && calendar.length > 0 && (
             <div className="card p-5">
               <h2 className="font-semibold text-gray-900 mb-4">
                 Team Availability —{" "}
@@ -290,7 +298,7 @@ export default function LeavePage() {
           )}
 
           {/* Admin overview (requests, approvals, rejections) */}
-          {isAdminOnly && (
+          {canViewTeamLeaves && (
             <div className="card p-5">
               <h2 className="font-semibold text-gray-900 mb-4">
                 Team Leave Requests
