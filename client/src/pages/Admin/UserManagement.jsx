@@ -4,6 +4,7 @@ import Modal from '../../components/common/Modal.jsx';
 import Spinner from '../../components/common/Spinner.jsx';
 import { useDispatch } from 'react-redux';
 import { showToast } from '../../store/uiSlice.js';
+import { normalizeRole } from '../../utils/roles.js';
 
 export default function UserManagement() {
   const dispatch = useDispatch();
@@ -23,7 +24,9 @@ export default function UserManagement() {
   };
 
   const changeRole = async (u, role) => {
-    await updateUser(u._id, { role });
+    const payload = { role };
+    if (role === 'hr_user') payload.team = 'HR';
+    await updateUser(u._id, payload);
     dispatch(showToast({ message: `${u.name} is now ${role}` }));
     fetch();
   };
@@ -79,15 +82,22 @@ export default function UserManagement() {
                 <td className="px-4 py-3 text-gray-500">{u.email}</td>
                 <td className="px-4 py-3 text-gray-500">{u.team}</td>
                 <td className="px-4 py-3">
+                  {(() => {
+                    const role = normalizeRole(u.role);
+                    return (
                   <select
                     className="text-xs border border-gray-200 rounded px-2 py-1 bg-white"
-                    value={u.role}
+                    value={role}
                     onChange={e => changeRole(u, e.target.value)}
                   >
                     <option value="user">User</option>
                     <option value="admin">Admin</option>
+                    <option value="hr_user">HR User</option>
+                    <option value="hr_admin">HR Admin</option>
                     <option value="superadmin">Super Admin</option>
                   </select>
+                    );
+                  })()}
                 </td>
                 <td className="px-4 py-3">
                   <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${u.isActive ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500'}`}>
@@ -129,7 +139,7 @@ export default function UserManagement() {
               <div>
                 <label className="label">Team</label>
                 <select className="input" value={newUser.team} onChange={e => setNewUser(f => ({ ...f, team: e.target.value }))}>
-                  <option>Sales</option><option>Marketing</option><option>Production</option>
+                  <option>Sales</option><option>Marketing</option><option>Production</option><option>HR</option>
                 </select>
               </div>
               <div>
@@ -137,6 +147,8 @@ export default function UserManagement() {
                 <select className="input" value={newUser.role} onChange={e => setNewUser(f => ({ ...f, role: e.target.value }))}>
                   <option value="user">User</option>
                   <option value="admin">Admin</option>
+                  <option value="hr_user">HR User</option>
+                  <option value="hr_admin">HR Admin</option>
                   <option value="superadmin">Super Admin</option>
                 </select>
               </div>

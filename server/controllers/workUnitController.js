@@ -1,7 +1,8 @@
 const WorkUnit = require('../models/WorkUnit');
 const logActivity = require('../utils/activityLogger');
+const { normalizeRole } = require('../utils/roles');
 
-const kindMap = { Sales: 'SalesUnit', Marketing: 'MarketingUnit', Production: 'ProductionUnit' };
+const kindMap = { Sales: 'SalesUnit', Marketing: 'MarketingUnit', Production: 'ProductionUnit', HR: 'HRUnit' };
 
 exports.list = async (req, res, next) => {
   try {
@@ -17,9 +18,10 @@ exports.list = async (req, res, next) => {
       if (from) filter.date.$gte = new Date(from);
       if (to) filter.date.$lte = new Date(to);
     }
-    if (team && req.user.role !== 'user') filter.team = team;
+    const actorRole = normalizeRole(req.user.role);
+    if (team && actorRole !== 'user' && actorRole !== 'hr_user') filter.team = team;
     if (status) filter.status = status;
-    if (userId && req.user.role !== 'user') filter.userId = userId;
+    if (userId && actorRole !== 'user' && actorRole !== 'hr_user') filter.userId = userId;
     if (kind) filter.kind = kind;
 
     const skip = (parseInt(page) - 1) * parseInt(limit);
@@ -59,7 +61,8 @@ exports.getById = async (req, res, next) => {
 
 exports.update = async (req, res, next) => {
   try {
-    const filter = req.user.role === 'user'
+    const actorRole = normalizeRole(req.user.role);
+    const filter = actorRole === 'user' || actorRole === 'hr_user'
       ? { _id: req.params.id, userId: req.user._id }
       : { _id: req.params.id };
     const unit = await WorkUnit.findOneAndUpdate(filter, req.body, { new: true, runValidators: true });

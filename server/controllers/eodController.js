@@ -2,6 +2,7 @@ const EodReport = require('../models/EodReport');
 const WorkUnit = require('../models/WorkUnit');
 const User = require('../models/User');
 const { sendEodEmail } = require('../utils/emailService');
+const { normalizeRole } = require('../utils/roles');
 
 async function buildEodReport(userId, date) {
   const d = new Date(date);
@@ -27,10 +28,11 @@ async function buildEodReport(userId, date) {
 exports.generate = async (req, res, next) => {
   try {
     const userId = req.params.userId;
-    if (req.user.role === 'user' && req.user._id.toString() !== userId) {
+    const actorRole = normalizeRole(req.user.role);
+    if ((actorRole === 'user' || actorRole === 'hr_user') && req.user._id.toString() !== userId) {
       return res.status(403).json({ error: 'Forbidden' });
     }
-    if (req.user.role === 'admin') {
+    if (actorRole === 'admin') {
       const target = await User.findById(userId, 'team');
       if (!target || target.team !== req.user.team) {
         return res.status(403).json({ error: 'Forbidden' });
@@ -59,10 +61,11 @@ exports.getForUser = async (req, res, next) => {
   try {
     const userId = req.params.userId;
     const { date } = req.query;
-    if (req.user.role === 'user' && req.user._id.toString() !== userId) {
+    const actorRole = normalizeRole(req.user.role);
+    if ((actorRole === 'user' || actorRole === 'hr_user') && req.user._id.toString() !== userId) {
       return res.status(403).json({ error: 'Forbidden' });
     }
-    if (req.user.role === 'admin') {
+    if (actorRole === 'admin') {
       const target = await User.findById(userId, 'team');
       if (!target || target.team !== req.user.team) {
         return res.status(403).json({ error: 'Forbidden' });
@@ -84,7 +87,8 @@ exports.getForUser = async (req, res, next) => {
 exports.getTeamDay = async (req, res, next) => {
   try {
     const { date } = req.query;
-    const teamFilter = req.user.role === 'admin' ? { team: req.user.team } : {};
+    const actorRole = normalizeRole(req.user.role);
+    const teamFilter = actorRole === 'admin' ? { team: req.user.team } : {};
     const users = await User.find({ ...teamFilter, isActive: true }, '_id name');
     const userIds = users.map(u => u._id);
 
@@ -107,7 +111,7 @@ exports.getTeamSummary = async (req, res, next) => {
 
     const teamTotals = new Map();
     const teamCategories = new Map();
-    ['Sales', 'Marketing', 'Production'].forEach(team => {
+    ['Sales', 'Marketing', 'Production', 'HR'].forEach(team => {
       teamTotals.set(team, 0);
       teamCategories.set(team, {});
     });

@@ -5,6 +5,7 @@ import { useAuth } from "../../hooks/useAuth.js";
 import { showToast } from "../../store/uiSlice.js";
 import Spinner from "../../components/common/Spinner.jsx";
 import api from "../../api/axios.js";
+import { isHrAdminRole, normalizeRole } from "../../utils/roles.js";
 
 const ACTIONS = [
   "",
@@ -44,7 +45,8 @@ function formatTs(ts) {
 }
 
 export default function AuditLog() {
-  const { isSuperAdmin } = useAuth();
+  const { user, isSuperAdmin } = useAuth();
+  const canAccessAudit = isSuperAdmin || isHrAdminRole(normalizeRole(user?.role));
   const dispatch = useDispatch();
   const [logs, setLogs] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -71,8 +73,8 @@ export default function AuditLog() {
   };
 
   useEffect(() => {
-    if (isSuperAdmin) load();
-  }, [page, filters, isSuperAdmin]);
+    if (canAccessAudit) load();
+  }, [page, filters, canAccessAudit]);
 
   const handleExport = async () => {
     try {
@@ -89,11 +91,11 @@ export default function AuditLog() {
     }
   };
 
-  if (!isSuperAdmin) {
+  if (!canAccessAudit) {
     return (
       <div className="flex flex-col items-center justify-center py-24 text-gray-400">
         <ShieldCheck size={40} className="mb-3 opacity-40" />
-        <p className="font-medium">Superadmin access required</p>
+        <p className="font-medium">Insufficient access</p>
       </div>
     );
   }

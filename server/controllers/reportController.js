@@ -2,6 +2,7 @@ const WorkUnit = require('../models/WorkUnit');
 const Case = require('../models/Case');
 const User = require('../models/User');
 const calcScore = require('../utils/scoreCalculator');
+const { normalizeRole } = require('../utils/roles');
 
 function dateFilter(from, to) {
   const f = {};
@@ -14,7 +15,8 @@ exports.userReport = async (req, res, next) => {
   try {
     const { from, to } = req.query;
     const userId = req.params.userId;
-    if (req.user.role === 'user' && req.user._id.toString() !== userId) {
+    const actorRole = normalizeRole(req.user.role);
+    if ((actorRole === 'user' || actorRole === 'hr_user') && req.user._id.toString() !== userId) {
       return res.status(403).json({ error: 'Forbidden' });
     }
     const df = dateFilter(from, to);
@@ -40,16 +42,16 @@ exports.teamReport = async (req, res, next) => {
   try {
     const { from, to } = req.query;
     const { team } = req.params;
-    if (req.user.role === 'admin' && req.user.team !== team) return res.status(403).json({ error: 'Forbidden' });
+    const actorRole = normalizeRole(req.user.role);
+    if (actorRole === 'admin' && req.user.team !== team) return res.status(403).json({ error: 'Forbidden' });
 
     const df = dateFilter(from, to);
     const filter = { team };
     if (df) filter.date = df;
 
-    const [units, members] = await Promise.all([
-      WorkUnit.find(filter),
-      User.find({ team, isActive: true }, 'name _id'),
-    ]);
+    const members = await User.find({ team, isActive: true, role: { $nin: ['superadmin', 'hr', 'hr_admin', 'hr_user'] } }, 'name _id');
+    const memberIds = members.map((m) => m._id);
+    const units = await WorkUnit.find({ ...filter, userId: { $in: memberIds } });
 
     const byUser = {};
     members.forEach(m => { byUser[m._id] = { name: m.name, units: [], score: 0 }; });
@@ -104,7 +106,7 @@ exports.orgReport = async (req, res, next) => {
     const overdueCases = cases.filter(c => c.deadline && c.deadline < new Date() && c.stage !== 'Delivered').length;
 
     const teamScores = {};
-    ['Sales','Marketing','Production'].forEach(team => {
+    ['Sales', 'Marketing', 'Production', 'HR'].forEach(team => {
       const tu = allUnits.filter(u => u.team === team);
       const hrs = tu.reduce((s,w) => { if(w.startTime&&w.endTime) s+=(w.endTime-w.startTime)/3600000; return s; }, 0);
       teamScores[team] = calcScore(tu, hrs);
@@ -143,9 +145,10 @@ exports.activity = async (req, res, next) => {
   try {
     const ActivityLog = require('../models/ActivityLog');
     const { userId, team, limit = 50 } = req.query;
+    const actorRole = normalizeRole(req.user.role);
     const filter = { ...req.scopeFilter };
-    if (userId && req.user.role !== 'user') filter.userId = userId;
-    if (team && req.user.role !== 'user') filter.team = team;
+    if (userId && actorRole !== 'user' && actorRole !== 'hr_user') filter.userId = userId;
+    if (team && actorRole !== 'user' && actorRole !== 'hr_user') filter.team = team;
     const logs = await ActivityLog.find(filter)
       .sort({ createdAt: -1 })
       .limit(parseInt(limit))

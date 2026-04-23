@@ -56,12 +56,20 @@ async function seed() {
 
   // ── Users ─────────────────────────────────────────────────────────────────
   const salesUsers = await User.insertMany([
-    { name: 'Rahul Sharma',    email: 'rahul@newyorkareaimmigrationservices.com', passwordHash: pw('Admin@123'), role: 'superadmin', team: 'Sales' },
+    { name: 'Rahul Sharma',    email: 'rahul@newyorkareaimmigrationservices.com', passwordHash: pw('Admin@123'), role: 'superadmin' },
     { name: 'Amit Patel',      email: 'amit@nyais.com',    passwordHash: pw('Demo@123'), role: 'admin', team: 'Sales' },
     { name: 'Sarah Johnson',   email: 'sarah@nyais.com',   passwordHash: pw('Demo@123'), role: 'user',  team: 'Sales' },
     { name: 'Marcus Williams', email: 'marcus@nyais.com',  passwordHash: pw('Demo@123'), role: 'user',  team: 'Sales' },
     { name: 'Priya Singh',     email: 'priya@nyais.com',   passwordHash: pw('Demo@123'), role: 'user',  team: 'Sales' },
   ]);
+
+  const hrUser = await User.create({
+    name: 'Devanshi Sharma',
+    email: 'hr@nyais.com',
+    passwordHash: pw('Demo@123'),
+    role: 'hr_admin',
+    team: 'HR',
+  });
 
   const mktUsers = await User.insertMany([
     { name: 'Lisa Chen',       email: 'lisa@nyais.com',    passwordHash: pw('Demo@123'), role: 'admin', team: 'Marketing' },
@@ -77,7 +85,7 @@ async function seed() {
     { name: 'Aisha Mohammed',  email: 'aisha@nyais.com',   passwordHash: pw('Demo@123'), role: 'user',  team: 'Production' },
   ]);
 
-  console.log(`Users created: ${salesUsers.length + mktUsers.length + prodUsers.length}`);
+  console.log(`Users created: ${salesUsers.length + mktUsers.length + prodUsers.length + 1}`);
 
   const superAdmin = salesUsers[0];
   const salesAdmin = salesUsers[1];
@@ -86,7 +94,7 @@ async function seed() {
   const allSales   = salesUsers;
   const allMkt     = mktUsers;
   const allProd    = prodUsers;
-  const allUsers   = [...allSales, ...allMkt, ...allProd];
+  const allUsers   = [...allSales, ...allMkt, ...allProd, hrUser];
 
   // ── Cases ─────────────────────────────────────────────────────────────────
   const STAGES = [
@@ -409,6 +417,8 @@ async function seed() {
   console.log('\nLogin credentials:');
   console.log('\nSUPERADMIN (sees all teams, CEO dashboard):');
   console.log('  rahul@newyorkareaimmigrationservices.com  |  Admin@123');
+  console.log('\nHR demo (standalone HR role, no team):');
+  console.log('  hr@nyais.com  |  Demo@123');
   console.log('\nSALES team (password: Demo@123):');
   console.log('  Admin : amit@nyais.com');
   console.log('  Users : sarah@nyais.com | marcus@nyais.com | priya@nyais.com');

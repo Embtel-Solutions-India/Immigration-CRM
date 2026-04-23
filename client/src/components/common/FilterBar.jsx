@@ -2,7 +2,7 @@ import React from 'react';
 import { useAuth } from '../../hooks/useAuth.js';
 
 export default function FilterBar({ filters, onChange }) {
-  const { isAdmin, isSuperAdmin } = useAuth();
+  const { isSuperAdmin, isHrAdmin } = useAuth();
 
   const update = (key, val) => onChange({ ...filters, [key]: val });
 
@@ -26,7 +26,7 @@ export default function FilterBar({ filters, onChange }) {
           <option>Blocked</option>
         </select>
       </div>
-      {isSuperAdmin && (
+      {(isSuperAdmin || isHrAdmin) && (
         <div>
           <label className="label">Team</label>
           <select className="input w-32" value={filters.team || ''} onChange={e => update('team', e.target.value)}>
@@ -34,6 +34,7 @@ export default function FilterBar({ filters, onChange }) {
             <option>Sales</option>
             <option>Marketing</option>
             <option>Production</option>
+            <option>HR</option>
           </select>
         </div>
       )}

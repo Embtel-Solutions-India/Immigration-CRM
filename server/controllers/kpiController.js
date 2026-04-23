@@ -2,6 +2,7 @@ const KpiTarget = require('../models/KpiTarget');
 const WorkUnit = require('../models/WorkUnit');
 const { getISOWeek } = require('date-fns');
 const logAudit = require('../utils/auditLogger');
+const { normalizeRole } = require('../utils/roles');
 
 const TEAM_METRICS = {
   Sales: ['callsMade', 'emailsSent', 'leadsAdded', 'dailyRevenue', 'dealsWon'],
@@ -33,6 +34,10 @@ exports.setTarget = async (req, res, next) => {
 
 exports.getUserTargets = async (req, res, next) => {
   try {
+    const actorRole = normalizeRole(req.user.role);
+    const isHrTeamUser = actorRole === 'hr_user' || (actorRole === 'user' && req.user.team === 'HR');
+    if (isHrTeamUser) return res.status(403).json({ error: 'Forbidden' });
+
     const { period = 'weekly' } = req.query;
     const now = new Date();
     const year = now.getFullYear();
@@ -55,9 +60,17 @@ exports.getTeamTargets = async (req, res, next) => {
     else filter.month = now.getMonth() + 1;
 
     const targets = await KpiTarget.find(filter)
-      .populate('userId', 'name team')
+      .populate('userId', 'name team role')
       .populate('setByAdmin', 'name');
-    res.json(targets);
+    res.json(
+      targets.filter(
+        (t) =>
+          t.userId &&
+          t.userId.team === req.params.team &&
+          normalizeRole(t.userId.role) !== 'superadmin' &&
+          !['hr_admin', 'hr_user'].includes(normalizeRole(t.userId.role))
+      )
+    );
   } catch (e) { next(e); }
 };
 

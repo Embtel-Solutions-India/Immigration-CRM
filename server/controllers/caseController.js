@@ -1,8 +1,15 @@
 const Case = require('../models/Case');
 const logActivity = require('../utils/activityLogger');
+const { normalizeRole } = require('../utils/roles');
+
+function isHrTeamUser(user) {
+  const role = normalizeRole(user?.role);
+  return role === 'hr_user' || (role === 'user' && user?.team === 'HR');
+}
 
 exports.list = async (req, res, next) => {
   try {
+    if (isHrTeamUser(req.user)) return res.status(403).json({ error: 'Forbidden' });
     const { stage, assignedManager, overdue, priority, page = 1, limit = 50 } = req.query;
     const filter = {};
 
@@ -46,6 +53,7 @@ exports.create = async (req, res, next) => {
 
 exports.getById = async (req, res, next) => {
   try {
+    if (isHrTeamUser(req.user)) return res.status(403).json({ error: 'Forbidden' });
     const c = await Case.findById(req.params.id)
       .populate('assignedManager', 'name')
       .populate('stageHistory.movedBy', 'name')
@@ -86,6 +94,7 @@ exports.update = async (req, res, next) => {
 
 exports.addStatusUpdate = async (req, res, next) => {
   try {
+    if (isHrTeamUser(req.user)) return res.status(403).json({ error: 'Forbidden' });
     const c = await Case.findById(req.params.id);
     if (!c) return res.status(404).json({ error: 'Not found' });
     const { stage, note } = req.body;
