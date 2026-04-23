@@ -14,7 +14,7 @@ export default function MultiSeriesSalesChart({ view = 'org', entityId, isAdmin,
   const [weekTargets, setWeekTargets] = useState([]);
   const [metric, setMetric] = useState('dealValue');
   const [loading, setLoading] = useState(true);
-  const [hidden, setHidden] = useState({});
+  const [activeSeries, setActiveSeries] = useState([]);
   const month = new Date().getMonth() + 1;
   const year  = new Date().getFullYear();
 
@@ -32,12 +32,17 @@ export default function MultiSeriesSalesChart({ view = 'org', entityId, isAdmin,
 
     fetcher.then(res => {
       if (view === 'org') {
+        const nextSeries = ['Sales'];
         setData(res.data || []);
-        setSeries(['Sales']);
+        setSeries(nextSeries);
+        setActiveSeries(nextSeries);
         setWeekTargets(res.weekTargets || []);
       } else if (view === 'team') {
         const members = res.members || [];
-        setSeries(members.map(m => m.name));
+        const nextSeries = members.map(m => m.name);
+        setSeries(nextSeries);
+        // Default behavior on load: show all team members.
+        setActiveSeries(nextSeries);
         const days = Object.values(res.series || {})[0]?.length || 31;
         const merged = Array.from({ length: days }, (_, i) => {
           const row = { day: i + 1 };
@@ -47,14 +52,34 @@ export default function MultiSeriesSalesChart({ view = 'org', entityId, isAdmin,
         setData(merged);
         setWeekTargets([]);
       } else {
+        const nextSeries = ['Me'];
         setData((res.daily || []).map(d => ({ day: d.day, Me: d.value })));
-        setSeries(['Me']);
+        setSeries(nextSeries);
+        setActiveSeries(nextSeries);
         setWeekTargets(res.weekTargets || []);
       }
     }).finally(() => setLoading(false));
   }, [view, entityId, metric, month, year]);
 
-  const toggleSeries = (name) => setHidden(h => ({ ...h, [name]: !h[name] }));
+  const selectSeries = (name) => {
+    setActiveSeries(prev => {
+      // If currently showing all, first click should isolate the selected user.
+      if (prev.length === series.length && prev.includes(name)) {
+        return [name];
+      }
+      if (prev.includes(name)) {
+        // Keep at least one active series visible.
+        return prev.length > 1 ? prev.filter(s => s !== name) : prev;
+      }
+      return [...prev, name];
+    });
+  };
+
+  const selectAllSeries = () => {
+    setActiveSeries(prev =>
+      prev.length === series.length ? series.slice(0, 1) : series
+    );
+  };
 
   const mergedData = data.map(d => {
     const target = weekTargets.find(t => t.day === d.day);
@@ -76,11 +101,23 @@ export default function MultiSeriesSalesChart({ view = 'org', entityId, isAdmin,
           ))}
         </div>
         <div className="flex gap-2 flex-wrap">
+          {series.length > 1 && (
+            <button
+              onClick={selectAllSeries}
+              className={`flex items-center gap-1.5 text-xs px-2 py-1 rounded-lg border transition-opacity ${
+                activeSeries.length === series.length ? 'bg-gray-900 text-white border-gray-900' : 'border-gray-300 text-gray-600 hover:bg-gray-100'
+              }`}
+            >
+              All
+            </button>
+          )}
           {series.map((s, i) => (
             <button
               key={s}
-              onClick={() => toggleSeries(s)}
-              className={`flex items-center gap-1.5 text-xs px-2 py-1 rounded-lg border transition-opacity ${hidden[s] ? 'opacity-40' : ''}`}
+              onClick={() => selectSeries(s)}
+              className={`flex items-center gap-1.5 text-xs px-2 py-1 rounded-lg border transition-opacity ${
+                activeSeries.includes(s) ? '' : 'opacity-40'
+              }`}
               style={{ borderColor: COLORS[i % COLORS.length] }}
             >
               <span className="w-2.5 h-2.5 rounded-full" style={{ background: COLORS[i % COLORS.length] }} />
@@ -115,7 +152,7 @@ export default function MultiSeriesSalesChart({ view = 'org', entityId, isAdmin,
                 );
               }}
             />
-            {series.map((s, i) => !hidden[s] && (
+            {series.map((s, i) => activeSeries.includes(s) && (
               <Line
                 key={s}
                 type="monotone"
