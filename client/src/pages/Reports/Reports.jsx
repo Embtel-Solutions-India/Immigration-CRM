@@ -64,22 +64,22 @@ export default function Reports() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <h1 className="text-xl font-bold text-gray-900">
           {isSuperAdmin ? 'Organization Report' : isTeamReport ? `${(isAdmin ? user.team : selectedTeam)} Team Report` : 'My Report'}
         </h1>
-        <div className="flex gap-2 items-center">
+        <div className="flex flex-wrap gap-2 items-center">
           {isHrAdmin && (
-            <select className="input w-36" value={selectedTeam} onChange={e => setSelectedTeam(e.target.value)}>
+            <select className="input" value={selectedTeam} onChange={e => setSelectedTeam(e.target.value)}>
               <option>Sales</option>
               <option>Marketing</option>
               <option>Production</option>
               <option>HR</option>
             </select>
           )}
-          <input type="date" className="input w-36" value={from} onChange={e => setFrom(e.target.value)} />
+          <input type="date" className="input" value={from} onChange={e => setFrom(e.target.value)} />
           <span className="text-gray-400 text-sm">to</span>
-          <input type="date" className="input w-36" value={to} onChange={e => setTo(e.target.value)} />
+          <input type="date" className="input" value={to} onChange={e => setTo(e.target.value)} />
           <button onClick={exportCSV} className="btn-secondary">⬇ CSV</button>
         </div>
       </div>
@@ -100,7 +100,7 @@ export default function Reports() {
 
           {isTeamReport && data && (
             <>
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <KpiCard label="Members" value={data.memberStats?.length || 0} />
                 <KpiCard label="Total Units" value={data.totalUnits || 0} color="blue" />
                 <KpiCard
@@ -113,9 +113,9 @@ export default function Reports() {
                 <h2 className="font-semibold text-gray-900 mb-3">Team Members</h2>
                 <div className="space-y-2">
                   {(data.memberStats || []).map((m) => (
-                    <div key={m.userId} className="flex items-center justify-between p-3 rounded-lg border border-gray-100 bg-gray-50">
+                    <div key={m.userId} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 p-3 rounded-lg border border-gray-100 bg-gray-50">
                       <p className="text-sm font-medium text-gray-900">{m.name}</p>
-                      <p className="text-xs text-gray-600">Units: {m.total} | Completed: {m.completed} | Hours: {m.hoursTracked} | Score: {m.score}%</p>
+                      <p className="text-xs text-gray-600">Units: {m.total} | Done: {m.completed} | Hours: {m.hoursTracked} | Score: {m.score}%</p>
                     </div>
                   ))}
                 </div>

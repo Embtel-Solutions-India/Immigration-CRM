@@ -9,11 +9,11 @@ export default function KpiCard({ label, value, sub, trend, color = 'blue' }) {
     purple: 'bg-purple-50 text-purple-600',
   };
   return (
-    <div className="card p-5">
+    <div className="card p-3 sm:p-5">
       <div className="flex items-start justify-between">
-        <div>
-          <p className="text-xs font-medium text-gray-500 uppercase tracking-wide">{label}</p>
-          <p className="text-2xl font-bold text-gray-900 mt-1">{value ?? '—'}</p>
+        <div className="min-w-0">
+          <p className="text-xs font-medium text-gray-500 uppercase tracking-wide truncate">{label}</p>
+          <p className="text-xl sm:text-2xl font-bold text-gray-900 mt-1 truncate">{value ?? '—'}</p>
           {sub && <p className="text-xs text-gray-500 mt-0.5">{sub}</p>}
         </div>
         {trend !== undefined && (

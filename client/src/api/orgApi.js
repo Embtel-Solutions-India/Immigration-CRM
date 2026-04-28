@@ -9,6 +9,7 @@ export const getProductionLeaderboard = (params) => api.get('/leaderboard/produc
 export const getLeaderboard = (params) => getSalesLeaderboard(params);
 export const getTopPerformers = () => api.get('/leaderboard/ceo-top-performers').then(r => r.data);
 export const getHeatmap = (userId, params) => api.get(`/analytics/heatmap/${userId}`, { params }).then(r => r.data);
+export const getOrgHeatmap = (params) => api.get('/analytics/heatmap/org', { params }).then(r => r.data);
 export const getWebhookLogs = (params) => api.get('/webhooks/logs', { params }).then(r => r.data);
 export const retryWebhook = (logId) => api.post(`/webhooks/retry/${logId}`).then(r => r.data);
 export const getIntegrationStatus = () => api.get('/webhooks/integrations/status').then(r => r.data);

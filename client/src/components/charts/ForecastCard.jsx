@@ -18,8 +18,8 @@ export default function ForecastCard() {
   const conf = CONFIDENCE_STYLE[requested?.confidence || 'low'];
 
   return (
-    <div className="card p-5">
-      <div className="flex items-center justify-between mb-4">
+    <div className="card p-4 sm:p-5">
+      <div className="flex flex-col xs:flex-row xs:items-center xs:justify-between gap-2 mb-4">
         <div className="flex items-center gap-2">
           <TrendingUp size={16} className="text-brand-600" />
           <h2 className="font-semibold text-gray-900">Revenue Forecast</h2>
@@ -28,21 +28,25 @@ export default function ForecastCard() {
           {conf.icon}{conf.label}
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-4">
+
+      <div className="grid grid-cols-3 gap-2 sm:gap-4">
         {[
-          { label: '7-Day', value: precomputed?.days7?.forecast },
+          { label: '7-Day',  value: precomputed?.days7?.forecast },
           { label: '14-Day', value: precomputed?.days14?.forecast },
           { label: '30-Day', value: precomputed?.days30?.forecast },
         ].map(({ label, value }) => (
-          <div key={label} className="text-center bg-gray-50 rounded-xl p-3">
+          <div key={label} className="text-center bg-gray-50 rounded-xl p-2 sm:p-3">
             <p className="text-xs text-gray-500 mb-1">{label}</p>
-            <p className="text-xl font-bold text-gray-900">${(value || 0).toLocaleString()}</p>
+            <p className="text-base sm:text-xl font-bold text-gray-900 truncate">
+              ${(value || 0).toLocaleString()}
+            </p>
           </div>
         ))}
       </div>
-      <div className="mt-3 grid grid-cols-3 gap-2 text-xs text-gray-500">
-        <div>Hot leads: <span className="font-medium text-red-600">${(requested?.hotForecast || 0).toLocaleString()}</span></div>
-        <div>Warm leads: <span className="font-medium text-amber-600">${(requested?.warmForecast || 0).toLocaleString()}</span></div>
+
+      <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-500">
+        <div>Hot: <span className="font-medium text-red-600">${(requested?.hotForecast || 0).toLocaleString()}</span></div>
+        <div>Warm: <span className="font-medium text-amber-600">${(requested?.warmForecast || 0).toLocaleString()}</span></div>
         <div>Pipeline: <span className="font-medium text-blue-600">${(requested?.pipelineForecast || 0).toLocaleString()}</span></div>
       </div>
     </div>

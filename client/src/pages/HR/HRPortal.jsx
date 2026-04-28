@@ -472,7 +472,8 @@ export default function HRPortal() {
           </div>
 
           <div className="card overflow-hidden">
-            <table className="w-full text-sm">
+            <div className="overflow-x-auto">
+            <table className="w-full text-sm min-w-[640px]">
               <thead className="bg-gray-50 border-b border-gray-100">
                 <tr>
                   <th className="text-left px-4 py-3 font-medium text-gray-600">Name</th>
@@ -545,6 +546,7 @@ export default function HRPortal() {
                 })}
               </tbody>
             </table>
+            </div>
           </div>
         </div>
       )}
@@ -749,7 +751,7 @@ export default function HRPortal() {
       {showUserModal && (
         <Modal title="Add New User" onClose={() => setShowUserModal(false)}>
           <form onSubmit={handleCreateUser} className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="label">Full Name *</label>
                 <input className="input" required value={newUser.name} onChange={(e) => setNewUser((f) => ({ ...f, name: e.target.value }))} />

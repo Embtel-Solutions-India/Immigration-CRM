@@ -88,7 +88,7 @@ export default function WorkUnitForm() {
             <label className="label">Title *</label>
             <input className="input" required value={form.title} onChange={e => set('title', e.target.value)} placeholder="e.g. Follow-up call with Maria" />
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="label">Work Type</label>
               <select className="input" value={form.workType} onChange={e => set('workType', e.target.value)}>
@@ -124,7 +124,7 @@ export default function WorkUnitForm() {
         {form.team === 'Sales' && (
           <div className="card p-5 space-y-4">
             <h2 className="font-semibold text-gray-700 text-sm">Sales Details</h2>
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div><label className="label">Calls Made</label><input type="number" min="0" className="input" value={form.callsMade} onChange={e => set('callsMade', e.target.value)} /></div>
               <div><label className="label">Emails Sent</label><input type="number" min="0" className="input" value={form.emailsSent} onChange={e => set('emailsSent', e.target.value)} /></div>
               <div><label className="label">Leads Added</label><input type="number" min="0" className="input" value={form.leadsAdded} onChange={e => set('leadsAdded', e.target.value)} /></div>
@@ -160,12 +160,12 @@ export default function WorkUnitForm() {
               </div>
               <div><label className="label">Campaign Name</label><input className="input" value={form.campaignName} onChange={e => set('campaignName', e.target.value)} /></div>
             </div>
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div><label className="label">Emails Sent</label><input type="number" min="0" className="input" value={form.emailsSent} onChange={e => set('emailsSent', e.target.value)} /></div>
               <div><label className="label">Open Rate %</label><input type="number" min="0" max="100" className="input" value={form.openRate} onChange={e => set('openRate', e.target.value)} /></div>
               <div><label className="label">Click Rate %</label><input type="number" min="0" max="100" className="input" value={form.clickRate} onChange={e => set('clickRate', e.target.value)} /></div>
             </div>
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div><label className="label">Leads Generated</label><input type="number" min="0" className="input" value={form.leadsGenerated} onChange={e => set('leadsGenerated', e.target.value)} /></div>
               <div><label className="label">Conversions</label><input type="number" min="0" className="input" value={form.conversionsToSales} onChange={e => set('conversionsToSales', e.target.value)} /></div>
               <div><label className="label">Cost ($)</label><input type="number" min="0" className="input" value={form.campaignCost} onChange={e => set('campaignCost', e.target.value)} /></div>

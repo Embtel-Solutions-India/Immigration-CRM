@@ -152,7 +152,7 @@ export default function KpiPage() {
                 {users.map(u => <option key={u._id} value={u._id}>{u.name}</option>)}
               </select>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="label">Metric</label>
                 <select className="input" required value={form.metric} onChange={e => setForm(f => ({ ...f, metric: e.target.value }))}>

@@ -143,7 +143,7 @@ export default function EodReport() {
             <ChevronRight size={16} />
           </button>
         </div>
-        <div className="grid grid-cols-5 gap-2">
+        <div className="grid grid-cols-5 gap-1 sm:gap-2">
           {weekDays.map((d) => {
             const key = isoDate(d);
             const report = reportByDate[key];
@@ -153,7 +153,7 @@ export default function EodReport() {
               <button
                 key={key}
                 onClick={() => setSelectedDate(key)}
-                className={`p-3 rounded-xl border-2 text-center transition-all ${
+                className={`p-1.5 sm:p-3 rounded-xl border-2 text-center transition-all ${
                   isSelected
                     ? "border-brand-600 bg-brand-50"
                     : report

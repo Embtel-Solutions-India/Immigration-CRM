@@ -74,13 +74,13 @@ export default function MultiSeriesMarketingChart({ view = 'org', entityId }) {
 
   return (
     <div className="space-y-3">
-      <div className="flex items-center justify-between flex-wrap gap-2">
-        <div className="flex gap-1">
+      <div className="flex flex-col gap-2">
+        <div className="flex flex-wrap gap-1">
           {Object.entries(METRIC_LABELS).map(([k, label]) => (
             <button
               key={k}
               onClick={() => setMetric(k)}
-              className={`text-xs px-3 py-1.5 rounded-lg font-medium transition-colors ${metric === k ? 'bg-purple-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+              className={`text-xs px-2.5 py-1.5 rounded-lg font-medium transition-colors ${metric === k ? 'bg-purple-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
             >
               {label}
             </button>
@@ -107,7 +107,7 @@ export default function MultiSeriesMarketingChart({ view = 'org', entityId }) {
         </div>
       </div>
       {loading ? <div className="flex justify-center py-10"><Spinner /></div> : (
-        <ResponsiveContainer width="100%" height={240}>
+        <ResponsiveContainer width="100%" height={220}>
           <ComposedChart data={data} margin={{ top: 5, right: 10, left: 0, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
             <XAxis dataKey="day" tick={{ fontSize: 11 }} />

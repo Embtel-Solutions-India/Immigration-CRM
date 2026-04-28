@@ -129,7 +129,7 @@ export default function UserDashboard() {
       {report && Object.keys(report.byStatus || {}).length > 0 && (
         <div className="card p-5">
           <h2 className="font-semibold text-gray-900 mb-4">Today's Breakdown</h2>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
             {Object.entries(report.byStatus).map(([status, count]) => (
               <div key={status} className="text-center">
                 <div className="text-2xl font-bold text-gray-900">{count}</div>
