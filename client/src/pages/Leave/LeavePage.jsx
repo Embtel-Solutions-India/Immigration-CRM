@@ -256,46 +256,6 @@ export default function LeavePage() {
             </div>
           )}
 
-          {/* Team Calendar */}
-          {canViewTeamLeaves && calendar.length > 0 && (
-            <div className="card p-5">
-              <h2 className="font-semibold text-gray-900 mb-4">
-                Team Availability —{" "}
-                {now.toLocaleString("default", { month: "long" })}{" "}
-                {now.getFullYear()}
-              </h2>
-              <div className="space-y-2">
-                {calendar.map((entry, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center gap-3 py-2 border-b border-gray-100 last:border-0"
-                  >
-                    <div className="w-24 text-sm font-medium text-gray-700">
-                      {formatDate(entry.date)}
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {(entry.absent || []).map((name, j) => (
-                        <span
-                          key={j}
-                          className="text-xs bg-red-100 text-red-700 px-2 py-0.5 rounded-full"
-                        >
-                          {name}
-                        </span>
-                      ))}
-                      {(entry.halfDay || []).map((name, j) => (
-                        <span
-                          key={j}
-                          className="text-xs bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full"
-                        >
-                          {name} (half)
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
 
           {/* Admin overview (requests, approvals, rejections) */}
           {canViewTeamLeaves && (
