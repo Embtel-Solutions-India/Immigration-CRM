@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Trophy } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import {
@@ -56,6 +56,8 @@ export default function Leaderboard() {
 
   const [period, setPeriod] = useState("weekly");
   const [loading, setLoading] = useState(true);
+  const [fetching, setFetching] = useState(false);
+  const isFirstFetch = useRef(true);
 
   useEffect(() => {
     const allowedAdminTeams = ["Sales", "Marketing", "Production"];
@@ -65,39 +67,43 @@ export default function Leaderboard() {
   }, [navigate, user]);
 
   useEffect(() => {
-    setLoading(true);
+    const isInit = isFirstFetch.current;
+    isFirstFetch.current = false;
+
+    // Only show full-page spinner on first load; subsequent fetches update silently
+    if (isInit) setLoading(true);
+    setFetching(true);
+
+    let fetchPromise;
+
     if (isGlobalViewer) {
-      Promise.all([
+      fetchPromise = Promise.all([
         getSalesLeaderboard({ metric: salesMetric, period }),
         getMarketingLeaderboard({ metric: marketingMetric, period }),
         getProductionLeaderboard({ metric: productionMetric, period }),
-      ])
-        .then(([salesRes, marketingRes, productionRes]) => {
-          setSalesData(salesRes.leaderboard || []);
-          setMarketingData(marketingRes.leaderboard || []);
-          setProductionData(productionRes.leaderboard || []);
-        })
-        .finally(() => setLoading(false));
-      return;
+      ]).then(([salesRes, marketingRes, productionRes]) => {
+        setSalesData(salesRes.leaderboard || []);
+        setMarketingData(marketingRes.leaderboard || []);
+        setProductionData(productionRes.leaderboard || []);
+      });
+    } else if (team === "Marketing") {
+      fetchPromise = getMarketingLeaderboard({ metric: marketingMetric, period }).then(
+        (res) => setSingleData(res.leaderboard || [])
+      );
+    } else if (team === "Production") {
+      fetchPromise = getProductionLeaderboard({ metric: productionMetric, period }).then(
+        (res) => setSingleData(res.leaderboard || [])
+      );
+    } else {
+      fetchPromise = getSalesLeaderboard({ metric: salesMetric, period }).then(
+        (res) => setSingleData(res.leaderboard || [])
+      );
     }
 
-    if (team === "Marketing") {
-      getMarketingLeaderboard({ metric: marketingMetric, period })
-        .then((res) => setSingleData(res.leaderboard || []))
-        .finally(() => setLoading(false));
-      return;
-    }
-
-    if (team === "Production") {
-      getProductionLeaderboard({ metric: productionMetric, period })
-        .then((res) => setSingleData(res.leaderboard || []))
-        .finally(() => setLoading(false));
-      return;
-    }
-
-    getSalesLeaderboard({ metric: salesMetric, period })
-      .then((res) => setSingleData(res.leaderboard || []))
-      .finally(() => setLoading(false));
+    fetchPromise.finally(() => {
+      if (isInit) setLoading(false);
+      setFetching(false);
+    });
   }, [isGlobalViewer, marketingMetric, period, salesMetric, productionMetric, team]);
 
   const formatValue = (metric, val) => {

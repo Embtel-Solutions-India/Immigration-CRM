@@ -1,6 +1,50 @@
 const WorkUnit = require('../models/WorkUnit');
 const { getISOWeek, startOfISOWeek, addDays, format } = require('date-fns');
 
+exports.orgHeatmap = async (req, res, next) => {
+  try {
+    const allowed = ['superadmin', 'hr_admin'];
+    if (!allowed.includes(req.user.role)) {
+      return res.status(403).json({ error: 'Forbidden' });
+    }
+
+    const now = new Date();
+    const weekOffset = parseInt(req.query.week) || 0;
+    const weekStart = startOfISOWeek(addDays(now, weekOffset * -7));
+    const weekEnd = addDays(weekStart, 6);
+    weekEnd.setHours(23, 59, 59, 999);
+
+    const units = await WorkUnit.find({
+      status: 'Completed',
+      endTime: { $gte: weekStart, $lte: weekEnd },
+    });
+
+    const grid = {};
+    for (let d = 0; d < 7; d++) {
+      grid[d] = {};
+      for (let h = 8; h <= 20; h++) grid[d][h] = 0;
+    }
+
+    units.forEach(u => {
+      if (!u.endTime) return;
+      const dt = new Date(u.endTime);
+      const dayOfWeek = (dt.getDay() + 6) % 7;
+      const hour = dt.getHours();
+      if (hour >= 8 && hour <= 20) {
+        grid[dayOfWeek][hour] = (grid[dayOfWeek][hour] || 0) + 1;
+      }
+    });
+
+    const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    const result = days.map((day, i) => ({
+      day,
+      hours: Object.entries(grid[i] || {}).map(([hour, count]) => ({ hour: parseInt(hour), count })),
+    }));
+
+    res.json({ weekStart: weekStart.toISOString(), weekEnd: weekEnd.toISOString(), grid: result });
+  } catch (e) { next(e); }
+};
+
 exports.heatmap = async (req, res, next) => {
   try {
     const userId = req.params.userId;

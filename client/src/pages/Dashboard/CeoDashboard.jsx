@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { format, subDays } from 'date-fns';
 import { Link } from 'react-router-dom';
 import { getOrgReport } from '../../api/reportApi.js';
-import { getTopPerformers as getCeoTopPerformers } from '../../api/orgApi.js';
+import { getTopPerformers as getCeoTopPerformers, getOrgHeatmap } from '../../api/orgApi.js';
 import KpiCard from '../../components/common/KpiCard.jsx';
 import PipelineBar from '../../components/charts/PipelineBar.jsx';
 import StageDonut from '../../components/charts/StageDonut.jsx';
@@ -16,6 +16,7 @@ import Spinner from '../../components/common/Spinner.jsx';
 export default function CeoDashboard() {
   const [report, setReport] = useState(null);
   const [topPerformers, setTopPerformers] = useState([]);
+  const [heatmapData, setHeatmapData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [range, setRange] = useState(30);
 
@@ -33,13 +34,17 @@ export default function CeoDashboard() {
     }).finally(() => setLoading(false));
   }, [from, to]);
 
+  useEffect(() => {
+    getOrgHeatmap().then(res => setHeatmapData(res.grid || [])).catch(() => {});
+  }, []);
+
   if (loading) return <div className="flex justify-center py-20"><Spinner size="lg" /></div>;
 
   const { sales = {}, marketing = {}, production = {}, efficiency = {} } = report || {};
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between flex-wrap gap-3">
+    <div className="space-y-4 sm:space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
           <h1 className="text-xl font-bold text-gray-900">Organization Overview</h1>
           <p className="text-sm text-gray-500">{format(new Date(from), 'MMM d')} — {format(new Date(to), 'MMM d, yyyy')}</p>
@@ -72,28 +77,28 @@ export default function CeoDashboard() {
       <ForecastCard />
 
       {/* Sales + Marketing charts */}
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-        <div className="card p-5">
-          <div className="flex items-center justify-between mb-4">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 sm:gap-6">
+        <div className="card p-4 sm:p-5">
+          <div className="flex items-center justify-between mb-3 sm:mb-4">
             <h2 className="font-semibold text-gray-900">Sales Performance</h2>
             <Link to="/leaderboard" className="text-xs text-brand-600 hover:underline">Leaderboard</Link>
           </div>
           <MultiSeriesSalesChart view="org" isSuperAdmin />
         </div>
-        <div className="card p-5">
-          <h2 className="font-semibold text-gray-900 mb-4">Marketing Performance</h2>
+        <div className="card p-4 sm:p-5">
+          <h2 className="font-semibold text-gray-900 mb-3 sm:mb-4">Marketing Performance</h2>
           <MultiSeriesMarketingChart view="org" isSuperAdmin />
         </div>
       </div>
 
       {/* Pipeline + Stage charts */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="card p-5">
-          <h2 className="font-semibold text-gray-900 mb-4">Sales Pipeline</h2>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+        <div className="card p-4 sm:p-5">
+          <h2 className="font-semibold text-gray-900 mb-3 sm:mb-4">Sales Pipeline</h2>
           <PipelineBar data={sales.pipeline || {}} />
         </div>
-        <div className="card p-5">
-          <h2 className="font-semibold text-gray-900 mb-4">Case Stages</h2>
+        <div className="card p-4 sm:p-5">
+          <h2 className="font-semibold text-gray-900 mb-3 sm:mb-4">Case Stages</h2>
           <StageDonut data={production.byStage || {}} />
         </div>
       </div>
@@ -122,9 +127,9 @@ export default function CeoDashboard() {
 
       {/* Top Performers */}
       {topPerformers.length > 0 && (
-        <div className="card p-5">
-          <h2 className="font-semibold text-gray-900 mb-4">Top Performers by Team</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="card p-4 sm:p-5">
+          <h2 className="font-semibold text-gray-900 mb-3 sm:mb-4">Top Performers by Team</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
             {topPerformers.map((p, i) => (
               <div key={i} className="rounded-xl border border-gray-100 p-4 bg-gray-50">
                 <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">{p.team}</p>
@@ -144,14 +149,14 @@ export default function CeoDashboard() {
       )}
 
       {/* Team Performance + Heatmap */}
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-        <div className="card p-5">
-          <h2 className="font-semibold text-gray-900 mb-4">Team Performance Scores</h2>
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 sm:gap-6">
+        <div className="card p-4 sm:p-5">
+          <h2 className="font-semibold text-gray-900 mb-3 sm:mb-4">Team Performance Scores</h2>
           <TeamCompareBar scores={efficiency.teamScores || {}} />
         </div>
-        <div className="card p-5">
-          <h2 className="font-semibold text-gray-900 mb-4">Activity Heatmap</h2>
-          <HeatmapChart />
+        <div className="card p-4 sm:p-5">
+          <h2 className="font-semibold text-gray-900 mb-3 sm:mb-4">Activity Heatmap</h2>
+          <HeatmapChart data={heatmapData} />
         </div>
       </div>
     </div>

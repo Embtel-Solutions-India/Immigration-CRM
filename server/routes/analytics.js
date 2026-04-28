@@ -4,6 +4,7 @@ const verifyToken = require('../middleware/auth');
 
 router.use(verifyToken);
 
+router.get('/heatmap/org', ctrl.orgHeatmap);
 router.get('/heatmap/:userId', ctrl.heatmap);
 router.get('/task-time-avg/:team', ctrl.taskTimeAvg);
 router.get('/outliers/:team', ctrl.outliers);
