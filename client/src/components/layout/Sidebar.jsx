@@ -103,11 +103,11 @@ const navItems = [
 ];
 
 const docNavItems = [
-  { to: "/", label: "Dashboard", Icon: LayoutDashboard },
+  { to: "/", label: "Dashboard", Icon: LayoutDashboard, end: true },
   { to: "/doc/clients", label: "Clients", Icon: UserSquare2 },
   { to: "/doc/cases", label: "Cases", Icon: FolderOpen },
   { to: "/doc/work-units", label: "Work Units", Icon: ClipboardCheck },
-  { to: "/doc/documents", label: "Documents", Icon: BookOpen },
+  { to: "/doc/documents", label: "Documents", Icon: BookOpen, end: true },
   { to: "/doc/documents/new", label: "Upload Doc", Icon: Upload },
   { to: "/doc/leaderboard", label: "Leaderboard", Icon: Trophy, adminOnly: true },
   { to: "/leave", label: "Leave", Icon: CalendarOff },
@@ -180,11 +180,11 @@ export default function Sidebar() {
                 ["Sales", "Marketing"].includes(user?.team)
               );
             })
-            .map(({ to, label, Icon }) => (
+            .map(({ to, label, Icon, end: itemEnd }) => (
               <NavLink
                 key={to}
                 to={to}
-                end={to === "/"}
+                end={!!itemEnd}
                 onClick={handleNavClick}
                 className={({ isActive }) =>
                   `flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors text-sm font-medium ${
