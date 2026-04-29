@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import {
   ArrowLeft, Mail, Phone, MapPin, User, DollarSign,
-  FolderOpen, FileText, ClipboardCheck, Edit2, Save, X,
+  FolderOpen, FileText, ClipboardCheck, Edit2, Save, X, Plus,
 } from 'lucide-react';
 import {
   getDocClient, updateDocClient,
-  getDocCases, getDocDocuments, getDocWorkUnits, getDocChecklist,
+  getDocCases, createDocCase, getDocDocuments, getDocWorkUnits, getDocChecklist,
 } from '../../api/docApi.js';
+import Modal from '../../components/common/Modal.jsx';
 import { getUsers } from '../../api/userApi.js';
 import Spinner from '../../components/common/Spinner.jsx';
 import { useDispatch } from 'react-redux';
@@ -18,6 +19,20 @@ import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
 const SERVICE_TYPES = ['Bookkeeping', 'Tax Filing', 'Payroll', 'Financial Reports', 'Compliance', 'Auditing', 'Other'];
 const STATUS_OPTS = ['Active', 'Inactive', 'Completed'];
 const PIE_COLORS = ['#2563eb', '#e5e7eb'];
+
+const CASE_STATUSES = ['Open', 'In Progress', 'Under Review', 'Completed', 'Closed'];
+const WORKFLOW_STAGES = ['Checklist Sent', 'Documents Received', 'Missing Documents', 'Under Review', 'Work In Progress', 'Completed'];
+
+const STAGE_COLORS = {
+  'Checklist Sent':      'bg-blue-50 border-blue-200',
+  'Documents Received':  'bg-teal-50 border-teal-200',
+  'Missing Documents':   'bg-red-50 border-red-200',
+  'Under Review':        'bg-purple-50 border-purple-200',
+  'Work In Progress':    'bg-orange-50 border-orange-200',
+  Completed:             'bg-green-50 border-green-200',
+};
+
+const BLANK_CASE = { title: '', serviceType: 'Bookkeeping', status: 'Open', workflowStage: 'Checklist Sent', assignedTo: '', deadline: '', notes: '' };
 
 const STATUS_BADGE = {
   Open: 'bg-blue-100 text-blue-700',
@@ -52,6 +67,10 @@ export default function DocClientDetail() {
   const [editForm, setEditForm] = useState({});
   const [saving, setSaving] = useState(false);
   const [tab, setTab] = useState('overview');
+  const [caseStatusFilter, setCaseStatusFilter] = useState('');
+  const [showAddCase, setShowAddCase] = useState(false);
+  const [addCaseForm, setAddCaseForm] = useState(BLANK_CASE);
+  const [savingCase, setSavingCase] = useState(false);
 
   const load = async () => {
     try {
@@ -92,6 +111,25 @@ export default function DocClientDetail() {
       dispatch(showToast({ message: 'Failed to update', type: 'error' }));
     } finally {
       setSaving(false);
+    }
+  };
+
+  const handleAddCase = async (e) => {
+    e.preventDefault();
+    setSavingCase(true);
+    try {
+      const payload = { ...addCaseForm, clientId: id };
+      if (!payload.assignedTo) delete payload.assignedTo;
+      if (!payload.deadline) delete payload.deadline;
+      await createDocCase(payload);
+      dispatch(showToast({ message: 'Case created' }));
+      setShowAddCase(false);
+      setAddCaseForm(BLANK_CASE);
+      load();
+    } catch (err) {
+      dispatch(showToast({ message: err.response?.data?.error || 'Failed to create case', type: 'error' }));
+    } finally {
+      setSavingCase(false);
     }
   };
 
@@ -250,33 +288,129 @@ export default function DocClientDetail() {
       )}
 
       {tab === 'cases' && (
-        <div className="card overflow-hidden">
-          <div className="p-4 border-b border-gray-100 flex items-center justify-between">
+        <div className="space-y-4">
+          {/* Header */}
+          <div className="flex items-center justify-between flex-wrap gap-3">
             <h2 className="font-semibold text-gray-900">Cases ({cases.length})</h2>
-            <Link to={`/doc/cases`} className="text-xs text-brand-600 hover:underline">View All Cases</Link>
-          </div>
-          {cases.length === 0 ? (
-            <div className="p-8 text-center text-gray-400 text-sm">No cases yet</div>
-          ) : (
-            <div className="divide-y divide-gray-50">
-              {cases.map(c => (
-                <div key={c._id} className="p-4 flex items-center justify-between">
-                  <div>
-                    <p className="font-medium text-gray-900">{c.title}</p>
-                    <p className="text-xs text-gray-500">{c.serviceType} · {c.workflowStage}</p>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="text-right hidden sm:block">
-                      <p className="text-xs text-gray-500">Progress</p>
-                      <p className="font-semibold text-gray-900">{c.progress}%</p>
-                    </div>
-                    <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${STATUS_BADGE[c.status] || 'bg-gray-100 text-gray-600'}`}>{c.status}</span>
-                  </div>
-                </div>
-              ))}
+            <div className="flex items-center gap-2">
+              <Link to="/doc/cases" className="text-xs text-brand-600 hover:underline">View All</Link>
+              {canEdit && (
+                <button onClick={() => setShowAddCase(true)} className="btn-primary flex items-center gap-1 text-xs py-1.5 px-3">
+                  <Plus size={13} /> Add Case
+                </button>
+              )}
             </div>
-          )}
+          </div>
+
+          {/* Status filter pills */}
+          <div className="flex flex-wrap gap-2">
+            <button
+              onClick={() => setCaseStatusFilter('')}
+              className={`text-xs px-3 py-1.5 rounded-full font-medium border transition-colors ${caseStatusFilter === '' ? 'bg-brand-600 text-white border-brand-600' : 'bg-white border-gray-200 text-gray-600'}`}
+            >
+              All <span className="ml-1 font-bold">{cases.length}</span>
+            </button>
+            {CASE_STATUSES.map(s => {
+              const count = cases.filter(c => c.status === s).length;
+              return (
+                <button
+                  key={s}
+                  onClick={() => setCaseStatusFilter(caseStatusFilter === s ? '' : s)}
+                  className={`text-xs px-3 py-1.5 rounded-full font-medium border transition-colors ${caseStatusFilter === s ? 'bg-brand-600 text-white border-brand-600' : 'bg-white border-gray-200 text-gray-600'}`}
+                >
+                  {s} <span className="ml-1 font-bold">{count}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Kanban columns by workflow stage */}
+          {(() => {
+            const filtered = caseStatusFilter ? cases.filter(c => c.status === caseStatusFilter) : cases;
+            if (filtered.length === 0) {
+              return <div className="card p-8 text-center text-gray-400 text-sm">No cases found</div>;
+            }
+            return (
+              <div className="flex gap-3 overflow-x-auto pb-2" style={{ minHeight: '200px' }}>
+                {WORKFLOW_STAGES.map(stage => {
+                  const stageCases = filtered.filter(c => c.workflowStage === stage);
+                  return (
+                    <div key={stage} className={`rounded-xl border ${STAGE_COLORS[stage] || 'bg-gray-50 border-gray-200'} flex-shrink-0 w-52`}>
+                      <div className="px-3 py-2.5 border-b border-inherit flex items-center justify-between gap-2">
+                        <span className="text-xs font-semibold text-gray-700 leading-tight">{stage}</span>
+                        <span className="text-xs bg-white text-gray-600 rounded-full px-2 py-0.5 font-medium flex-shrink-0">{stageCases.length}</span>
+                      </div>
+                      <div className="p-2 space-y-2">
+                        {stageCases.map(c => (
+                          <div key={c._id} className="bg-white rounded-lg p-3 shadow-sm border border-transparent">
+                            <p className="text-xs font-semibold text-gray-900 leading-snug">{c.title}</p>
+                            <p className="text-xs text-gray-500 mt-0.5">{c.serviceType}</p>
+                            <div className="mt-2 flex items-center justify-between gap-1">
+                              <span className={`text-xs px-1.5 py-0.5 rounded-full font-medium ${STATUS_BADGE[c.status] || 'bg-gray-100 text-gray-600'}`}>{c.status}</span>
+                              <span className="text-xs text-gray-400">{c.progress}%</span>
+                            </div>
+                            {c.progress !== undefined && (
+                              <div className="h-1 bg-gray-100 rounded-full overflow-hidden mt-1.5">
+                                <div className="h-full bg-brand-500 rounded-full" style={{ width: `${c.progress}%` }} />
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                        {stageCases.length === 0 && (
+                          <p className="text-xs text-gray-400 text-center py-4">Empty</p>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            );
+          })()}
         </div>
+      )}
+
+      {/* Add Case Modal */}
+      {showAddCase && (
+        <Modal title="New Case" onClose={() => setShowAddCase(false)}>
+          <form onSubmit={handleAddCase} className="space-y-4">
+            <div>
+              <label className="label">Case Title *</label>
+              <input className="input" required value={addCaseForm.title} onChange={e => setAddCaseForm(f => ({ ...f, title: e.target.value }))} />
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <label className="label">Service Type</label>
+                <select className="input" value={addCaseForm.serviceType} onChange={e => setAddCaseForm(f => ({ ...f, serviceType: e.target.value }))}>
+                  {SERVICE_TYPES.map(s => <option key={s}>{s}</option>)}
+                </select>
+              </div>
+              <div>
+                <label className="label">Status</label>
+                <select className="input" value={addCaseForm.status} onChange={e => setAddCaseForm(f => ({ ...f, status: e.target.value }))}>
+                  {CASE_STATUSES.map(s => <option key={s}>{s}</option>)}
+                </select>
+              </div>
+              <div>
+                <label className="label">Workflow Stage</label>
+                <select className="input" value={addCaseForm.workflowStage} onChange={e => setAddCaseForm(f => ({ ...f, workflowStage: e.target.value }))}>
+                  {WORKFLOW_STAGES.map(s => <option key={s}>{s}</option>)}
+                </select>
+              </div>
+              <div>
+                <label className="label">Deadline</label>
+                <input className="input" type="date" value={addCaseForm.deadline} onChange={e => setAddCaseForm(f => ({ ...f, deadline: e.target.value }))} />
+              </div>
+            </div>
+            <div>
+              <label className="label">Notes</label>
+              <textarea className="input" rows={2} value={addCaseForm.notes} onChange={e => setAddCaseForm(f => ({ ...f, notes: e.target.value }))} />
+            </div>
+            <div className="flex justify-end gap-2 pt-1">
+              <button type="button" onClick={() => setShowAddCase(false)} className="btn-secondary">Cancel</button>
+              <button type="submit" disabled={savingCase} className="btn-primary">{savingCase ? 'Saving…' : 'Create Case'}</button>
+            </div>
+          </form>
+        </Modal>
       )}
 
       {tab === 'documents' && (
