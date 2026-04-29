@@ -54,11 +54,11 @@ function getReviewLabel(req) {
 
 export default function LeavePage() {
   const dispatch = useDispatch();
-  const { user, isSuperAdmin } = useAuth();
+  const { user, isSuperAdmin, isOverallAdmin } = useAuth();
   const role = normalizeRole(user?.role);
   const isTeamAdmin = role === "admin";
   const canReviewLeaves = isHrAdminRole(role) || isSuperAdmin;
-  const canViewTeamLeaves = isTeamAdmin || canReviewLeaves || isSuperAdmin;
+  const canViewTeamLeaves = isTeamAdmin || canReviewLeaves || isSuperAdmin || isOverallAdmin;
   const [myLeaves, setMyLeaves] = useState([]);
   const [pending, setPending] = useState([]);
   const [calendar, setCalendar] = useState([]);
@@ -75,6 +75,13 @@ export default function LeavePage() {
 
   const now = new Date();
   const calParams = { month: now.getMonth() + 1, year: now.getFullYear() };
+  const teamLeavesByTeam = teamLeaves.reduce((acc, req) => {
+    const team = req.userId?.team || "Unknown";
+    if (!acc[team]) acc[team] = [];
+    acc[team].push(req);
+    return acc;
+  }, {});
+  const orderedTeams = Object.keys(teamLeavesByTeam).sort();
 
   const load = async () => {
     setLoading(true);
@@ -266,8 +273,13 @@ export default function LeavePage() {
               {teamLeaves.length === 0 ? (
                 <p className="text-sm text-gray-400">No team requests found.</p>
               ) : (
-                <div className="space-y-2">
-                  {teamLeaves.map((req) => (
+                <div className="space-y-4">
+                  {orderedTeams.map((team) => (
+                    <div key={team} className="space-y-2">
+                      <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
+                        {team} Team ({teamLeavesByTeam[team].length})
+                      </p>
+                      {teamLeavesByTeam[team].map((req) => (
                     <div
                       key={req._id}
                       className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 p-3 rounded-lg border border-gray-100 bg-gray-50"
@@ -291,6 +303,8 @@ export default function LeavePage() {
                           {getReviewLabel(req)}
                         </span>
                       </div>
+                    </div>
+                      ))}
                     </div>
                   ))}
                 </div>

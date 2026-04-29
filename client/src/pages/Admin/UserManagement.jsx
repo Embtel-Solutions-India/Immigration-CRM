@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { getUsers, updateUser, registerUser } from '../../api/userApi.js';
+import { getUsers, updateUser, registerUser, deleteUser } from '../../api/userApi.js';
 import Modal from '../../components/common/Modal.jsx';
 import Spinner from '../../components/common/Spinner.jsx';
 import { useDispatch } from 'react-redux';
 import { showToast } from '../../store/uiSlice.js';
 import { normalizeRole } from '../../utils/roles.js';
+import { useAuth } from '../../hooks/useAuth.js';
 
 export default function UserManagement() {
   const dispatch = useDispatch();
+  const { user: currentUser } = useAuth();
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
@@ -21,6 +23,17 @@ export default function UserManagement() {
     await updateUser(u._id, { isActive: !u.isActive });
     dispatch(showToast({ message: `${u.name} ${u.isActive ? 'deactivated' : 'activated'}` }));
     fetch();
+  };
+
+  const handleDelete = async (u) => {
+    if (!window.confirm(`Delete ${u.name}? This cannot be undone.`)) return;
+    try {
+      await deleteUser(u._id);
+      dispatch(showToast({ message: `${u.name} deleted` }));
+      fetch();
+    } catch (err) {
+      dispatch(showToast({ message: err.response?.data?.error || 'Failed to delete user', type: 'error' }));
+    }
   };
 
   const changeRole = async (u, role) => {
@@ -94,6 +107,7 @@ export default function UserManagement() {
                     <option value="admin">Admin</option>
                     <option value="hr_user">HR User</option>
                     <option value="hr_admin">HR Admin</option>
+                    <option value="overall_admin">Organization Admin</option>
                     <option value="superadmin">Super Admin</option>
                   </select>
                     );
@@ -105,12 +119,22 @@ export default function UserManagement() {
                   </span>
                 </td>
                 <td className="px-4 py-3">
-                  <button
-                    onClick={() => toggleActive(u)}
-                    className={`text-xs hover:underline ${u.isActive ? 'text-red-500' : 'text-green-600'}`}
-                  >
-                    {u.isActive ? 'Deactivate' : 'Activate'}
-                  </button>
+                  <div className="flex items-center gap-3">
+                    <button
+                      onClick={() => toggleActive(u)}
+                      className={`text-xs hover:underline ${u.isActive ? 'text-red-500' : 'text-green-600'}`}
+                    >
+                      {u.isActive ? 'Deactivate' : 'Activate'}
+                    </button>
+                    {u._id !== currentUser?._id && (
+                      <button
+                        onClick={() => handleDelete(u)}
+                        className="text-xs text-red-600 hover:underline"
+                      >
+                        Delete
+                      </button>
+                    )}
+                  </div>
                 </td>
               </tr>
             ))}
@@ -139,7 +163,7 @@ export default function UserManagement() {
               <div>
                 <label className="label">Team</label>
                 <select className="input" value={newUser.team} onChange={e => setNewUser(f => ({ ...f, team: e.target.value }))}>
-                  <option>Sales</option><option>Marketing</option><option>Production</option><option>HR</option>
+                  <option>Sales</option><option>Marketing</option><option>Production</option><option>HR</option><option>Documentation</option>
                 </select>
               </div>
               <div>

@@ -9,7 +9,7 @@ const commentSchema = new Schema({
 
 const workUnitSchema = new Schema({
   userId:      { type: Schema.Types.ObjectId, ref: 'User', required: true },
-  team:        { type: String, enum: ['Sales', 'Marketing', 'Production', 'HR'], required: true },
+  team:        { type: String, enum: ['Sales', 'Marketing', 'Production', 'HR', 'Documentation'], required: true },
   workType:    { type: String, enum: ['task', 'call', 'email', 'case_update', 'campaign', 'lead_update'], required: true },
   title:       { type: String, required: true, trim: true },
   description: { type: String },

@@ -42,8 +42,8 @@ export default function Leaderboard() {
   const navigate = useNavigate();
   const { user } = useAuth();
   const role = normalizeRole(user?.role);
-  const isGlobalViewer = role === "superadmin" || isHrRole(role);
-  const team = role === "superadmin" ? "CEO" : isHrRole(role) ? "HR" : user?.team;
+  const isGlobalViewer = role === "superadmin" || role === "overall_admin" || isHrRole(role);
+  const team = role === "superadmin" ? "CEO" : role === "overall_admin" ? "Overall" : isHrRole(role) ? "HR" : user?.team;
 
   const [salesData, setSalesData] = useState([]);
   const [marketingData, setMarketingData] = useState([]);

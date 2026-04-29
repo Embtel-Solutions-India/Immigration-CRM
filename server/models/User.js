@@ -5,12 +5,12 @@ const userSchema = new mongoose.Schema({
   name:         { type: String, required: true, trim: true },
   email:        { type: String, required: true, unique: true, lowercase: true, trim: true },
   passwordHash: { type: String, required: true },
-  role:         { type: String, enum: ['user', 'admin', 'hr_user', 'hr_admin', 'hr', 'superadmin'], default: 'user' },
+  role:         { type: String, enum: ['user', 'admin', 'hr_user', 'hr_admin', 'hr', 'superadmin', 'overall_admin'], default: 'user' },
   team: {
     type: String,
-    enum: ['Sales', 'Marketing', 'Production', 'HR'],
+    enum: ['Sales', 'Marketing', 'Production', 'HR', 'Documentation'],
     required: function teamRequired() {
-      return this.role !== 'superadmin' && this.role !== 'hr';
+      return this.role !== 'superadmin' && this.role !== 'hr' && this.role !== 'overall_admin';
     },
   },
   isActive:     { type: Boolean, default: true },

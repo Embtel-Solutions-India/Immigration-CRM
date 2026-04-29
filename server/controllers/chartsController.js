@@ -130,6 +130,7 @@ exports.marketingTeam = async (req, res, next) => {
         const d = new Date(u.date).getDate() - 1;
         if (metric === 'emailsSent') seriesMap[m.name][d].value += u.emailsSent || 0;
         else if (metric === 'leadsGenerated') seriesMap[m.name][d].value += u.leadsGenerated || 0;
+        else if (metric === 'leadsAdded') seriesMap[m.name][d].value += u.leadsAdded || 0;
       });
     }
 

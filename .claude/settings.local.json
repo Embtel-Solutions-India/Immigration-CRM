@@ -7,7 +7,17 @@
       "Bash(export PATH=\"/c/Program Files/nodejs:$PATH\")",
       "Bash(npm run *)",
       "Bash(curl -s http://localhost:5173)",
-      "PowerShell(Start-Process \"http://localhost:5174\")"
+      "PowerShell(Start-Process \"http://localhost:5174\")",
+      "Bash(xargs grep *)",
+      "Bash(grep -r \"insertMany\\\\|\\\\.create\\\\\\(\\\\|mock.*data\\\\|fixtures\\\\|demoData\\\\|testData\\\\|seedData\" /c/Users/ishaan/OneDrive/Desktop/Immigration-CRM/server --include=\"*.js\" ! -path \"*/node_modules/*\")",
+      "Bash(grep -r \"const.*=.*\\\\[\\\\|let.*=.*\\\\[\" /c/Users/ishaan/OneDrive/Desktop/Immigration-CRM/server --include=\"*.js\" ! -path \"*/node_modules/*\" -A 3)",
+      "Bash(grep -r \"gohighlevel\\\\|GoHighLevel\\\\|demo.*user\\\\|test.*user\" /c/Users/ishaan/OneDrive/Desktop/Immigration-CRM/server --include=\"*.js\" ! -path \"*/node_modules/*\")",
+      "Bash(grep -r \"clientName\\\\|clientEmail\" /c/Users/ishaan/OneDrive/Desktop/Immigration-CRM/server --include=\"*.js\" ! -path \"*/node_modules/*\")",
+      "Bash(grep -r \"Ravi Subramanian\\\\|Mei Lin\\\\|Omar Farouk\" /c/Users/ishaan/OneDrive/Desktop/Immigration-CRM --include=\"*.js\" --include=\"*.jsx\" ! -path \"*/node_modules/*\")",
+      "Bash(xargs wc *)",
+      "Bash(grep -r \"nyais.com\\\\|newyorkareaimmigrationservices.com\" /c/Users/ishaan/OneDrive/Desktop/Immigration-CRM --include=\"*.js\" --include=\"*.jsx\" ! -path \"*/node_modules/*\" ! -path \"*/dist/*\")",
+      "Bash(node scripts/clearDummyData.js)",
+      "Bash(node -e ' *)"
     ]
   }
 }

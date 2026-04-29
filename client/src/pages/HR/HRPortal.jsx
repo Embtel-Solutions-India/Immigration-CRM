@@ -8,7 +8,7 @@ import {
   getUserLeaves,
   getAllLeaves,
 } from "../../api/leaveApi.js";
-import { getUsers, updateUser, registerUser } from "../../api/userApi.js";
+import { getUsers, updateUser, registerUser, deleteUser, setUserPassword } from "../../api/userApi.js";
 import { showToast } from "../../store/uiSlice.js";
 import { useAuth } from "../../hooks/useAuth.js";
 import Modal from "../../components/common/Modal.jsx";
@@ -178,6 +178,17 @@ export default function HRPortal() {
     }
   };
 
+  const handleDeleteUser = async (u) => {
+    if (!window.confirm(`Delete ${u.name}? This cannot be undone.`)) return;
+    try {
+      await deleteUser(u._id);
+      dispatch(showToast({ message: `${u.name} deleted` }));
+      loadCoreData();
+    } catch (err) {
+      dispatch(showToast({ message: err.response?.data?.error || "Failed to delete user", type: "error" }));
+    }
+  };
+
   const toggleActive = async (u) => {
     try {
       await updateUser(u._id, { isActive: !u.isActive });
@@ -232,7 +243,7 @@ export default function HRPortal() {
     if (!resetFor) return;
     setSavingPassword(true);
     try {
-      await updateUser(resetFor._id, { password: newPassword });
+      await setUserPassword(resetFor._id, newPassword);
       dispatch(showToast({ message: `New credentials set for ${resetFor.name}` }));
       setResetFor(null);
       setNewPassword("");
@@ -488,7 +499,8 @@ export default function HRPortal() {
               <tbody className="divide-y divide-gray-50">
                 {users.map((u) => {
                   const normalizedTargetRole = normalizeRole(u.role);
-                  const isProtected = normalizedTargetRole === "superadmin" || normalizedTargetRole === "hr_admin";
+                  const isProtected = normalizedTargetRole === "superadmin" || normalizedTargetRole === "hr_admin" || normalizedTargetRole === "overall_admin";
+                  const isRoleProtected = normalizedTargetRole === "superadmin" || u._id === user?._id;
                   return (
                     <tr key={u._id} className="hover:bg-gray-50">
                       <td className="px-4 py-3">
@@ -505,24 +517,24 @@ export default function HRPortal() {
                         <select
                           className="text-xs border border-gray-200 rounded px-2 py-1 bg-white disabled:bg-gray-100 disabled:text-gray-400"
                           value={normalizedTargetRole}
-                          disabled={isProtected}
+                          disabled={isRoleProtected}
                           onChange={(e) => changeRole(u, e.target.value)}
                         >
                           <option value="user">User</option>
                           <option value="admin">Admin</option>
                           <option value="hr_user">HR User</option>
+                          <option value="overall_admin">Organization Admin</option>
                           {normalizedTargetRole === "hr_admin" && <option value="hr_admin">HR Admin</option>}
                           {normalizedTargetRole === "superadmin" && <option value="superadmin">Super Admin</option>}
                         </select>
                       </td>
                       <td className="px-4 py-3">
                         <button
-                          disabled={isProtected}
                           onClick={() => {
                             setResetFor(u);
                             setNewPassword("");
                           }}
-                          className="text-xs text-brand-600 hover:underline disabled:text-gray-400 disabled:no-underline"
+                          className="text-xs text-brand-600 hover:underline"
                         >
                           Set Password
                         </button>
@@ -533,13 +545,23 @@ export default function HRPortal() {
                         </span>
                       </td>
                       <td className="px-4 py-3">
-                        <button
-                          disabled={isProtected}
-                          onClick={() => toggleActive(u)}
-                          className={`text-xs hover:underline disabled:text-gray-400 disabled:no-underline ${u.isActive ? "text-red-500" : "text-green-600"}`}
-                        >
-                          {u.isActive ? "Deactivate" : "Activate"}
-                        </button>
+                        <div className="flex items-center gap-3">
+                          <button
+                            disabled={isProtected}
+                            onClick={() => toggleActive(u)}
+                            className={`text-xs hover:underline disabled:text-gray-400 disabled:no-underline ${u.isActive ? "text-red-500" : "text-green-600"}`}
+                          >
+                            {u.isActive ? "Deactivate" : "Activate"}
+                          </button>
+                          {!isProtected && u._id !== user?._id && (
+                            <button
+                              onClick={() => handleDeleteUser(u)}
+                              className="text-xs text-red-600 hover:underline"
+                            >
+                              Delete
+                            </button>
+                          )}
+                        </div>
                       </td>
                     </tr>
                   );
@@ -766,21 +788,36 @@ export default function HRPortal() {
               <input type="password" className="input" required value={newUser.password} onChange={(e) => setNewUser((f) => ({ ...f, password: e.target.value }))} />
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="label">Team</label>
-                <select className="input" value={newUser.team} onChange={(e) => setNewUser((f) => ({ ...f, team: e.target.value }))}>
-                  <option>Sales</option>
-                  <option>Marketing</option>
-                  <option>Production</option>
-                  <option>HR</option>
-                </select>
-              </div>
+              {newUser.role !== "overall_admin" && (
+                <div>
+                  <label className="label">Team</label>
+                  <select className="input" value={newUser.team} onChange={(e) => setNewUser((f) => ({ ...f, team: e.target.value }))}>
+                    <option>Sales</option>
+                    <option>Marketing</option>
+                    <option>Production</option>
+                    <option>HR</option>
+                    <option>Documentation</option>
+                  </select>
+                </div>
+              )}
               <div>
                 <label className="label">Role</label>
-                <select className="input" value={newUser.role} onChange={(e) => setNewUser((f) => ({ ...f, role: e.target.value }))}>
+                <select
+                  className="input"
+                  value={newUser.role}
+                  onChange={(e) => {
+                    const role = e.target.value;
+                    setNewUser((f) => ({
+                      ...f,
+                      role,
+                      team: role === "overall_admin" ? "" : f.team || "Sales",
+                    }));
+                  }}
+                >
                   <option value="user">User</option>
                   <option value="admin">Admin</option>
                   <option value="hr_user">HR User</option>
+                  <option value="overall_admin">Organization Admin</option>
                 </select>
               </div>
             </div>
@@ -837,6 +874,7 @@ export default function HRPortal() {
                 <option>Sales</option>
                 <option>Marketing</option>
                 <option>Production</option>
+                <option>Documentation</option>
               </select>
             </div>
             <div>

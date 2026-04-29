@@ -25,6 +25,12 @@ function isHrRole(role) {
   return normalized === 'hr_admin' || normalized === 'hr_user';
 }
 
+function isOverallAdmin(role) {
+  return normalizeRole(role) === 'overall_admin';
+}
+
+const OVERALL_ADMIN_TEAMS = ['Sales', 'Marketing', 'Production'];
+
 module.exports = {
   normalizeRole,
   isSuperAdmin,
@@ -32,4 +38,6 @@ module.exports = {
   isHrAdmin,
   isHrUser,
   isHrRole,
+  isOverallAdmin,
+  OVERALL_ADMIN_TEAMS,
 };

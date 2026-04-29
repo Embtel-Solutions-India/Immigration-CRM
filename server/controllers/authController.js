@@ -32,15 +32,16 @@ exports.register = async (req, res, next) => {
     const { name, email, password, team, role } = req.body;
     const actorRole = normalizeRole(req.user.role);
     const roleToCreate = normalizeRole(role || 'user');
-    const allowedByHrAdmin = ['user', 'admin', 'hr_user'];
+    const allowedByHrAdmin = ['user', 'admin', 'hr_user', 'overall_admin'];
+    const noTeamRoles = ['superadmin', 'overall_admin'];
 
     if (!name || !email || !password) {
       return res.status(400).json({ error: 'name, email, password are required' });
     }
     if (isHrAdmin(actorRole) && !allowedByHrAdmin.includes(roleToCreate)) {
-      return res.status(403).json({ error: 'HR admin can only create user/admin/hr user accounts' });
+      return res.status(403).json({ error: 'HR admin can only create user/admin/hr user/overall admin accounts' });
     }
-    if (roleToCreate !== 'superadmin' && !isHrRole(roleToCreate) && !team) {
+    if (!noTeamRoles.includes(roleToCreate) && !isHrRole(roleToCreate) && !team) {
       return res.status(400).json({ error: 'team is required for non-superadmin accounts' });
     }
     const exists = await User.findOne({ email });
@@ -53,7 +54,7 @@ exports.register = async (req, res, next) => {
       email,
       passwordHash,
       role: roleToCreate,
-      team: roleToCreate === 'superadmin' ? undefined : normalizedTeam,
+      team: noTeamRoles.includes(roleToCreate) ? undefined : normalizedTeam,
     });
     await logActivity(req.user._id, req.user.team || 'HR', 'registered', 'User', user._id);
 
@@ -64,7 +65,7 @@ exports.register = async (req, res, next) => {
 exports.login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
-    const user = await User.findOne({ email, isActive: true });
+    const user = await User.findOne({ email: String(email).toLowerCase().trim(), isActive: true });
     if (!user || !(await user.matchPassword(password))) {
       return res.status(401).json({ error: 'Invalid credentials' });
     }

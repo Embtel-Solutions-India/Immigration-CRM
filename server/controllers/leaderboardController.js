@@ -15,8 +15,10 @@ function resolveStartDate(period) {
 function ensureLeaderboardAccess(req, res, team) {
   const role = normalizeRole(req.user?.role);
   const userTeam = req.user?.team;
+  const { OVERALL_ADMIN_TEAMS, isOverallAdmin } = require('../utils/roles');
   if (role === 'superadmin') return true;
   if (isHrRole(role)) return true;
+  if (isOverallAdmin(role) && OVERALL_ADMIN_TEAMS.includes(team)) return true;
   if (role === 'admin' && userTeam === team) return true;
   res.status(403).json({ error: 'Insufficient permissions' });
   return false;

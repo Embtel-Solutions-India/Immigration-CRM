@@ -3,12 +3,12 @@ const User = require('../models/User');
 const logActivity = require('../utils/activityLogger');
 const { normalizeRole, isHrAdmin, isHrRole } = require('../utils/roles');
 
-const TEAM_VALUES = ['Sales', 'Marketing', 'Production', 'HR'];
-const HR_ADMIN_ALLOWED_ROLES = ['user', 'admin', 'hr_user'];
+const TEAM_VALUES = ['Sales', 'Marketing', 'Production', 'HR', 'Documentation'];
+const HR_ADMIN_ALLOWED_ROLES = ['user', 'admin', 'hr_user', 'overall_admin'];
 
 function isPrivilegedRole(role) {
   const normalized = normalizeRole(role);
-  return normalized === 'superadmin' || normalized === 'hr_admin';
+  return normalized === 'superadmin' || normalized === 'hr_admin' || normalized === 'overall_admin';
 }
 
 function canManageTarget(actorRole, targetRole) {
@@ -52,7 +52,8 @@ exports.createUser = async (req, res, next) => {
       return res.status(403).json({ error: 'HR admin can only create user/admin/hr user accounts' });
     }
 
-    if (nextRole !== 'superadmin' && !isHrRole(nextRole) && !team) {
+    const noTeamRoles = ['superadmin', 'overall_admin'];
+    if (!noTeamRoles.includes(nextRole) && !isHrRole(nextRole) && !team) {
       return res.status(400).json({ error: 'team is required for non-superadmin accounts' });
     }
     if (team && !TEAM_VALUES.includes(team)) {
@@ -68,7 +69,7 @@ exports.createUser = async (req, res, next) => {
       email,
       passwordHash,
       role: nextRole,
-      team: nextRole === 'superadmin' ? undefined : isHrRole(nextRole) ? 'HR' : team,
+      team: noTeamRoles.includes(nextRole) ? undefined : isHrRole(nextRole) ? 'HR' : team,
     });
 
     await logActivity(req.user._id, req.user.team || 'HR', 'created_user', 'User', user._id, {
@@ -112,16 +113,96 @@ exports.updateStatus = async (req, res, next) => {
   } catch (e) { next(e); }
 };
 
+exports.deleteUser = async (req, res, next) => {
+  try {
+    const actorRole = normalizeRole(req.user.role);
+    if (req.params.id === req.user._id.toString()) {
+      return res.status(400).json({ error: 'You cannot delete your own account' });
+    }
+    const target = await User.findById(req.params.id, 'role');
+    if (!target) return res.status(404).json({ error: 'Not found' });
+    if (!canManageTarget(actorRole, target.role)) {
+      return res.status(403).json({ error: 'Forbidden' });
+    }
+    await User.findByIdAndDelete(req.params.id);
+    res.json({ success: true });
+  } catch (e) { next(e); }
+};
+
+exports.setRole = async (req, res, next) => {
+  try {
+    const actor = normalizeRole(req.user.role);
+    const { role, team } = req.body;
+    if (!role) return res.status(400).json({ error: 'role is required' });
+    const nextRole = normalizeRole(role);
+
+    if (actor !== 'superadmin') {
+      if (req.params.id === req.user._id.toString()) {
+        return res.status(403).json({ error: 'You cannot change your own role' });
+      }
+      const target = await User.findById(req.params.id, 'role');
+      if (!target) return res.status(404).json({ error: 'Not found' });
+      if (normalizeRole(target.role) === 'superadmin') {
+        return res.status(403).json({ error: 'Cannot modify a superadmin account' });
+      }
+      if (nextRole === 'superadmin') {
+        return res.status(403).json({ error: 'Cannot assign superadmin role' });
+      }
+    }
+
+    const updates = { role: nextRole };
+    const unsets = {};
+    if (team !== undefined) updates.team = team;
+    if (isHrRole(nextRole)) updates.team = 'HR';
+    else if (nextRole === 'superadmin') { delete updates.team; unsets.team = 1; }
+
+    const updateDoc = Object.keys(unsets).length
+      ? { ...(Object.keys(updates).length ? { $set: updates } : {}), $unset: unsets }
+      : updates;
+
+    const user = await User.findByIdAndUpdate(req.params.id, updateDoc, { new: true, runValidators: true });
+    if (!user) return res.status(404).json({ error: 'Not found' });
+    res.json(user.toSafeObject());
+  } catch (e) { next(e); }
+};
+
+exports.setPassword = async (req, res, next) => {
+  try {
+    const { password } = req.body;
+    if (!password || !String(password).trim()) {
+      return res.status(400).json({ error: 'password cannot be empty' });
+    }
+    const target = await User.findById(req.params.id);
+    if (!target) return res.status(404).json({ error: 'Not found' });
+    target.passwordHash = await bcrypt.hash(String(password), 12);
+    await target.save();
+    res.json({ success: true });
+  } catch (e) { next(e); }
+};
+
 exports.updateUser = async (req, res, next) => {
   try {
     const actorRole = normalizeRole(req.user.role);
     const target = await User.findById(req.params.id, 'role team');
     if (!target) return res.status(404).json({ error: 'Not found' });
-    if (!canManageTarget(actorRole, target.role)) {
+
+    const { name, role, team, isActive, password } = req.body;
+    const isRoleChangeRequested = role !== undefined;
+    if (isHrAdmin(actorRole)) {
+      if (isRoleChangeRequested) {
+        if (req.params.id === req.user._id.toString()) {
+          return res.status(403).json({ error: 'You cannot change your own role' });
+        }
+        if (normalizeRole(target.role) === 'superadmin') {
+          return res.status(403).json({ error: 'Cannot modify a superadmin account' });
+        }
+      } else if (!canManageTarget(actorRole, target.role)) {
+        return res.status(403).json({ error: 'Forbidden' });
+      }
+    } else if (!canManageTarget(actorRole, target.role)) {
       return res.status(403).json({ error: 'Forbidden' });
     }
 
-    const { name, role, team, isActive, password } = req.body;
     const updates = {};
     const unsets = {};
     if (name !== undefined) updates.name = name;
@@ -129,7 +210,10 @@ exports.updateUser = async (req, res, next) => {
     if (role !== undefined) {
       const nextRole = normalizeRole(role);
       if (isHrAdmin(actorRole) && !HR_ADMIN_ALLOWED_ROLES.includes(nextRole)) {
-        return res.status(403).json({ error: 'HR admin can only assign user/admin/hr user roles' });
+        return res.status(403).json({ error: 'HR admin can only assign user/admin/hr user/overall admin roles' });
+      }
+      if (isHrAdmin(actorRole) && nextRole === 'superadmin') {
+        return res.status(403).json({ error: 'Cannot assign superadmin role' });
       }
       updates.role = nextRole;
     }

@@ -2,7 +2,7 @@ const WorkUnit = require('../models/WorkUnit');
 const Case = require('../models/Case');
 const User = require('../models/User');
 const calcScore = require('../utils/scoreCalculator');
-const { normalizeRole } = require('../utils/roles');
+const { normalizeRole, isOverallAdmin, OVERALL_ADMIN_TEAMS } = require('../utils/roles');
 
 function dateFilter(from, to) {
   const f = {};
@@ -44,6 +44,7 @@ exports.teamReport = async (req, res, next) => {
     const { team } = req.params;
     const actorRole = normalizeRole(req.user.role);
     if (actorRole === 'admin' && req.user.team !== team) return res.status(403).json({ error: 'Forbidden' });
+    if (isOverallAdmin(actorRole) && !OVERALL_ADMIN_TEAMS.includes(team)) return res.status(403).json({ error: 'Forbidden' });
 
     const df = dateFilter(from, to);
     const filter = { team };
@@ -138,6 +139,57 @@ exports.pipeline = async (req, res, next) => {
       return acc;
     }, {});
     res.json(grouped);
+  } catch (e) { next(e); }
+};
+
+exports.overallReport = async (req, res, next) => {
+  try {
+    const { from, to } = req.query;
+    const df = dateFilter(from, to);
+    const baseFilter = { team: { $in: OVERALL_ADMIN_TEAMS }, ...(df ? { date: df } : {}) };
+
+    const [allUnits, cases] = await Promise.all([
+      WorkUnit.find(baseFilter),
+      Case.find(df ? { createdAt: df } : {}),
+    ]);
+
+    const salesUnits = allUnits.filter(u => u.kind === 'SalesUnit');
+    const mktUnits   = allUnits.filter(u => u.kind === 'MarketingUnit');
+
+    const totalRevenue   = salesUnits.reduce((s, u) => s + (u.dailyRevenue || 0), 0);
+    const expectedRevenue = salesUnits.reduce((s, u) => s + (u.dealValue || 0), 0);
+    const callsMade      = salesUnits.reduce((s, u) => s + (u.callsMade || 0), 0);
+    const leadsAdded     = salesUnits.reduce((s, u) => s + (u.leadsAdded || 0), 0);
+    const pipeline       = salesUnits.reduce((acc, u) => {
+      if (u.leadStage) acc[u.leadStage] = (acc[u.leadStage] || 0) + 1;
+      return acc;
+    }, {});
+
+    const emailsSent     = mktUnits.reduce((s, u) => s + (u.emailsSent || 0), 0);
+    const leadsGenerated = mktUnits.reduce((s, u) => s + (u.leadsGenerated || 0), 0);
+    const conversions    = mktUnits.reduce((s, u) => s + (u.conversionsToSales || 0), 0);
+    const avgOpenRate    = mktUnits.length
+      ? +(mktUnits.reduce((s, u) => s + (u.openRate || 0), 0) / mktUnits.length).toFixed(1)
+      : 0;
+
+    const casesByStage = cases.reduce((acc, c) => { acc[c.stage] = (acc[c.stage] || 0) + 1; return acc; }, {});
+    const overdueCount = cases.filter(c => c.deadline && c.deadline < new Date() && c.stage !== 'Delivered').length;
+
+    const teamScores = {};
+    OVERALL_ADMIN_TEAMS.forEach(team => {
+      const tu = allUnits.filter(u => u.team === team);
+      const hrs = tu.reduce((s, w) => { if (w.startTime && w.endTime) s += (w.endTime - w.startTime) / 3600000; return s; }, 0);
+      teamScores[team] = calcScore(tu, hrs);
+    });
+
+    res.json({
+      period: { from, to },
+      units: { total: allUnits.length, completed: allUnits.filter(u => u.status === 'Completed').length },
+      sales: { totalRevenue, expectedRevenue, callsMade, leadsAdded, pipeline },
+      marketing: { emailsSent, leadsGenerated, conversions, avgOpenRate },
+      production: { totalCases: cases.length, byStage: casesByStage, overdueCount },
+      efficiency: { teamScores },
+    });
   } catch (e) { next(e); }
 };
 
