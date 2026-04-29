@@ -16,9 +16,13 @@ import {
   Settings,
   Webhook,
   Briefcase,
+  BookOpen,
+  UserSquare2,
+  Upload,
+  ListChecks,
 } from "lucide-react";
 import { useAuth } from "../../hooks/useAuth.js";
-import { isHrRole, normalizeRole } from "../../utils/roles.js";
+import { isHrRole, normalizeRole, isDocTeamMember } from "../../utils/roles.js";
 import { toggleSidebar } from "../../store/uiSlice.js";
 
 const navItems = [
@@ -26,13 +30,13 @@ const navItems = [
     to: "/",
     label: "Dashboard",
     Icon: LayoutDashboard,
-    roles: ["user", "admin", "superadmin"],
+    roles: ["user", "admin", "superadmin", "overall_admin"],
   },
   {
     to: "/work-units",
     label: "Work Units",
     Icon: ClipboardCheck,
-    roles: ["user", "admin", "hr_admin", "hr_user", "hr", "superadmin"],
+    roles: ["user", "admin", "hr_admin", "hr_user", "hr", "superadmin", "overall_admin"],
   },
   {
     to: "/cases",
@@ -50,31 +54,31 @@ const navItems = [
     to: "/leaderboard",
     label: "Leaderboard",
     Icon: Trophy,
-    roles: ["admin", "hr_admin", "hr_user", "hr", "superadmin"],
+    roles: ["admin", "hr_admin", "hr_user", "hr", "superadmin", "overall_admin"],
   },
   {
     to: "/reports",
     label: "Reports",
     Icon: BarChart2,
-    roles: ["user", "admin", "hr_admin", "hr_user", "superadmin"],
+    roles: ["user", "admin", "hr_admin", "hr_user", "superadmin", "overall_admin"],
   },
   {
     to: "/leave",
     label: "Leave",
     Icon: CalendarOff,
-    roles: ["user", "admin", "hr_admin", "hr_user", "superadmin"],
+    roles: ["user", "admin", "hr_admin", "hr_user", "superadmin", "overall_admin"],
   },
   {
     to: "/eod",
     label: "EOD Reports",
     Icon: FileText,
-    roles: ["user", "admin", "hr_admin", "hr_user", "superadmin"],
+    roles: ["user", "admin", "hr_admin", "hr_user", "superadmin", "overall_admin"],
   },
   {
     to: "/team",
     label: "Team View",
     Icon: Users,
-    roles: ["admin", "hr_admin", "superadmin"],
+    roles: ["admin", "hr_admin", "superadmin", "overall_admin"],
   },
   {
     to: "/webhooks",
@@ -98,6 +102,18 @@ const navItems = [
   { to: "/hr", label: "HR Portal", Icon: Briefcase, roles: ["hr_admin", "hr"] },
 ];
 
+const docNavItems = [
+  { to: "/", label: "Dashboard", Icon: LayoutDashboard },
+  { to: "/doc/clients", label: "Clients", Icon: UserSquare2 },
+  { to: "/doc/cases", label: "Cases", Icon: FolderOpen },
+  { to: "/doc/work-units", label: "Work Units", Icon: ClipboardCheck },
+  { to: "/doc/documents", label: "Documents", Icon: BookOpen },
+  { to: "/doc/documents/new", label: "Upload Doc", Icon: Upload },
+  { to: "/doc/leaderboard", label: "Leaderboard", Icon: Trophy, adminOnly: true },
+  { to: "/leave", label: "Leave", Icon: CalendarOff },
+  { to: "/eod", label: "EOD Reports", Icon: FileText },
+];
+
 export default function Sidebar() {
   const dispatch = useDispatch();
   const open = useSelector((s) => s.ui.sidebarOpen);
@@ -107,6 +123,7 @@ export default function Sidebar() {
   const isHrTeamUser =
     normalizedRole === "hr_user" ||
     (normalizedRole === "user" && user?.team === "HR");
+  const isDocUser = isDocTeamMember(user);
 
   // Close sidebar on mobile after navigating
   const handleNavClick = () => {
@@ -141,13 +158,23 @@ export default function Sidebar() {
         </div>
 
         <nav className="p-2 space-y-0.5 mt-2 flex-1 overflow-y-auto">
-          {navItems
+          {isDocUser && open && (
+            <div className="px-3 py-1.5 mb-1">
+              <span className="text-xs font-semibold text-brand-400 uppercase tracking-wider">Documentation</span>
+            </div>
+          )}
+          {(isDocUser ? docNavItems : navItems)
             .filter((item) => {
+              if (isDocUser) {
+                if (item.adminOnly && normalizedRole !== "admin") return false;
+                return true;
+              }
               if (!item.roles.includes(normalizedRole)) return false;
               if (isHrTeamUser && (item.to === "/cases" || item.to === "/kpi")) return false;
               if (item.to !== "/leaderboard") return true;
               if (isHrRole(normalizedRole)) return true;
               if (normalizedRole === "superadmin") return true;
+              if (normalizedRole === "overall_admin") return true;
               return (
                 normalizedRole === "admin" &&
                 ["Sales", "Marketing"].includes(user?.team)
@@ -176,13 +203,25 @@ export default function Sidebar() {
         {open && user && (
           <div className="p-4 border-t border-gray-700 flex-shrink-0">
             <div className="text-xs text-gray-400">
-              {normalizedRole === "superadmin" ? "CEO" : user.team === "HR" ? "HR Team" : `${user.team} Team`}
+              {normalizedRole === "superadmin"
+                ? "CEO"
+                : normalizedRole === "overall_admin"
+                ? "All Teams"
+                : user.team === "HR"
+                ? "HR Team"
+                : user.team === "Documentation"
+                ? "Documentation Team"
+                : `${user.team} Team`}
             </div>
             <div className="text-sm font-medium text-white truncate">
               {user.name}
             </div>
             <div className="text-xs text-gray-500 capitalize">
-              {normalizedRole === "superadmin" ? "Super Admin" : normalizedRole.replace("_", " ")}
+              {normalizedRole === "superadmin"
+                ? "Super Admin"
+                : normalizedRole === "overall_admin"
+                ? "Organization Admin"
+                : normalizedRole.replace("_", " ")}
             </div>
           </div>
         )}

@@ -22,17 +22,22 @@ export default function Topbar() {
   const normalizedRole = normalizeRole(user?.role);
   const notifRef = useRef(null);
 
-  useEffect(() => {
-    if (user?._id) {
-      getNotifications()
-        .then((data) => {
-          const list = data.notifications || data || [];
-          setNotifications(list);
-          setUnreadCount(list.filter((n) => !n.isRead).length);
-        })
-        .catch(() => {});
-    }
+  const refreshNotifications = useCallback(() => {
+    if (!user?._id) return;
+    getNotifications()
+      .then((data) => {
+        const list = data.notifications || data || [];
+        setNotifications(list);
+        setUnreadCount(list.filter((n) => !n.isRead).length);
+      })
+      .catch(() => {});
   }, [user?._id]);
+
+  useEffect(() => {
+    refreshNotifications();
+    const intervalId = setInterval(refreshNotifications, 30000);
+    return () => clearInterval(intervalId);
+  }, [refreshNotifications]);
 
   const refreshZoomLink = useCallback(() => {
     getOrgSettings()

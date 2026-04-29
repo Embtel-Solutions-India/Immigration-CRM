@@ -4,7 +4,11 @@ import { getMarketingOrgChart, getMarketingTeamChart, getMarketingUserChart } fr
 import Spinner from '../common/Spinner.jsx';
 
 const COLORS = ['#8b5cf6','#06b6d4','#ec4899','#22c55e','#f59e0b'];
-const METRIC_LABELS = { emailsSent: 'Emails Sent', leadsGenerated: 'Leads Generated' };
+const METRIC_LABELS = {
+  emailsSent: 'Emails Sent',
+  leadsGenerated: 'Leads Generated',
+  leadsAdded: 'Leads Added',
+};
 
 export default function MultiSeriesMarketingChart({ view = 'org', entityId }) {
   const [data, setData] = useState([]);

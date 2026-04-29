@@ -114,7 +114,7 @@ export default function NotificationPanel({
               key={n._id}
               onClick={() => handleClick(n)}
               className={`w-full text-left px-4 py-3 hover:bg-gray-50 transition-colors flex gap-3 ${!n.isRead ? "bg-blue-50/40" : ""}`}
-            >
+            > 
               <div className="mt-0.5 flex-shrink-0">
                 {TYPE_ICON[n.type] || TYPE_ICON.general}
               </div>

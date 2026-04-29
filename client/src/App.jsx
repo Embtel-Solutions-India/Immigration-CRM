@@ -23,7 +23,17 @@ import AuditLog from "./pages/Audit/AuditLog.jsx";
 import EodReport from "./pages/Eod/EodReport.jsx";
 import OrgSettings from "./pages/Settings/OrgSettings.jsx";
 import WebhookLogs from "./pages/Webhooks/WebhookLogs.jsx";
-import { isHrAdminRole, normalizeRole } from "./utils/roles.js";
+import { isHrAdminRole, isOverallAdminRole, normalizeRole, isDocTeamMember } from "./utils/roles.js";
+import OverallAdminDashboard from "./pages/Dashboard/OverallAdminDashboard.jsx";
+import DocDashboard from "./pages/Documentation/DocDashboard.jsx";
+import DocLeaderboard from "./pages/Documentation/DocLeaderboard.jsx";
+import DocClients from "./pages/Documentation/DocClients.jsx";
+import DocClientDetail from "./pages/Documentation/DocClientDetail.jsx";
+import DocCases from "./pages/Documentation/DocCases.jsx";
+import DocWorkUnits from "./pages/Documentation/DocWorkUnits.jsx";
+import DocDocuments from "./pages/Documentation/DocDocuments.jsx";
+import DocUploadForm from "./pages/Documentation/DocUploadForm.jsx";
+import DocChecklist from "./pages/Documentation/DocChecklist.jsx";
 
 function ProtectedRoute({ children, roles, denyHrTeamUsers = false }) {
   const { user, loading } = useSelector((s) => s.auth);
@@ -47,6 +57,9 @@ function DashboardRouter() {
   const role = normalizeRole(user.role);
   if (isHrAdminRole(role)) return <Navigate to="/hr" replace />;
   if (role === "superadmin") return <CeoDashboard />;
+  if (isOverallAdminRole(role)) return <OverallAdminDashboard />;
+  if (role === "admin" && isDocTeamMember(user)) return <DocDashboard />;
+  if (role === "user" && isDocTeamMember(user)) return <DocDashboard />;
   if (role === "admin") return <AdminDashboard />;
   return <UserDashboard />;
 }
@@ -83,7 +96,7 @@ export default function App() {
           <Route
             path="work-units"
             element={
-              <ProtectedRoute roles={["user", "admin", "hr_admin", "hr_user", "hr", "superadmin"]}>
+              <ProtectedRoute roles={["user", "admin", "hr_admin", "hr_user", "hr", "superadmin", "overall_admin"]}>
                 <WorkUnitList />
               </ProtectedRoute>
             }
@@ -91,7 +104,7 @@ export default function App() {
           <Route
             path="work-units/new"
             element={
-              <ProtectedRoute roles={["user", "admin", "hr_admin", "hr_user", "superadmin"]}>
+              <ProtectedRoute roles={["user", "admin", "hr_admin", "hr_user", "superadmin", "overall_admin"]}>
                 <WorkUnitForm />
               </ProtectedRoute>
             }
@@ -99,7 +112,7 @@ export default function App() {
           <Route
             path="work-units/:id"
             element={
-              <ProtectedRoute roles={["user", "admin", "hr_admin", "hr_user", "hr", "superadmin"]}>
+              <ProtectedRoute roles={["user", "admin", "hr_admin", "hr_user", "hr", "superadmin", "overall_admin"]}>
                 <WorkUnitDetail />
               </ProtectedRoute>
             }
@@ -107,7 +120,7 @@ export default function App() {
           <Route
             path="work-units/:id/edit"
             element={
-              <ProtectedRoute roles={["user", "admin", "hr_admin", "hr_user", "superadmin"]}>
+              <ProtectedRoute roles={["user", "admin", "hr_admin", "hr_user", "superadmin", "overall_admin"]}>
                 <WorkUnitForm />
               </ProtectedRoute>
             }
@@ -139,7 +152,7 @@ export default function App() {
           <Route
             path="leaderboard"
             element={
-              <ProtectedRoute roles={["admin", "hr_admin", "hr_user", "hr", "superadmin"]}>
+              <ProtectedRoute roles={["admin", "hr_admin", "hr_user", "hr", "superadmin", "overall_admin"]}>
                 <Leaderboard />
               </ProtectedRoute>
             }
@@ -147,7 +160,7 @@ export default function App() {
           <Route
             path="reports"
             element={
-              <ProtectedRoute roles={["user", "admin", "hr_admin", "hr_user", "superadmin"]}>
+              <ProtectedRoute roles={["user", "admin", "hr_admin", "hr_user", "superadmin", "overall_admin"]}>
                 <Reports />
               </ProtectedRoute>
             }
@@ -155,7 +168,7 @@ export default function App() {
           <Route
             path="leave"
             element={
-              <ProtectedRoute roles={["user", "admin", "hr_admin", "hr_user", "superadmin"]}>
+              <ProtectedRoute roles={["user", "admin", "hr_admin", "hr_user", "superadmin", "overall_admin"]}>
                 <LeavePage />
               </ProtectedRoute>
             }
@@ -163,7 +176,7 @@ export default function App() {
           <Route
             path="eod"
             element={
-              <ProtectedRoute roles={["user", "admin", "hr_admin", "hr_user", "superadmin"]}>
+              <ProtectedRoute roles={["user", "admin", "hr_admin", "hr_user", "superadmin", "overall_admin"]}>
                 <EodReport />
               </ProtectedRoute>
             }
@@ -171,7 +184,7 @@ export default function App() {
           <Route
             path="team"
             element={
-              <ProtectedRoute roles={["admin", "hr_admin", "superadmin"]}>
+              <ProtectedRoute roles={["admin", "hr_admin", "superadmin", "overall_admin"]}>
                 <TeamView />
               </ProtectedRoute>
             }
@@ -213,6 +226,72 @@ export default function App() {
             element={
               <ProtectedRoute roles={["hr_admin", "hr"]}>
                 <HRPortal />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Documentation Team routes */}
+          <Route
+            path="doc/clients"
+            element={
+              <ProtectedRoute roles={["admin", "user", "superadmin"]}>
+                <DocClients />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="doc/clients/:id"
+            element={
+              <ProtectedRoute roles={["admin", "user", "superadmin"]}>
+                <DocClientDetail />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="doc/cases"
+            element={
+              <ProtectedRoute roles={["admin", "user", "superadmin"]}>
+                <DocCases />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="doc/work-units"
+            element={
+              <ProtectedRoute roles={["admin", "user", "superadmin"]}>
+                <DocWorkUnits />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="doc/documents"
+            element={
+              <ProtectedRoute roles={["admin", "user", "superadmin"]}>
+                <DocDocuments />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="doc/documents/new"
+            element={
+              <ProtectedRoute roles={["admin", "user", "superadmin"]}>
+                <DocUploadForm />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="doc/checklist/:clientId"
+            element={
+              <ProtectedRoute roles={["admin", "user", "superadmin"]}>
+                <DocChecklist />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="doc/leaderboard"
+            element={
+              <ProtectedRoute roles={["admin", "superadmin"]}>
+                <DocLeaderboard />
               </ProtectedRoute>
             }
           />

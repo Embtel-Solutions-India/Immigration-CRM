@@ -45,11 +45,13 @@ exports.review = async (req, res, next) => {
     leave.reviewedBy = req.user._id;
     await leave.save();
 
+    const reviewerName = req.user.name || 'Admin';
+    const statusLabel = status === 'Approved' ? 'approved' : 'rejected';
     await createInternal(
       leave.userId._id,
       'leave_update',
-      `Leave request ${status.toLowerCase()}`,
-      `Your leave request for ${leave.dates.length} day(s) has been ${status.toLowerCase()}.${reviewNote ? ' Note: ' + reviewNote : ''}`,
+      `Leave request ${statusLabel}`,
+      `Your leave request for ${leave.dates.length} day(s) has been ${statusLabel} by ${reviewerName}.${reviewNote ? ` Note: ${reviewNote}` : ''}`,
       '/leave'
     );
 

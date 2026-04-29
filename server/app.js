@@ -21,6 +21,13 @@ const webhookRoutes      = require('./routes/webhooks');
 const analyticsRoutes    = require('./routes/analytics');
 const chartsRoutes       = require('./routes/charts');
 const orgRoutes          = require('./routes/org');
+const docClientsRoutes   = require('./routes/docClients');
+const docCasesRoutes     = require('./routes/docCases');
+const docDocumentsRoutes = require('./routes/docDocuments');
+const docWorkUnitsRoutes = require('./routes/docWorkUnits');
+const docChecklistRoutes = require('./routes/docChecklist');
+const docDashboardRoutes = require('./routes/docDashboard');
+const docLeaderboardRoutes = require('./routes/docLeaderboard');
 
 const app = express();
 
@@ -49,6 +56,13 @@ app.use('/api/webhooks',     webhookRoutes);
 app.use('/api/analytics',    analyticsRoutes);
 app.use('/api/charts',       chartsRoutes);
 app.use('/api/org',          orgRoutes);
+app.use('/api/doc-clients',    docClientsRoutes);
+app.use('/api/doc-cases',      docCasesRoutes);
+app.use('/api/doc-documents',  docDocumentsRoutes);
+app.use('/api/doc-work-units', docWorkUnitsRoutes);
+app.use('/api/doc-checklist',  docChecklistRoutes);
+app.use('/api/doc-dashboard',  docDashboardRoutes);
+app.use('/api/doc-leaderboard', docLeaderboardRoutes);
 
 app.get('/api/health', (_req, res) => res.json({ status: 'ok' }));
 

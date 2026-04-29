@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const uiSlice = createSlice({
   name: 'ui',
-  initialState: { sidebarOpen: true, toast: null },
+  initialState: { sidebarOpen: typeof window !== 'undefined' && window.innerWidth >= 768, toast: null },
   reducers: {
     toggleSidebar: (s) => { s.sidebarOpen = !s.sidebarOpen; },
     showToast: (s, { payload }) => { s.toast = payload; },

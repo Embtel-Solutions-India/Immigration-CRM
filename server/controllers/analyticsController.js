@@ -3,7 +3,7 @@ const { getISOWeek, startOfISOWeek, addDays, format } = require('date-fns');
 
 exports.orgHeatmap = async (req, res, next) => {
   try {
-    const allowed = ['superadmin', 'hr_admin'];
+    const allowed = ['superadmin', 'hr_admin', 'overall_admin'];
     if (!allowed.includes(req.user.role)) {
       return res.status(403).json({ error: 'Forbidden' });
     }
